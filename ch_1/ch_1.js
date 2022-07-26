@@ -86,3 +86,56 @@ z >= y  // => false: greater than or equal
 "two" === "three"   // => false: the two strings are different
 "two">"three"   // => true:"tw" is alphabetically greater than "th"
 false === (z > y)   // => true: false is equal to false. 
+
+// Functions are parameterized blocks of JavaScript code that we can invoke
+function plus1(x){  // Define a function named "plus1" with parameter "x"
+    return x + 1;   // Return a value one larger than the value passed in 
+}   //  Functions are enclosed in curly braces
+
+plus1(y)    // => 4: y is 3, so this invocation returns 3 + 1
+
+let square = function(x) {  // Functions are values and can be assigned to vars
+    return x*x; // Compute the function's value
+};  // Semicolon marks the end of the assignment
+
+square(plus1(y))    // => 16: invoke two functions in one expression
+
+// Arrow functions
+
+const plus2 = x => x + 1;   // The input x mmaps to the output x + 1
+const square2 = x => x*x;    // The input x maps to the output x*x
+plus2(y)    // => 4: function invocation is the same
+square2(plus2(y))    // => 16
+
+// Methods
+
+// When functions are assigned to the properties of an object, we call
+// them "methods". All JavaScript objects (including arrays) have methods:
+let a = []; // Create an empty array
+a.push(1,2,3);  // The push() method adds elements to an array
+a.reverse();    // Another method: reverse the order of elements
+
+// We can define our own methods, too. The "this" keyword refers to the object
+// on whichthe method is defined: in this case, the points array from earlier.
+points.dist = function(){   // Define a method to compute distance betwen points
+    let p1 = this[0];   // First element of array we're invoked on
+    let p2 = this[1];   // Second element of the "this" object
+    let a = p2.x-p1.x;  // Difference in x coordinates
+    let b = p2.y-p1.y;  // Difference in y coordinates
+    return Math.sqrt(a*a + // The Pythagorean theorem
+            b*b);   // Math.sqrt() computes the square root
+};
+points.dist()   // => Math.sqrt(2): distance between our 2 points
+
+// JavaScript statements include conditionals and loops using the syntax
+// of C, C++, Java, and other languages
+function abs(x){    // A function to compute the absolute value.
+    if (x>=0){  // The if statement...
+        return x;   // executes this code if the comparison is true
+    }   // This is the end of the if clause
+    else{   // The optional else clause executes its code if
+        return -x;  // the comparison is false
+    }   // Curly braces optional when 1 statement per clause
+}   // Note return statements nested inside if/else
+abs(-10) === abs(10) // => true
+
