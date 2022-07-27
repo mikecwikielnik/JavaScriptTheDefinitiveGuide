@@ -56,6 +56,45 @@ class Histogram{
         // Convert the Map to an array of [key,value] arrays
         let entries = [...this.letterCounts];
 
+        // Sort the array by count, then alphabetically
+        entries.sort((a,b) => { // A function to define sort order
+            if(a[1] === b[1]){  // If the counts are the same
+                return a[0] < b[0]? - 1 : 1;    // sort alphabetically
+            } else {    // If the counts differ
+                return b[1] - a[1]; // sort by largest count. 
+            }
+        });
+
+        // Convert the counts to percentages
+        for(let entry of entries){
+            entry[1] = entry[1]/this.totalLetters*100;
+        }
+
+        // Drop any entries less than 1%
+        entries = entries.filter(entry => entry[1] >= 1);
+
+        // Now convert each entry to a line of text
+        let lines = entries.map(
+            ([l,n]) => '${1}: ${"#".repeat(Math.round(n))} ${n.toFixed(2)}%'
+        );
         
+        // And return the concatenated lines, separated by newline characters
+        return lines.join("\n");
     }
 }
+
+// This async (Promist-returning) function creates a Histogram object, 
+// asychronously reads chunks of text from standard input, and adds those chunks to
+// the histogram. When it reaches the end of the stream, it returns this histogram
+async function histogramFromStdin(){
+    process.stdin.setEncoding("utf-8"); // Read Unicode strings, not bytes
+    let histogram = new Histogram();
+    for await (let chunk of process.stdin){
+        histogram.add(chunk);
+    }
+    return histogram
+}
+
+// This one fina line of code is the main body of the program
+// It makes a Histogram object from standard input, then prints the histogram
+histogramFromStdin().then(histogram => {console.log(histogram.toString());});
