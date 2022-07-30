@@ -45,3 +45,13 @@ Flanagan, David. JavaScript: The Definitive Guide (p. 23). O'Reilly Media. Kindl
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 27). O'Reilly Media. Kindle Edition. 
 
+Math.pow(2,53)  // => 9007199254740992: 2 to the power 53
+Math.round(.6)  // => 1.0: round to the nearest integer
+Math.ceil(.6)  // => 1.0: round up to the nearest integer
+Math.floor(.6)  // => 0.0: round down to an integer
+Math.abs(-5)    // => 5: absolute value
+Math.max(x,y,z) // Return the largest argument
+Math.min(x,y,z) // Return the smallest argument
+Math.random()   // Pseudo-random number x where 0 <= x <1.0
+Math.PI // pi: circumerenace of a circle / diameter
+Math.E  // e: The base of the natural log
