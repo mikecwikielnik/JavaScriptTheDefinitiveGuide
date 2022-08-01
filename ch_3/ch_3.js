@@ -114,3 +114,42 @@ let zero = 0;   // Regular zero
 let negz = -0;  // Negavtive zero
 zero === negz   // => true: zero and negative zero are equal
 1/zero === 1/negz   // => false: Infinity and -Infinity are not equal
+
+// 3.2.4 Binary Floating-Point and Rounding Errors
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 30). O'Reilly Media. Kindle Edition. 
+
+let x = .3 - .2   // thirty cents minus 20 cents
+let y = .2 - .1   // twenty cents minus 10 cents
+x === y     // => false: the two values are not the same! 
+x === .1    // => false: .3 - .2 is not equal to .1
+y === .1    // => true: .2 - .1 is equal to .1 
+
+// 3.2.5 Arbitrary Precision Integers with BigInt
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 30). O'Reilly Media. Kindle Edition. 
+
+1234n   // A not-so-big BigInt literal
+0b111111n   // A binary BigInt
+0o7777n     // An octal BigInt
+0x800000000000000n      // => 2n**63n: A 64-bit integer
+
+BigInt(Number.MAX_SAFE_INTEGER)     // => 9007199254740991n
+let string = "1" + "0".repeat(100);     // 1 followed by 100 zeros
+BigInt(string)  // => 10n**100n: one googol
+
+1000n + 2000n   // => 3000n
+3000n - 2000n   // => 1000n
+2000n * 3000n   // => 6000000n
+3000n / 997n    // => 3n: the quotient is 3
+3000n % 997n    // => 9n: and the remainder is 9
+(2n ** 131071n) - 1n    // A Mersenne prime with 39457 decimal digits
+
+1 < 2n  // => true
+2 > 1n  // => true
+0 == 0n    // => true
+0 === 0n    // => false: the === checks for type equality as well 
+
+// 3.2.6 Dates and Times
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 32). O'Reilly Media. Kindle Edition. 
