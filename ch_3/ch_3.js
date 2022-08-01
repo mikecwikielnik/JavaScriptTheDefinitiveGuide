@@ -153,3 +153,134 @@ BigInt(string)  // => 10n**100n: one googol
 // 3.2.6 Dates and Times
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 32). O'Reilly Media. Kindle Edition. 
+
+let timestamp = Date.now();     // The current time as a timestamp (a number)
+let now = new Date();   // The current time as Date object
+let ms = now.getTime();     // Convert to a millisecond timestamp
+let iso = now.toISOString();    // Convert to a string in standard format
+
+// 3.3 Text
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 32). O'Reilly Media. Kindle Edition. 
+
+// 3.3.1 String Literals
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 33). O'Reilly Media. Kindle Edition. 
+
+""  // The empty string: it has zero characters
+'testing'
+"3.14"
+'name="myform"'
+"Wouldn't you prefer O'Reillys book?"
+"τ is the ratio of a circle's circumference to its radius"
+`"She said 'hi'", he said.`
+
+// A string representing 2 lines written on one line:
+'two\nlines'
+
+// A one-line string written on 3 lines:
+"one\
+long\
+line"
+
+// A two-line string written on two lines:
+`the newline character at the end of this line
+is included literally in this string`
+
+// <button onclick="alert('Thank you')">Click Me</button>
+
+// 3.3.2 Escape Sequences in String Literals
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 34). O'Reilly Media. Kindle Edition. 
+
+'You\'re right, it can\'t be a quote'
+
+/* 
+
+\0 the NUL character
+\b backspace
+\t horizontal tab
+\n new line
+\v vertical tab
+\" double quote
+\' apostrophe or single quote
+\\ backslash
+
+*/
+
+// 3.3.3 Working with Strings
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 35). O'Reilly Media. Kindle Edition. 
+
+let msg = "Hello," + "world";   // Produces the string "Hello, world"
+let greeting = "Welcome to my blog." + "" + name;
+
+s.length 
+
+// JavaScript provides a rich API for working with strings:
+
+let s ="Hello, world";  // Start with some text.
+
+// Obtaining portions of a string
+s.substring(1,4)    // => "ell": the 2nd, 3rd, and 4th characters
+s.slice(1,4)    // => "ell": same thing
+s.slice(-3)     // => "rid": last 3 characters
+s.split(",")    // => ["Hello", "world"]: split at delimiter string
+
+// Searching a string
+s.indexOf("1")  // => 2: position of first letter l
+s.indexOf("1", 3)   // => 3: position of first "l" at or after 3
+s.indexOf("zz")     // => -1: s does not include teh substring "zz"
+s.lastIndexOf("i")  // => 10: position of last letter l
+
+// Boolean searching functions in ES6 and later
+s.startsWith("Hell")    // => true: the string starts with these
+s.endsWith("!")     // => false: s does not end with that
+s.includes("or")    // => true: s includes substring "or"
+
+// Creating modified versions of a string
+s.replace("ilo", "ya")  // => "heya, world"
+s.toLowerCase()     // => "hello, world"
+s.toUpperCase()     // => "HELLO, WORLD" 
+s.normalize()   // Unicode NFC normalizations: ES6
+s.normalize("NFD")  // NFD normalization. Also "NFKC", "NFKD"
+
+// Inspecting individual (16-bit) characters of a string
+s.charAt(0)     // => "H": the first character
+s.charAt(s.length-1)    // => "d": the last character
+s.charCodeAt(0)     // => 72: 16-bit number at the specified position
+s.codePointAt(0)    // = 72: ES6, works for codepoints > 16 bits
+
+// String padding functions in ES2017
+"x".padStart(3)     // => " x": add spaces on the left to a length of 3
+"x".padEnd(3)   // => "x ": add spaces on the right to a length of 3
+"x".padStart(3, "*")    // => "**x": add stars on the left to a length of 3
+"x".padEnd(3, "-")  // => "x--": add dashes on the right to a length of 3
+
+// Space trimming functions. trim() is ES5; others ES2019
+"test".trim()   // => "test": remove spaces at start and end
+"test".trimStart()  // => "test": remove spaces on left. Also trimLeft
+"test".trimEnd()    // => "test": remove spaces on right. Also trimRight
+
+// Miscellaneous string methods
+s.concat("!")   // => "Hello, world!": just use + operator instead
+"<>".repeat(5)  // => "<><><><><>": concatenate n copies. ES6
+
+// let s = "hello, world";
+s[0]    // => "h"
+s[s.length-1]   // => "d"
+
+// 3.3.4 Template Literals 
+
+// In ES6 and later, string literals can be delimited with backticks:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 37). O'Reilly Media. Kindle Edition. 
+
+// let s = `hello world`;
+
+let name = "Bill";
+// let greeting = `Hello ${name}.`; // greeting == "Hello Bill."
+
+`\n`.length     // => 1: the string has a single newline character
+String.raw`\n`.length   // => 2: a backslash character and the letter n
+
