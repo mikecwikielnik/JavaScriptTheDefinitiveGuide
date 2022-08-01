@@ -78,3 +78,39 @@ Math.trunc(3.9) // => 3: convert to an integer by truncating fractional part
 Math.fround(x)  // Round to nearest 32-bit float number
 Math.sinh(x)    // Hyperbolic sine. Also Math.cosh(), Math.tanh()
 Math.asinh(x)   // Hyperbolic arcsine. Also Math.acosh(), Math.atanh()
+
+Infinity    // A positive number too big to represent
+Number.POSITIVE_INFINITY    // Same value
+1/0 // => Infinity
+Number.MAX_VALUE*2  // => Infinity; overflow
+
+-Infinity   // A negative number too big to represent
+Number.NEGATIVE_INFINITY    // The same value
+-1/0    // => -Infinity
+-Number.MAX_VALUE*2 // => -Infinity
+
+NaN     // The not-a-number value
+Number.NaN  // The same value, written another way
+0/0     // => Nan
+Infinity/Infinity   // => NaN
+
+Number.MIN_VALUE/2  // => 0: underflow
+-Number.MIN_VALUE/2     // => -0: negative zero
+-1/Infinity     // => -0: also negative 0
+-0
+
+// The following Number properties are defined in ES6
+Number.parseInt()   // Same as the global parseInt() fn
+Number.parseFloat()     // Same as the global parseFloat() fn
+Number.isNaN(x)     // Is x the NaN value?
+Number.isFinite(x)  // Is x a number and finite?
+Number.isInteger(x)     // Is x an integer?
+Number.isSafeInteger(x)     // Is x an integer -(2**53) < x < 2**53?
+Number.MIN_SAFE_INTEGER     // => -(2**53 - 1)
+Number.MAX_SAFE_INTEGER     // => 2**53 - 1
+Number.EPSILON  // => 2**-52: smallest difference between numbers
+
+let zero = 0;   // Regular zero
+let negz = -0;  // Negavtive zero
+zero === negz   // => true: zero and negative zero are equal
+1/zero === 1/negz   // => false: Infinity and -Infinity are not equal
