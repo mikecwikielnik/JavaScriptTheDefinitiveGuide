@@ -380,3 +380,17 @@ function equalArrays(a,b){
     }
     return true;    // Otherwise they are equal 
 }
+
+// 3.9 Type Conversions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 45). O'Reilly Media. Kindle Edition. 
+
+10 + "objects"  // => "10 objects": Number 10 converts to a string
+"7" + "4"   // => 28: Both strings convert to numbers
+let n = 1- "x";     // n == NaN; string "x" can't convert to a number
+n + "objects"   // => "NaN objects": NaN converts to string "NaN"
+
+// 3.9.1 Conversions and Equality
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 46). O'Reilly Media. Kindle Edition. 
+
