@@ -394,3 +394,11 @@ n + "objects"   // => "NaN objects": NaN converts to string "NaN"
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 46). O'Reilly Media. Kindle Edition. 
 
+// "strict equality operator", === is the right operator to use when coding
+
+null == undefined   // => true: These two values are treated as equal
+"0" == 0    // => true: String converts to a number before comparing
+0 == false  // => true: Boolean converts to number before comparing
+"0" == false    // => true: Both operands convert to 0 before comparing 
+
+
