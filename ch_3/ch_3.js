@@ -284,3 +284,99 @@ let name = "Bill";
 `\n`.length     // => 1: the string has a single newline character
 String.raw`\n`.length   // => 2: a backslash character and the letter n
 
+// 3.3.5 Pattern Matching
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 38). O'Reilly Media. Kindle Edition. 
+
+let text = "testing: 1, 2, 3";  // Sample text
+let pattern = /\d + /g;     // Matches all instances of one of more digits
+pattern.test(text)  // => true: a match exists
+
+text.search(pattern)    // => 9: position of first match
+text.match(pattern)     // => ["1", "2", "3"]: array of all matches
+text.replace(pattern, "#")   // => "testing: #, #, #"
+text.split(/\D+/)   // => ["", "1", "2", "3"]: split on nondigits
+
+// 3.4 Boolean Values
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 38). O'Reilly Media. Kindle Edition. 
+
+a === 4
+
+if(a === 4){
+    b +b + 1;
+} else {
+    a = a + 1;
+}
+
+// 3.6 Symbols
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 41). O'Reilly Media. Kindle Edition. 
+
+let strname = "string name"; // A string to use as a property name
+let symname = Symbol("propname");   // A symbol to use as a property name
+typeof strname  // => "string": strname is a string
+typeof symname  // => "symbol": symname is a symbol
+let o = {};     // Create a new object
+o[strname] = 1;     // Define a property with a string name
+o[symname] = 2;     // Define a property with a Symbol name
+o[strname]  // => 1: access the string-named property
+o[symname]  // => 2: acces the symbol-named property 
+
+// let s = Symbol.for("shared");
+let t = Symbol.for("shared");
+s === t     // => true
+s.toString()    // => "Symbol(shared)"
+Symbol.keyFor(t)    // => "Shared"
+
+// 3.8 Immutable Primitive Values and Mutable Object References
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 43). O'Reilly Media. Kindle Edition. 
+
+// let s = "hello";    // Start with some lowercase text
+s.toUpperCase();    // Returns "HELLO", but doesn't alter s
+s   // => "hello": the original string has not changed
+
+let o = {x:1};  // Start with an object
+o.x = 2;    // Mutate it by changing the value of a property
+o.y = 3;    // Mutate it again by adding a new property
+
+let a = [1,2,3];    // Arrays are also mutable
+
+a[0] = 0;   // Change the value of an array element
+a[3] = 4;   // Add a new array element
+
+let o = {x:1}, p = {x:1};   // Two objects with the same properties
+o === p     // => false: distinct objects are never equal
+let a =[], b = [];  // Two distinct, empty arrays
+a === b     // => false: distinct arrays are never equal 
+
+let a = [];     // The variable a refers to an empty array
+// let b = a;  // Now b refers to the same array
+b[0] = 1;   // Mutate the array referred to by variable b
+a[0]    // => 1: the change is also visible through variable a
+a === b     // => true: a and b refer to teh same object, so they are equal 
+
+// If you want to make a new copy of an object or array, 
+
+// you must explicitly copy the properties of the object or the elements of the array. 
+
+// This example demonstrates using a for loop
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 44). O'Reilly Media. Kindle Edition. 
+
+let a = ["a", "b", "c"];    // An array we want to copy
+let b = [];     // A distinct array we'll copy into
+for(let i = 0; i < a.length; i++){  // For each index of a[]
+    b[i] = a[i];    // Copy an element of a into b
+}
+let c = Array.from(b);  // In ES6, copy arrays with Array.from()
+
+function equalArrays(a,b){
+    if(a===b)return true;   // Identical arrays are equal
+    if(a.length!==b.length)return false;    // Different-size arrays not equal
+    for(let i=0; i<a.length;i++){   // Loop through all elements
+        if(a[i]!==b[i])return false;    // If any differ, arrays not equal
+    }
+    return true;    // Otherwise they are equal 
+}
