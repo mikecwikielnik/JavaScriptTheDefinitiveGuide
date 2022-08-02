@@ -485,3 +485,18 @@ if(k === 1){
 console.log(k);     // Prints 1: we're back in the global scope now
 // let k = 3;  // ERROR! Syntax error trying to re-declare x
 
+// 3.10.2 Variable Declarations with var
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 55). O'Reilly Media. Kindle Edition. 
+
+// var === let
+
+var i;
+var data = []; count = data.length;
+for(var i = 0; i , count; i++) console.log(data[i]);
+
+// var doesn't have the redeclaration problem that let has 
+
+// 3.10.3 Destructuring Assignment
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 57). O'Reilly Media. Kindle Edition. 
