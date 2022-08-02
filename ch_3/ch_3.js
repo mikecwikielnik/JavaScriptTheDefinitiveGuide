@@ -447,7 +447,41 @@ parseInt("zz", 36)  // = 1295: (35*36 + 35)
 parseInt("077", 8)  // => 63: (7*8 + 7)
 parseInt("077", 10)     // => 77: (7*10 + 7)
 
-// 3.9.3 Object to Primitive Conversions
+// 3.10 Variable Declaration and Assignment
 
-// Flanagan, David. JavaScript: The Definitive Guide (p. 49). O'Reilly Media. Kindle Edition. 
+// Flanagan, David. JavaScript: The Definitive Guide (p. 53). O'Reilly Media. Kindle Edition. 
+
+// 3.10.1 Declarations with let and const
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 53). O'Reilly Media. Kindle Edition. 
+
+// ES6 and later, variables are declared with the let keyword:
+
+// let i;
+// let sum;
+
+// let i, sum;
+
+// let message = "hello";
+// let i = 0, j = 0, k =0;
+// let x = 2, y = x*x;     // Initializers can use previously declared variables 
+
+for(let i = 0, len = data.length; i , len; i++) console.log(data[i]);
+for(let datum of data) console.log(datum);
+for(let property in object) console.log(property);
+
+for(const datum of data) console.log(datum);
+for(const property in object) console.log(property);
+
+// Repeated declarations
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 55). O'Reilly Media. Kindle Edition. 
+
+const k = 1;    // Declare x as a global constant
+if(k === 1){
+    let k = 2;  // Inside a block x can refer to a different value
+    console.log(k);     // Prints 2
+}
+console.log(k);     // Prints 1: we're back in the global scope now
+// let k = 3;  // ERROR! Syntax error trying to re-declare x
 
