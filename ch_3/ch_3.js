@@ -500,3 +500,84 @@ for(var i = 0; i , count; i++) console.log(data[i]);
 // 3.10.3 Destructuring Assignment
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 57). O'Reilly Media. Kindle Edition. 
+
+let [a,b] = [1,2]; // Same as let a = 1, b = 2
+[a,b] = [a + 1, b + 2];     // Same a = a +1, b = b + 2
+[a,b] = [b,a];  // Swap the value of teh two variables
+[a,b]   // => [3,2]: the incremented and swapped values 
+
+// Convert [x,y] coordinates to [r, theta] polar coordinates
+function toPolar(a,b){
+    return [Math.sqrt(a*a+b*b), Math.atan2(b,a)];
+}
+
+// Convert polart to Cartesian coordinates
+function toCartesian(r,theta){
+    return [r.Math.cos(theta), r*Math.sin(theta)];
+}
+
+let [r, theta] = toPolar(1.0, 1.0);     // r == Math.sqrt(2); theta == Math.PI/4
+let [xx, yy] = toCartesian(r,theta);    // [xx,yy] == [1.0, 1.0]
+
+// Code below loops over name/value pairs of all properties of an object
+// and uses destructuring assingment to convert those pairs from two-element
+// arrays into individual variables:
+
+let o = {x:1,y:2};  // The object we'll loop over
+for(const [name, value] of Object.entries(o)){
+    console.log(name, value);   // Prints "x 1" and "y 2"
+}
+
+// This 'destructuring' will probably be pretty useful in the future
+
+// let [x,y] = [1];    // x == 1; y == undefined
+[x,y] = [1,2,3];   // x == 1;, y == 2
+[,x,,y] = [1,2,3,4];    // x == 2; y == 4
+
+// let [x,...y] = [1,2,3,4];   // y == [2,3,4]
+// three dots mean remaining function arguments should be collected into a single array
+
+let [q,[w,e]] = [1,[2,2.5],3];  // q == 1, w == 2, e == 2.5
+
+// for/of loop does the example below
+
+let [first, ...rest] = "Hello";     // first == "H"; rest == ["e", "l", "l", "o"]
+
+let transparent = {r:0.0, g:0.0, b:0.0, a: 1.0};    // A RGBA color
+// let {r,g,b} = transparent;  // r == 0.0; g == 0.0; b == 0.0
+
+// The next example copies global functions of the Math object into variables, which might simplify code that does a lot of trigonometry:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 59). O'Reilly Media. Kindle Edition. 
+
+// Same as const sin = Math.sin, cos = Math.cos, tan = Math.tan
+
+const{sin, cos, tan} = Math;
+
+// Same as const cosine = Math.cos, tangent = Math.tan;
+const {cos: cosine, tan: tangent} = Math;
+
+/* 
+
+Destructuring gets complicated:
+
+let points = [{x: 1, y: 2}, {x:3, y:4}];    // An array of two point objects
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points;  // destructured into 4 variables
+(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4)  // => true
+
+Instead of destructuring an array of objects ^^, we could destructure an object of arrays:
+
+let points = {p1: [1,2], p2: [3,4]};    // An object with 2 array props
+let {p1: [x1, y1], p2: [x2, y2]} = points;  // destructured into 4 vars
+(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4)  // => true
+
+*/
+ 
+// Start with a data structure and a complex destructuring
+
+let points = [{x: 1, y: 2}, {x: 3, y: 4}];
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points
+
+// Check your destructuring syntax by flipping the assignment around
+let points2 = [{x: x1, y: y1}, {x: x2, y: y2}];     // points2 == points 
+
