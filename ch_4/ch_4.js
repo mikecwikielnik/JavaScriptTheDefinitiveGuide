@@ -465,7 +465,28 @@ function g(){   // This function does a global eval
 console.log(f(), x);    // Local variable changed: prints "localchanged global":
 console.log(g(), y);    // Global variable changed: prints "local globalchagned"    :
 
-// 4.12.3 Strict eval()
+// 4.13 Miscellaneous Operators
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 91). O'Reilly Media. Kindle Edition. 
+
+// 4.13.1 The Conditional Operator (?:)
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 91). O'Reilly Media. Kindle Edition. 
+
+// ternary operator (three operands)
+
+x > 0 ? x: - x  // The absolute value of x
+
+// typical usage of ?:
+
+greeting = "hello" + (username ? username:"there")
+
+// Above is equivalent to, but more compact than, the following if statement:
+
+greeting = "hello";
+if(username){
+    greeting += username;
+}else{
+    greeting += "there";
+}
 
