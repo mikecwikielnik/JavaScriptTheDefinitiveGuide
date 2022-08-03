@@ -77,3 +77,29 @@ a[0].x  // => 1: property x of expression a[0]
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 65). O'Reilly Media. Kindle Edition. 
 
+// expression?.indentifier
+// expression?.[expression]
+
+// optional chaining
+
+let aa = {b:null};
+aa.b?.c.d   // => undefined
+
+let aaa = {b:{}};
+aaa.b?.c.d  // => undefined
+
+let b;  // Oops, we forgot to initialize this variable! 
+let index = 0;
+try{
+    b[index++];     // Throws TypeError
+}catch(e){
+    index   // => 1: increment occurs before TypeError is thrown
+}
+b?.[index++]    // => undefined: because a is undefined
+index   // => 1: not incremented because ?.[] short-circuits
+b[index++]  // !TypeError: can't index undefined. 
+
+// 4.5 Invocation Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 66). O'Reilly Media. Kindle Edition. 
+
