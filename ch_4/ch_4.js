@@ -344,3 +344,17 @@ let n = 1, m = n ++;    // n is 2, m is 1
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 83). O'Reilly Media. Kindle Edition. 
 
+let point = {x: 1, y: 1};   // Define an object
+"x" in point    // => true: object has property named "x"
+"z" in point    // => false: object has no "z" property
+"toString" in point     // => true: object inherits toString method
+
+let data = [7,8,9];     // An array with elements (indices) 0, 1, and 2
+"0" in data     // => TRUE: array has an element "0" (zero)
+1 in data   // => true: numbers are converted to strings
+3 in data   // => false: no element 3
+
+// 4.9.4 The instanceof Operator
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 83). O'Reilly Media. Kindle Edition. 
+
