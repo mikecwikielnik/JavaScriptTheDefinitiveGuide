@@ -320,3 +320,9 @@ let n = 1, m = n ++;    // n is 2, m is 1
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 79). O'Reilly Media. Kindle Edition. 
 
+// Reviews the difference between the === strictly equal and it's less strict-bug prone version: ==
+
+// 4.9.2 Comparison Operators
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 81). O'Reilly Media. Kindle Edition. 
+
