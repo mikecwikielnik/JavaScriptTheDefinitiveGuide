@@ -192,3 +192,13 @@ new Date
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 71). O'Reilly Media. Kindle Edition. 
 
+/* 
+
+assingment operators might cause trouble. values changing in assignment to a variable or property.
+
+++ or -- increment/decrement operators are similar, since they perform implicit assignment. 
+
+delete operator: deleting a property is like (but not the same as) assigning undefined to the property. 
+
+*/
+
