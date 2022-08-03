@@ -202,3 +202,23 @@ delete operator: deleting a property is like (but not the same as) assigning und
 
 */
 
+// 4.7.4 Operator Precedence
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 71). O'Reilly Media. Kindle Edition. 
+
+// The multiplication operator * has higher precedence than the addition operator +. 
+
+// The = has the lowest precedence. You can use parentheses like you would in algebra. 
+
+// my is an object with a property named functions whose value is an
+
+// array of functions. We invoke function number x, passing it argument
+
+// y, and then we ask for the type of the value returned.
+
+typeof my.functions[x](y)
+
+// 4.7.5 Operator Associativity
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 72). O'Reilly Media. Kindle Edition. 
+
