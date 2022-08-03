@@ -394,3 +394,16 @@ if(a===b)stop();    // Invoke stop() only if a === b
 
 let max = maxWidth || preferences.maxWidth || 500
 
+// 4.10.3 Logical NOT (!)
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 86). O'Reilly Media. Kindle Edition. 
+
+// DeMorgan's Laws
+
+!(p && q) === (!p || !q)    // => true: for all values of p and q
+!(p || q) === (!p && !q)    // => true: for all values of p and q
+
+// 4.11 Assignment Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 86). O'Reilly Media. Kindle Edition. 
+
