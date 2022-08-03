@@ -407,3 +407,14 @@ let max = maxWidth || preferences.maxWidth || 500
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 86). O'Reilly Media. Kindle Edition. 
 
+i = 0;  // Set the variable i to 0.
+o.x = 1;    // Set the property x of object o to 1. 
+
+// Although assignment expressions are simple. Some may be more complex
+
+(a = b) === 0
+
+// Assignment operators have right-to-left associativity. Thus:
+
+i = j = k =0;   // Initialize 3 variables to 0
+
