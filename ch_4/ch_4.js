@@ -326,3 +326,21 @@ let n = 1, m = n ++;    // n is 2, m is 1
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 81). O'Reilly Media. Kindle Edition. 
 
+// Goes over comparison operators: >, <, >=, <=
+
+// the + operator prefers strings, it will perform concat if either is a string. 
+
+// The comparision opertors prefers numbers, and only perform string concat if both are strings
+
+1 + 2   // => 3: addition
+"1" + "2"   // => "12": concat
+"1" + 2     // => "12": 2 is converted to "2"
+11 < 3  // => false: numeric comparison
+"11" < "3"  // => true: string comparison
+"11" < 3    // => false: numeric comparison, "11" converted to 11
+"one" < 3   // => false: numeric comparison, "one" converted to NaN
+
+// 4.9.3 The in Operator
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 83). O'Reilly Media. Kindle Edition. 
+
