@@ -418,3 +418,22 @@ o.x = 1;    // Set the property x of object o to 1.
 
 i = j = k =0;   // Initialize 3 variables to 0
 
+// 4.11.1 Assignment with Operation
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 87). O'Reilly Media. Kindle Edition. 
+
+total += salesTax;
+
+// is equivalent to:
+
+total = total + salesTax;
+
+// The following examples are not the same:
+
+data[i++] *= 2;
+data[i++] = data[i++] * 2;
+
+// 4.12 Evaluation Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 88). O'Reilly Media. Kindle Edition. 
+
