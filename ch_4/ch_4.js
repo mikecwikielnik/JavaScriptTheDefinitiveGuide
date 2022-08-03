@@ -437,3 +437,15 @@ data[i++] = data[i++] * 2;
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 88). O'Reilly Media. Kindle Edition. 
 
+eval("3+2")     // => 5
+
+// 4.12.1 eval()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 89). O'Reilly Media. Kindle Edition. 
+
+eval("function f(){return x + 1;}");
+
+// 4.12.2 Global eval()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 90). O'Reilly Media. Kindle Edition. 
+
