@@ -163,3 +163,32 @@ new Date
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 68). O'Reilly Media. Kindle Edition. 
 
+// 4.7.1 Number of Operands
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 70). O'Reilly Media. Kindle Edition. 
+
+/*
+
+* is a binary operator. Combines two expressions into a single expression
+
+- is a unary operator. Converts a single expression into another expression
+
+?:, is a ternary operator. Combines three expressions into a single expression
+
+*/
+
+// 4.7.2 Operand and Result Type
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 70). O'Reilly Media. Kindle Edition. 
+
+/*
+
++ operator adds numeric operands but concats string operands. Similarly,
+< perform comparison in numerical or alphabetical order depending on the type of operand. 
+
+*/
+
+// 4.7.3 Operator Side Effects
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 71). O'Reilly Media. Kindle Edition. 
+
