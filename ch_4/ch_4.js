@@ -292,3 +292,17 @@ true + true     // => 2: addition after boolean-to-number
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 75). O'Reilly Media. Kindle Edition. 
 
+/*
+
+* One of the first great mysteries of your programming journey! 
+
+The operator (++) converts its operand to a number, adds 1 to that number, 
+and assigns the incremented value back into the variable, element, or property.
+
+Flanagan, David. JavaScript: The Definitive Guide (p. 76). O'Reilly Media. Kindle Edition. 
+
+*/
+
+let i = 1, j = ++i;     // i and j are both 2
+let n = 1, m = n ++;    // n is 2, m is 1
+
