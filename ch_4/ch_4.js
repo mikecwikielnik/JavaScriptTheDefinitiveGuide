@@ -49,3 +49,15 @@ let rectangle = {
     lowerRight: {x: 4, y: 5}
 };
 
+// 4.3 Function Definition Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 63). O'Reilly Media. Kindle Edition. 
+
+// This function returns the square of the value passed to it
+
+let square = function(x){return x*x};
+
+// 4.4 Property Access Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 64). O'Reilly Media. Kindle Edition. 
+
