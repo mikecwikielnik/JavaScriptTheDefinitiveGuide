@@ -358,3 +358,20 @@ let data = [7,8,9];     // An array with elements (indices) 0, 1, and 2
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 83). O'Reilly Media. Kindle Edition. 
 
+let d = new Date();     // Create a new object with the Date() constructor
+d instanceof Date   // => true: d was created with Date()
+d instanceof Object     // => true: all objects are instances of Object
+d instanceof Number     // => false: d is not a Number object
+let aA = [1,2,3]  // Create an array with array literal syntax
+aA instanceof Array     // => true: aA is an array
+aA instanceof Object    // => true: all arrays are objects
+aA instanceof RegExp    // => false: arrays are not regular expressions. 
+
+// 4.10 Logical Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 84). O'Reilly Media. Kindle Edition. 
+
+// 4.10.1 Logical AND (&&)
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 84). O'Reilly Media. Kindle Edition. 
+
