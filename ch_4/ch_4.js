@@ -103,3 +103,14 @@ b[index++]  // !TypeError: can't index undefined.
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 66). O'Reilly Media. Kindle Edition. 
 
+// Invocation expression is js syntax for calling a function or method. 
+// Seems pretty similar to Python
+
+f(0)    // f is the function expression; 0 is the argument expression
+Math.max(x,y,z)     // Math.max is the function; x, y, and z are the arguments
+a.sort()    // a.sort is the function; there are no arguments
+
+// 4.5.1 Conditional Invocation
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 67). O'Reilly Media. Kindle Edition. 
+
