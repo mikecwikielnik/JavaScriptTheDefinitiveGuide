@@ -222,3 +222,33 @@ typeof my.functions[x](y)
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 72). O'Reilly Media. Kindle Edition. 
 
+/* 
+
+A value of L specifies left-to-right associativity, and a value of R specifies right-to-left associativity. 
+
+The associativity of an operator specifies the order in which operations of the same precedence are performed.
+
+Left-to-right associativity means that operations are performed from left to right.
+
+Flanagan, David. JavaScript: The Definitive Guide (p. 72). O'Reilly Media. Kindle Edition. 
+
+*/
+
+// 4.7.6 Order of Evaluation
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 73). O'Reilly Media. Kindle Edition. 
+
+/*
+
+Adding parentheses to the expressions can change the relative order of the multiplication, addition, 
+
+and assignment, but not the left-to-right order of evaluation.
+
+Flanagan, David. JavaScript: The Definitive Guide (p. 73). O'Reilly Media. Kindle Edition. 
+
+*/
+
+// 4.8 Arithmetic Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 73). O'Reilly Media. Kindle Edition. 
+
