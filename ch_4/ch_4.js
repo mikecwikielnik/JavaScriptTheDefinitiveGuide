@@ -449,3 +449,23 @@ eval("function f(){return x + 1;}");
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 90). O'Reilly Media. Kindle Edition. 
 
+const geval = eval;     // Using another name does a global eval
+let z = "global", y = "global";     // Two global variables 
+
+function f(){    // This function does a local eval
+    let z = "local";    // Define a local variable
+    eval("x += 'changed';")     // Direct eval sets local variable
+    return x;   // Return changed local variable
+}
+function g(){   // This function does a global eval
+    let y = "local";    // A local variable
+    geval("y += 'changed';");   // Indirect eval sets global variable
+    return y;   // Return unchanged local variable
+}
+console.log(f(), x);    // Local variable changed: prints "localchanged global":
+console.log(g(), y);    // Global variable changed: prints "local globalchagned"    :
+
+// 4.12.3 Strict eval()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 91). O'Reilly Media. Kindle Edition. 
+
