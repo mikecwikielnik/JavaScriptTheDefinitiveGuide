@@ -306,3 +306,17 @@ Flanagan, David. JavaScript: The Definitive Guide (p. 76). O'Reilly Media. Kindl
 let i = 1, j = ++i;     // i and j are both 2
 let n = 1, m = n ++;    // n is 2, m is 1
 
+// 4.8.3 Bitwise Operators
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 77). O'Reilly Media. Kindle Edition. 
+
+// see: boolean algebra
+
+// 4.9 Relational Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 78). O'Reilly Media. Kindle Edition. 
+
+// 4.9.1 Equality and Inequality Operators
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 79). O'Reilly Media. Kindle Edition. 
+
