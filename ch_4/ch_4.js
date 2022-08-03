@@ -149,3 +149,17 @@ o.m?.()     // Regular property access, conditional invocation
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 68). O'Reilly Media. Kindle Edition. 
 
+// An object creation expression creates a new object and invokes a function (called a constructor) to initialize the properties of that object.
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 68). O'Reilly Media. Kindle Edition. 
+
+new Object()
+new Point(2,3)
+
+new Object
+new Date
+
+// 4.7 Operator Overview
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 68). O'Reilly Media. Kindle Edition. 
+
