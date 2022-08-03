@@ -114,3 +114,38 @@ a.sort()    // a.sort is the function; there are no arguments
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 67). O'Reilly Media. Kindle Edition. 
 
+// Before ES2020
+
+function square(x, log){    // The second argument is an optional function 
+    if(log){    // If the optional function is passed
+        log(x);     // Invoke it
+    }
+    return x*x;     // Return the square of the argument
+}
+
+// After ES2020
+
+function square(x, log){    // The second argument is an opotion function
+    log?.(x);   // Call the function if there is one
+    return x*x;     // Return the square of the argument  
+}
+
+let f = null, x = 0;
+try{
+    f(x++);     // Throws TypeError because f is null
+}catch(e){
+    x   // => 1: x gets incremented before the exception is thrown
+}
+f?.(x++)    // => undefined: f is null, but no exception thrown
+x   // => 1: increment is skipped because of short-circuiting
+
+// Understand the nuances below:
+
+o.m()   // Regular property access, regular invocation
+o?.m()  // Conditional property access, regular invocation
+o.m?.()     // Regular property access, conditional invocation 
+
+// 4.6 Object Creation Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 68). O'Reilly Media. Kindle Edition. 
+
