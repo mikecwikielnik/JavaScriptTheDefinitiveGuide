@@ -389,3 +389,8 @@ if(a===b)stop();    // Invoke stop() only if a === b
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 85). O'Reilly Media. Kindle Edition. 
 
+// If maxWidth is truthy, use that. Otherwise, look for a value in 
+// the preferences object. If that is not truthy, use a hardcoded constant. 
+
+let max = maxWidth || preferences.maxWidth || 500
+
