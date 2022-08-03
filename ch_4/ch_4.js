@@ -375,3 +375,17 @@ aA instanceof RegExp    // => false: arrays are not regular expressions.
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 84). O'Reilly Media. Kindle Edition. 
 
+x === 0 && y === 0  // true iff, x and y are both 0
+
+let oO = {x: 1};
+let pP = null;
+oO && oO.x  // => 1: oO is truth, so return the value of oO.x
+pP && pP.x  // => null: pP is falsy, so return it and don't evaluate pP.x
+
+if(a===b)stop();    // Invoke stop() only if a === b
+(a === b)&&stop();  // This does the same thing 
+
+// 4.10.2 Logical OR (||)
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 85). O'Reilly Media. Kindle Edition. 
+
