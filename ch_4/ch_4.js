@@ -252,3 +252,20 @@ Flanagan, David. JavaScript: The Definitive Guide (p. 73). O'Reilly Media. Kindl
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 73). O'Reilly Media. Kindle Edition. 
 
+/* 
+
+The basic arithmetic operators are 
+** (exponentiation), * (multiplication), / (division), 
+% (modulo: remainder after division), + (addition), and - (subtraction). 
+As noted, we’ll discuss the + operator in a section of its own. 
+The other five basic operators simply evaluate their operands, convert the values to numbers if necessary, 
+and then compute the power, product, quotient, remainder, or difference.
+
+Flanagan, David. JavaScript: The Definitive Guide (p. 73). O'Reilly Media. Kindle Edition. 
+
+*/
+
+// 4.8.1 The + Operator
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 74). O'Reilly Media. Kindle Edition. 
+
