@@ -269,3 +269,26 @@ Flanagan, David. JavaScript: The Definitive Guide (p. 73). O'Reilly Media. Kindl
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 74). O'Reilly Media. Kindle Edition. 
 
+1 + 2   // => 3
+"hello" + "" + "there"  // => "hello there"
+"1" + "2"   // => "12"
+
+// Other examples
+
+1 + 2   // => 3: addition
+"1" + "2"   // => "12": concat
+"1" + 2     // => "12": concat after number-to-string
+1 + {}  // => "1[object Object]": concat after object-to-string
+true + true     // => 2: addition after boolean-to-number
+2 + null    // => 2: addition after null converts to 0
+2 + undefined   // => NaN: addition after undefined converts to NaN
+
+// Caution
+
+1 + 2 + "blind mice"    // => "3 blind mice"
+1+ (2 + "blind mice")   // => "12 blind mice"
+
+// 4.8.2 Unary Arithmetic Operators
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 75). O'Reilly Media. Kindle Edition. 
+
