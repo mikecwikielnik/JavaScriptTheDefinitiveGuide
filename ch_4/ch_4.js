@@ -563,3 +563,11 @@ counter     // => 1
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 95). O'Reilly Media. Kindle Edition. 
 
+i=0, j=1, k=2;  // => 2: the lefthand expression is evaluated but thrown away
+
+// The first comma below is part of the syntax of the let statement
+// The second comma is teh comma operator: it lets us squeeze 2
+// expressions (i++ and j--) into a statement (the for loop) that expects 1.
+for(let i=0, j=10; i<j; i++,j--){
+    console.log(i+j);
+}
