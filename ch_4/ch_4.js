@@ -550,8 +550,16 @@ delete o;
 // Undeletable property: returns false, or TypeError in strict mode
 delete Object.prototype;
 
-// 4.13.5 The await Operator
+// 4.13.6 The void Operator
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 95). O'Reilly Media. Kindle Edition. 
 
+let counter = 0;
+const increment = () => void counter++;
+increment()     // => undefined
+counter     // => 1
+
+// 4.13.7 The comma Operator (,)
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 95). O'Reilly Media. Kindle Edition. 
 
