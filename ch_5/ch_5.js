@@ -134,3 +134,39 @@ if(n === 1){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 103). O'Reilly Media. Kindle Edition. 
 
+switch(expression){
+    // statements
+}
+
+switch(n){
+    case 1:     // Start here if n === 1
+    // Execute code block #1
+    break;  // stop here
+    case 2:     // Start here if n === 2
+    // Execute code block #2
+    break;
+    case 3:     // Start here if n === 3
+    // Execute code block #3
+    break;
+    default:    // else stmt
+    // Execute code block #4
+    break;
+}
+
+// A more realistic example:
+
+function convert(x){
+    switch(typeofx){
+        case "number":  // Convert the number to a hexadecimal integer
+            return x.toString(16);
+        case "string":  // Return the string enclosed in quotes
+            return "" + x + "";
+        default:    // Convert any other type in the usual way
+            return String(x);
+    }
+}
+
+// 5.4 Loops
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 105). O'Reilly Media. Kindle Edition. 
+
