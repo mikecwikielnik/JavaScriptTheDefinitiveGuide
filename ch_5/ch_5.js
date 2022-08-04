@@ -31,3 +31,26 @@ cs = Math.cos(x)    // You'd assign it to a var so you can use it later
 
 // Flanagan, David. JavaScript: The Definitive Guide (pp. 98-99). O'Reilly Media. Kindle Edition. 
 
+{
+    x = Math.PI;
+    cx = Math.cos(x);
+    console.log("cos(pi) =" + cx)
+}
+
+;   // empty statement
+
+// Initialize an array a
+
+for(let i = 0; i < a.length; a[i++] = 0);
+
+if((a===0)||(b===0));   // Oops! this line does nothing
+    o = null;   // and this line is always executed 
+
+// When you want to do it on purpose, do this:
+
+for(let i = 0; i < a.length; a[i++] = 0)/*empty*/;
+
+// 5.3 Conditionals
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 100). O'Reilly Media. Kindle Edition. 
+
