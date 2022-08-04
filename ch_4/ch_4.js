@@ -494,3 +494,31 @@ if(username){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 92). O'Reilly Media. Kindle Edition. 
 
+(a !== null && a !== undefined)?a:b
+
+// If maxWidth is truthy, use that. Otherwise, look for a value in 
+// the preferences object. If that is not truthy, use a hardcoded constant
+
+let maxx = maxWidth || preferences.maxWidth || 500;
+
+let maxxx = maxWidth ?? preferences.maxWidth ?? 500;
+
+// more examples of how ?? works when the first operand is falsy
+
+let options = {timeout: 0, title:"", verbose:false, n:null};
+options.timeout ?? 1000     // => 0: as defined in the object
+options.title ?? "Untitled"     // => "": as defined in the object
+options.verbose ?? true     // => false: as defined in the object
+options.quiet ?? false  // => false: property is not defined
+options.n ?? 10     // => 10: property is null
+
+// order
+
+// (a??b)||c    // ?? first, then ||
+// a??(b||c)    // || first, then ??
+// a??b||c  // SyntaxError: parentheses are required
+
+// 4.13.3 The typeof Operator
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 93). O'Reilly Media. Kindle Edition. 
+
