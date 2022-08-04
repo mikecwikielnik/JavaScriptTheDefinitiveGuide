@@ -54,3 +54,7 @@ for(let i = 0; i < a.length; a[i++] = 0)/*empty*/;
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 100). O'Reilly Media. Kindle Edition. 
 
+// 5.3.1 if
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 100). O'Reilly Media. Kindle Edition. 
+
