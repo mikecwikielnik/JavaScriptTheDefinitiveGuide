@@ -206,3 +206,29 @@ while(count < 10){  // You printed this loop up to one million
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 106). O'Reilly Media. Kindle Edition. 
 
+for(initialize; test; increment)
+    statement 
+
+// Seeing how the for loop works in terms of a while loop:
+
+initialize;
+while(test){
+    statement
+    increment;
+}
+
+// Printing 0 to 9
+
+for(let count = 0; count < 10; count++){
+    console.log(count)
+}
+
+let i, j, sum = 0;
+for(i=0, j=10; i<10; i++, j--){
+    sum += i*j;
+}
+
+// 5.4.4 for/of
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 108). O'Reilly Media. Kindle Edition. 
+
