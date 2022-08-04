@@ -194,3 +194,15 @@ while(count < 10){  // You printed this loop up to one million
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 106). O'Reilly Media. Kindle Edition. 
 
+// do 
+//     statement
+// while(expression);
+
+// less common than the while loop,
+// because it is uncommon to know that you want the loop 
+// to execute at least once. 
+
+// 5.4.3 for
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 106). O'Reilly Media. Kindle Edition. 
+
