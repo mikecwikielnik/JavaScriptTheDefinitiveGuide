@@ -170,3 +170,27 @@ function convert(x){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 105). O'Reilly Media. Kindle Edition. 
 
+// JavaScript has five looping statements:
+// while, do/while, for, for/of (and its for/await variant),
+// and for/in.
+
+
+// 5.4.1 while
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 105). O'Reilly Media. Kindle Edition. 
+
+// while(expression)
+//  statement
+
+// The while statement is JavaScripts's basic loop!!!
+
+let count = 0;
+while(count < 10){  // You printed this loop up to one million
+    console.log(count);
+    count++;
+}
+
+// 5.4.2 do/while
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 106). O'Reilly Media. Kindle Edition. 
+
