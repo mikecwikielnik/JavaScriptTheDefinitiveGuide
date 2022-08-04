@@ -58,3 +58,63 @@ for(let i = 0; i < a.length; a[i++] = 0)/*empty*/;
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 100). O'Reilly Media. Kindle Edition. 
 
+// if(expression)
+//  statement
+
+if(username == null)    // If username is null or undefined,
+    username = "John Doe";  // define it
+
+// OR:
+
+// If usernamem is null, undefined, false, 0, "", or NaN, give it a new value
+if(!username)username = "John Doe";
+
+if(!address){
+    address = "";
+    message = "Please specify a mailing address.";
+}
+
+// if(expression)
+//  statement 1
+// else
+//  statement 2
+
+if(n === 1)
+    console.log("You have 1 new message.");
+else
+    console.log(`You have ${n} new messages.`)
+
+// Example that is wrong:
+
+i = j = 1;
+k = 2;
+if(i === j)
+    if(j === k)
+        console.log("i equals k");
+else
+    console.log("i doesn't equal j");   //  WRONG! 
+
+// The identation of the else stmt is wrong. 
+// JavaScript read it like:
+
+if(i === j){
+    if(j === k)
+        console.log("i equals k");
+    else
+        console.log(" i doesn't equal j");  // OOPS
+}
+
+// The wrong example should be this:
+
+if(i === j){
+    if(j === k){
+        console.log("i equals k");
+    }
+}else{  // What a difference the location of a curly brace makes!
+    console.log("i doesn't equal j");
+}
+
+// 5.3.2 else if
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 102). O'Reilly Media. Kindle Edition. 
+
