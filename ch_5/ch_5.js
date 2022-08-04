@@ -118,3 +118,19 @@ if(i === j){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 102). O'Reilly Media. Kindle Edition. 
 
+// not really JavaScript, its just used alot in programming
+
+if(n === 1){
+    // Executes code block #1
+}else if(n === 2){
+    // Executes code block #2
+}else if(n === 3){
+    // Executes code block #3 
+}else { 
+    // If all else fails, execute code block #4
+}
+
+// 5.3.3 switch
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 103). O'Reilly Media. Kindle Edition. 
+
