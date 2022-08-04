@@ -522,3 +522,10 @@ options.n ?? 10     // => 10: property is null
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 93). O'Reilly Media. Kindle Edition. 
 
+// If the value is a string, wrap it in quotes, otherwise, convert
+(typeof value === "string")?"" + value + "": value.toString()
+
+// 4.13.4 The delete Operator
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 94). O'Reilly Media. Kindle Edition. 
+
