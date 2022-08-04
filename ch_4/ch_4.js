@@ -490,3 +490,7 @@ if(username){
     greeting += "there";
 }
 
+// 4.13.2 First-Defined (??)
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 92). O'Reilly Media. Kindle Edition. 
+
