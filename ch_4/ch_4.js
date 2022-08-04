@@ -529,3 +529,29 @@ options.n ?? 10     // => 10: property is null
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 94). O'Reilly Media. Kindle Edition. 
 
+let o = {x:1, y: 2};    // Start with an object
+delete o.x;     // Delete one of its properties
+"x" in o    // => false: the property does not exist anymore
+
+let u = [1,2,3];    // Start with an array
+delete u[2];    // Delete the last element of the array
+2 in a  // => false: array element 2 doesn't exist anymore
+a.length    // => 3: note that array length doesn't change, though
+
+// Other example uses of the delete operator:
+
+let o = {x: 1, y: 2};   
+delete o.x;     // Delete one of the object properties; returns true
+typeof o.x;     // Property does not exist; returns "undefined"
+delete o.x;     // Delete a nonexistent property; returns true
+delete 1;   // This makes no sense, but it just returns true
+// Can't delete a variable; returns false, or Syntax Error in strict mode
+delete o;
+// Undeletable property: returns false, or TypeError in strict mode
+delete Object.prototype;
+
+// 4.13.5 The await Operator
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 95). O'Reilly Media. Kindle Edition. 
+
+
