@@ -232,3 +232,82 @@ for(i=0, j=10; i<10; i++, j--){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 108). O'Reilly Media. Kindle Edition. 
 
+// Arrays, strings, sets, and maps are ITERABLE.
+// They represent a sequence or set of elements
+// that you can loop through using a for/of loop
+
+let data = [1,2,3,4,5,6,7,8,9], summ =0;
+for(let element of data){
+    summ += element;
+}
+summ    // // => 45
+
+// for/of with objects
+// Objects are not (by default) iterable. 
+
+let o = {x: 1, y:2, z: 3};
+for(let element of o){  // Throws TypeError because o is not iterable
+    console.log(element);
+}
+
+// if you want to iterate through the properties of an object:
+
+let oO = {x:1, y:2, z:3};
+let keys = "";
+for(let k of Object.keys(o)){
+    keys += k;
+}
+keys    // => "xyz"
+
+// Going through the values in the key, value set
+
+let summm = 0;
+for(let v of Object.values(o)){
+    sum += v;
+}
+sum     // => 6
+
+// if you are interested in both k,v
+
+let pairs ="";
+for(let [k,v]of Object.entries(o)){
+    pairs += k + v;
+}
+pairs   // => "x1y2z3"
+
+// for/of with strings
+
+let frequency = {};
+for(let letter of "mississippi"){
+    if(frequency[letter]){
+        frequency[letter]++;
+    }else{
+        frequency[letter] = 1;
+    }
+}
+frequency   // => {m: 1, i: 4, s: 4, p: 3}
+
+// for/of with set and map
+
+// The built-in ES6 Set and Map classes are iterable. 
+
+let text = "Na na Batman";
+let wordSet = new Set(text.split(""));
+let unique = [];
+for(let word of wordSet){
+    unique.push(word);
+}
+unique  // => ["Na", "na", "Batman"]
+
+// Example of destructuring k,v pairs
+
+let m = new Map([[1,"one"]]);
+for(let [key, value] of m){
+    key     // => 1
+    value   // => "one"
+}
+
+// 5.4.5 for/in
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 111). O'Reilly Media. Kindle Edition. 
+
