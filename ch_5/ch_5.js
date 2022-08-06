@@ -353,3 +353,37 @@ mainloop: while(token !== null){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 114). O'Reilly Media. Kindle Edition. 
 
+// break;
+
+// Ex: the loop either breaks after finding its value or terminates when it reaches the end
+
+for(let i=o; i<a.length; i++){
+    if(a[i] === target)break;
+}
+
+// Ex: breaking out a loop that is not the nearest enclosing loop
+
+let matrix = getData();     // Get a 2D array of numbers from somewhere
+// Now sum all the numbers in the matrix
+let suM = 0, success = false;
+// Start with a labeled statement that we can break out of if errors occur
+computeSum: if(matrix){
+    for(let x=0; x < matrix.length; x++){
+        let row = matrix[x];
+        if(!row)break computeSum;
+        for(let y = 0; y < row.length; y++){
+            let cell = row[y];
+            if(isNaN(cell)) break computeSum;
+            sum += cell;
+        }
+    }
+    success = true;
+}
+// The break statements jump here. If we arrive here with success == false
+// then there was something wrong with the matrix we were given.
+// Otherwise, sum contains the sume of all cells of the matrix
+
+// 5.5.3 continue
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 115). O'Reilly Media. Kindle Edition. 
+
