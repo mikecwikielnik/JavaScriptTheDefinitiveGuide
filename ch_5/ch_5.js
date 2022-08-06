@@ -387,3 +387,18 @@ computeSum: if(matrix){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 115). O'Reilly Media. Kindle Edition. 
 
+// continue;
+
+// continue labelname;
+
+// Ex: An unlabeled continue statement being used to skip the rest of the current iteration
+
+for(let i=0; i < data.length; i++){
+    if(!data[i]) continue; // Can't proceed with undefined data
+    total += data[i];
+}
+
+// 5.5.4 return
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 116). O'Reilly Media. Kindle Edition. 
+
