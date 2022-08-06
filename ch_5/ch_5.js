@@ -339,3 +339,17 @@ for(let ii in a)console.log(ii);
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 113). O'Reilly Media. Kindle Edition. 
 
+// identifier.statement
+
+// labeled while loop & a continue stmt:
+
+mainloop: while(token !== null){
+    // Code omitted
+    continue mainloop;  // Jump to the next iteration of the named loop
+    // More code omitted
+}
+
+// 5.5.2 break
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 114). O'Reilly Media. Kindle Edition. 
+
