@@ -311,3 +311,31 @@ for(let [key, value] of m){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 111). O'Reilly Media. Kindle Edition. 
 
+// for(variable in object)
+//  statement
+
+for(let p in o){    // Assign property names of o to variable p
+    console.log(o[p]);  // Print the value of each property
+}
+
+// Ex: copying the names of all object properties into an array:
+
+let oo = {x:1, y:2, z:3};
+let a = [], ii = 0;
+for(a[ii++] in oo)/*empty*/;
+
+// Putting this at the end of the previous ex, enumerates the array indexes 0, 1, 2
+
+for(let ii in a)console.log(ii);
+
+// NOTE: use for/of loops with arrays, not for/in
+// NOTE: use for/of loops when working with arrays
+
+// 5.5 Jumps
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 112). O'Reilly Media. Kindle Edition. 
+
+// 5.5.1 Labeled Statements
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 113). O'Reilly Media. Kindle Edition. 
+
