@@ -434,3 +434,21 @@ function*range(from,to){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 117). O'Reilly Media. Kindle Edition. 
 
+// throw expression;
+
+// Ex: function that throws an Error Object when invoked with an invalid argument
+
+function factorial(x){
+    // If the input argument is invalid, throw an exception!
+    if (x<0) throw new Error("x must not be negative");
+    // Otherwise, compute a value and return normally
+    let f;
+    for (f=1; x>1; f*=x, x--)/*empty*/;
+    return f;
+}
+factorial(4)    // => 24
+
+// 5.5.7 try/catch/finally
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 118). O'Reilly Media. Kindle Edition. 
+
