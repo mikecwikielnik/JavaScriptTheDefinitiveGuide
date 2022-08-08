@@ -420,3 +420,17 @@ function displayObject(o){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 117). O'Reilly Media. Kindle Edition. 
 
+// yield is used in ES6 only. Produces the next value in sequence of values
+// w.o actually returning:
+
+// A generator function that yields a range of integers
+function*range(from,to){
+    for(let i=from; i<=to; i++){
+        yield i;
+    }
+}
+
+// 5.5.6 throw
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 117). O'Reilly Media. Kindle Edition. 
+
