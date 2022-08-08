@@ -402,3 +402,21 @@ for(let i=0; i < data.length; i++){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 116). O'Reilly Media. Kindle Edition. 
 
+// return expression;
+
+function square(x){return x*x}  // A function that has a return statement
+square(2)   // => 4
+
+// Ex: return statement can also be used w.o an expression
+// to make the function return undefined to its caller:
+
+function displayObject(o){
+    // Return immediately if the argument is null or undefined.
+    if(!o)return;
+    // Rest of function goes here
+}
+
+// 5.5.5 yield
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 117). O'Reilly Media. Kindle Edition. 
+
