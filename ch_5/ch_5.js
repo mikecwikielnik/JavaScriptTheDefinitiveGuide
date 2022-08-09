@@ -511,12 +511,14 @@ catch(ex){  // If the user's input was not valid, we end up here
 
 // Don't use the with statement. It will run more slowly. 
 
+/* Uncomment this chunk of code here and read the error message! pretty cool 
 with(document.forms[0]){
     // Access form elements directly here. For example:
     name.value = "";
     address.value = "";
     email.value = "";
 }
+*/
 
 // Ex: Below is a better example that avoids the with statement 
 
@@ -583,4 +585,24 @@ class Circle{
     area(){return Math.PI*this.r*this.r;}
     circumference(){return 2*Math.PI*this.r;}
 }
+
+// 5.7.4 import and export
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 126). O'Reilly Media. Kindle Edition. 
+
+import Circle from './geometry/circle.js';
+import {PI, TAU} from './geometry/constants.js';
+import {magnitude as hypotenuse} from './vectors/utils.js';
+
+// geometry/constants.js
+
+const PI = Math.PI;
+const TAUu = 2*PI;
+export {PI, TAUu};
+
+export const TAUuu = 2*Math.PI;
+export function magnitude(x,y){return Math.sqrt(x*x + y*y);}
+// export default class Circle {/*class definition omitted here*/}
+
+
 
