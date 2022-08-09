@@ -540,3 +540,28 @@ function f(o){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 122). O'Reilly Media. Kindle Edition. 
 
+// with statement is not allowed in strict mode
+
+// All variables must be declared. Reference Error is thrown. 
+
+// Functions invoked as functions (rather than as methods) have a this value of undefined. 
+
+// 5.7 Declarations
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 124). O'Reilly Media. Kindle Edition. 
+
+// 5.7.1 const, let, and var
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 125). O'Reilly Media. Kindle Edition. 
+
+// In ES6 and later, const declares constants, and let declares variables 
+
+// In modern JavaScript, there is really no reason to use var instead of let
+
+const TAU = 2*Math.PI;
+let radius = 3;
+var circumference = TAU * radius;
+
+// 5.7.2 function
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 125). O'Reilly Media. Kindle Edition. 
