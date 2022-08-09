@@ -576,3 +576,11 @@ function area(radius){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 125). O'Reilly Media. Kindle Edition. 
 
+// Looks like JavaScript class is similar to Python class
+
+class Circle{
+    constructor(radius){this.r = radius;}
+    area(){return Math.PI*this.r*this.r;}
+    circumference(){return 2*Math.PI*this.r;}
+}
+
