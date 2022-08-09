@@ -565,3 +565,14 @@ var circumference = TAU * radius;
 // 5.7.2 function
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 125). O'Reilly Media. Kindle Edition. 
+
+// Ex:
+
+function area(radius){
+    return Math.PI*radius*radius;
+}
+
+// 5.7.3 class
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 125). O'Reilly Media. Kindle Edition. 
+
