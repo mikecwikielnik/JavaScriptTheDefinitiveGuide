@@ -529,3 +529,14 @@ f.email.value = "";
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 122). O'Reilly Media. Kindle Edition. 
 
+// Normally, the debugger statement does nothing. 
+
+function f(o){
+    if(o === undefined) debugger;   // Temporary line for debuggins purposes
+                // The rest of the function goes here.
+}
+
+// 5.6.3 “use strict”
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 122). O'Reilly Media. Kindle Edition. 
+
