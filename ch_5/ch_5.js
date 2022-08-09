@@ -506,3 +506,26 @@ catch(ex){  // If the user's input was not valid, we end up here
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 121). O'Reilly Media. Kindle Edition. 
 
+// with(object)
+//  statement 
+
+// Don't use the with statement. It will run more slowly. 
+
+with(document.forms[0]){
+    // Access form elements directly here. For example:
+    name.value = "";
+    address.value = "";
+    email.value = "";
+}
+
+// Ex: Below is a better example that avoids the with statement 
+
+let f = document.forms[0];
+f.name.value = "";
+f.address.value = "";
+f.email.value = "";
+
+// 5.6.2 debugger
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 122). O'Reilly Media. Kindle Edition. 
+
