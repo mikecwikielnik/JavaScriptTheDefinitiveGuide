@@ -41,3 +41,12 @@ let book = {
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 131). O'Reilly Media. Kindle Edition. 
 
+let o = new Object();   // Create an empty object: same as {}
+let a = new Array();    // Create an empty array: same as []
+let d = new Date();     // Create a Date object representing the current time
+let r = new Map();  // Create a Map object for key/value mapping
+
+// 6.2.3 Prototypes
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 132). O'Reilly Media. Kindle Edition. 
+
