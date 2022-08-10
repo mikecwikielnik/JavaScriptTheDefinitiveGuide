@@ -173,3 +173,34 @@ unitcircle.r    // => 1: the prototype is not affected // you only call r throug
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 137). O'Reilly Media. Kindle Edition. 
 
+// ex: recall that our book has a "sub-title" property, but not a "subtitle" property
+
+book.subtitle   // => undefined: property doesn't exist 
+
+let len = book.subtitle.length;     // !TypeError: undefined doesn't have length
+
+// Two ways to prevent calling variables that don't exist or are not defined:
+
+// a verbose and explicit technique
+let surname = undefined;
+if(book){
+    if(book.author){
+        surname = book.author.surname;
+    }
+}
+
+// A concise and idiomatic alt to get surname or null or undefined
+surname = book && book.author && book.author.surname;
+
+// ?  allows us to rewrite the previous assignment expression as:
+
+let sSurname = book?.author?.surname;
+
+// the reasons for failure of setting property p of an object o is usually to deal with p is a ready only
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 138). O'Reilly Media. Kindle Edition. 
+
+// 6.4 Deleting Properties
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 138). O'Reilly Media. Kindle Edition. 
+
