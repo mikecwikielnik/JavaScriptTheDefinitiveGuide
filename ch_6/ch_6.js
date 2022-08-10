@@ -74,7 +74,6 @@ let o2 = Object.create(null);   // o2 inherits no props or methods
 let o3 = Object.create(Object.prototype);   // o3 is like {} or new Object()
 
 // Object.create() creates a new object with an arbitrary prototype
-
 // is a powerful tool. 
 
 // Object.create() guards against unintended changes of an object
@@ -85,7 +84,6 @@ let oO = {x:"don't change this value"};
 library.function(Object.create(o));     // Guard against accidental modifications
 
 // To understand why this works, we need to know 
-
 // how properties are queried and set in JavaScript
 
 // 6.3 Querying and Setting Properties
@@ -97,7 +95,6 @@ let name = author.surname;  // Get the "surname" property of the author
 let title = book["main title"];     // Get the "main title" property of the book
 
 // To create or set a property, use a dot or square brackets
-
 // as you would to query the property, but put them on LHS = 
 
 book.edition = 7;   // Create an "edition" property of book
@@ -106,4 +103,49 @@ book["main title"] = "ECMAScript";  // Change the "main title" property
 // 6.3.1 Objects As Associative Arrays
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 134). O'Reilly Media. Kindle Edition. 
+
+// These have the same value:
+
+object.property 
+object["property"]  // aka associative array 
+
+// Ex:
+
+let addr = "";
+for(let i = 0; i < 4; i++){
+    addr += customer[`address${i}`] + "\n";
+}
+
+// ex: user holds 50 shares of IBM, the portfolio.ibm property has the value 50
+
+// ex: adding a new stock to the portfolio:
+
+function addstock(portfolio, stockname, shares){
+    portfolio[stockname] = shares;
+}
+
+// The power of this JavaScript statement becomes clear when you consider its use
+// with associative arrays
+
+// ex: computing total value of a portfolio
+
+function computeValue(portfolio){
+    let total = 0.0;
+    for(let stock in portfolio){    // For each stock in the portfolio:
+        let shares = portfolio[stock];  // get the number of shares
+        let price = getQuote(stock);    // look up share price
+        total += shares * price;    // add stock value to total value
+    }
+    return total;   // Return total value
+}
+
+// It is common that JavaScript objects are used as associative arrays
+// as above, and it is important to understand how this works.
+
+// In ES6 and later, the Map class is often a better choice
+// than using a plain object
+
+// 6.3.2 Inheritance
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 135). O'Reilly Media. Kindle Edition. 
 
