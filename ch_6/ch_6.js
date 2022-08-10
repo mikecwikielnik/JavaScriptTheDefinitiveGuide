@@ -92,3 +92,18 @@ library.function(Object.create(o));     // Guard against accidental modification
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 133). O'Reilly Media. Kindle Edition. 
 
+let author = book.author;   // Get the "author" property of the book.
+let name = author.surname;  // Get the "surname" property of the author
+let title = book["main title"];     // Get the "main title" property of the book
+
+// To create or set a property, use a dot or square brackets
+
+// as you would to query the property, but put them on LHS = 
+
+book.edition = 7;   // Create an "edition" property of book
+book["main title"] = "ECMAScript";  // Change the "main title" property
+
+// 6.3.1 Objects As Associative Arrays
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 134). O'Reilly Media. Kindle Edition. 
+
