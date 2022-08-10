@@ -58,3 +58,37 @@ let r = new Map();  // Create a Map object for key/value mapping
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 132). O'Reilly Media. Kindle Edition. 
 
+// Object.create() creates a new object, using its first argument as the prototype of the object:
+
+let o1 = Object.create({x:1, y:2});     // o1 inherits properties x and y
+o1.x + o1.y     // => 3
+
+// If you do this below, you won't inherit any methods like toString() or + operator
+
+let o2 = Object.create(null);   // o2 inherits no props or methods
+
+// If you want to create an ordinary empty object
+
+// (like the object returned by {} or new Object()), pass Object.prototype:
+
+let o3 = Object.create(Object.prototype);   // o3 is like {} or new Object()
+
+// Object.create() creates a new object with an arbitrary prototype
+
+// is a powerful tool. 
+
+// Object.create() guards against unintended changes of an object
+
+// by a library function that you don't control 
+
+let oO = {x:"don't change this value"};
+library.function(Object.create(o));     // Guard against accidental modifications
+
+// To understand why this works, we need to know 
+
+// how properties are queried and set in JavaScript
+
+// 6.3 Querying and Setting Properties
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 133). O'Reilly Media. Kindle Edition. 
+
