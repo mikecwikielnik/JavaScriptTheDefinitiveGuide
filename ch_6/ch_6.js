@@ -50,3 +50,11 @@ let r = new Map();  // Create a Map object for key/value mapping
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 132). O'Reilly Media. Kindle Edition. 
 
+// Almost every JavaScript object has a second JavaScript object associated with it. 
+
+// This second object is known as a prototype, and the first object inherits properties from the prototype.
+
+// 6.2.4 Object.create()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 132). O'Reilly Media. Kindle Edition. 
+
