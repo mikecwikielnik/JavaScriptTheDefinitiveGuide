@@ -279,3 +279,46 @@ delete j.x;     // Delete the property x
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 140). O'Reilly Media. Kindle Edition. 
 
+// FOR/IN LOOP
+
+let p ={x:1, y:2, z:3};     // Three enumerable own properties
+p.propertyIsEnumerable("toString")  // => false: not enumerbale
+for(let q in p){    // Loop through the properties
+    console.log(q);     // Prints x,y, and z, but not toString
+}
+
+// To guard against enumerating inherited properties with for/in, you can add an explicit check inside the loop body:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 140). O'Reilly Media. Kindle Edition. 
+
+for(let q in p){
+    if(!p.hasOwnProperty(q))continue;   // Skip inherited properties
+}
+
+for(let q in p){
+    if(typeof p[q] === "function")continue;     // Skip all methods
+}
+
+// As an alternative to using a for/in loop, 
+// it is often easier to get an array of property names for an object and then loop through that array with a for/of loop.
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 141). O'Reilly Media. Kindle Edition. 
+
+/* 
+
+Please see:
+
+Object.keys() 
+
+Object.getOwnPropertyNames()
+
+Object.getOwnPropertySymbols()
+
+Reflect.ownKeys()
+
+*/
+
+// 6.7 Extending Objects
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 142). O'Reilly Media. Kindle Edition. 
+
