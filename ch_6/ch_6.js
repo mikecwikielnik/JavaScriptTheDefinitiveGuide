@@ -204,3 +204,32 @@ let sSurname = book?.author?.surname;
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 138). O'Reilly Media. Kindle Edition. 
 
+delete book.author;     // The book object now has has no author property
+delete book["main title"];  // Now it doesn't have "main title", either. 
+
+let oOO = {x:1};    // oOO has own property x and inherits property toString
+delete oOO.x    // => true: deletes property x
+delete oOO.x    // => true: does nothing (x doesn't exist) but true anyway
+delete oOO.toString     // => true: does nothing (toString isn't an own property)
+delete 1    // => true: nonsense, but true anyway 
+
+// In strict mode, all these deletions throw TypeError instead of returning false
+delete Object.prototype     // => false: property is non-configurable
+var x = 1;  // Declare a global variable
+delete globalThis.x     // => false: can't delete this property
+function f(){}  // Declare a global function
+delete globalThis.f     // => false: can't delete this property either 
+
+// Deleting objects in non-strict mode. 
+
+globalThis.x = 1;   // Create a configurable global property (no let or var)
+delete x    // => true: this property can be deleted 
+
+// In strict mode, you have to be explicit about the property access:
+
+delete x;   // SyntaxError in strict mode
+delete globalThis.x;    // This works 
+
+// 6.5 Testing Properties
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 139). O'Reilly Media. Kindle Edition. 
