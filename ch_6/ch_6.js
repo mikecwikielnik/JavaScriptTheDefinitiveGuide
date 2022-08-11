@@ -233,3 +233,49 @@ delete globalThis.x;    // This works
 // 6.5 Testing Properties
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 139). O'Reilly Media. Kindle Edition. 
+
+// in operator 
+
+let q = {x:1};
+"x" in q    // => true: q has an own property "x"
+"y" in q    // => false: q doesn't have a property "y"
+"toString" in q     // => true: q inherits a toString property
+
+// hasOwnProperty() method
+
+let z = {x:1};
+z.hasOwnProperty("x")   // => true: z has an own property x
+z.hasOwnProperty("y")   // => false: z doesn't have a property y
+z.hasOwnProperty("toString")    // => false: toString is an inherited property 
+
+// propertyIsEnumerable()
+
+let k = {x:1};
+k.propertyIsEnumerable("x")     // => true: k has an own enumerable property x
+k.propertyIsEnumerable("toString")  // => false: not an own property 
+Object.prototype.propertyIsEnumerable("toString")   // => false: not enumerable
+
+// !== use instead of in operator, !== makes sure it is not undefined
+
+let s = {x:1};
+s.x !== undefined   // => true: s has a property x
+s.y !== undefined   // => false: s doesn't have a property y
+s.toString !== undefined    // => true: s inherits a toString property
+
+// ex:
+
+let j = {x: undefined};     // Property is explicitly set to undefined
+j.x !== undefined   // => false: property exists but is undefined
+j.y !== undefined   // => false: property doesn't even exist
+"x" in j    // => true: the property exits
+"y" in j    // => false: the property doesn't exist
+delete j.x;     // Delete the property x
+"x" in j    // => false: it doesn't exist anymore
+
+// the above chunk seems elementary 
+// but it is the undefined part that is new 
+
+// 6.6 Enumerating Properties
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 140). O'Reilly Media. Kindle Edition. 
+
