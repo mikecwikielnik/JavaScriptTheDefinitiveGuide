@@ -52,3 +52,26 @@ let undefs = [,,];  // An array with no elements but a length of 2
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 157). O'Reilly Media. Kindle Edition. 
 
+let a = [1,2,3,];
+let b1 = [0,...a,4];    // b1 == [0, 1, 2, 3, 4, 5]
+
+let original = [1,2,3];
+let copy = [...original];
+copy[0] = 0;    // Modifying the copy does not change the original 
+original[0]     // => 1
+
+// ex:
+
+let digits = [..."12AB"];
+digits  // => ["1","2","A","B"]
+
+
+// ex:
+
+let letters = [..."hello world"];
+[...new Set(letters)]   // => ["h","e","l","o","w","r","d"]
+
+// 7.1.3 The Array() Constructor
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 157). O'Reilly Media. Kindle Edition. 
+
