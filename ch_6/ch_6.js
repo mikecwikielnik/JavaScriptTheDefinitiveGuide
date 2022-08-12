@@ -469,3 +469,27 @@ i.b + i.e   // => 3
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 147). O'Reilly Media. Kindle Edition. 
 
+const PROPERTY_NAME = "p1";
+function computePropertyName(){return "p" + 2;}
+
+let n = {};
+n[PROPERTY_NAME] = 1;
+n[computePropertyName()] = 2;
+
+// ES6 allows you to do the following:
+
+const PROPERTY_NAME1 = "p1"
+function computePropertyName(){return "p" + 2;}
+
+let w = {
+    [PROPERTY_NAME1]: 1,
+    [computePropertyName()]: 2
+};
+
+w.p1 + w.p2     // => 3
+
+// 6.10.3 Symbols as Property Names
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 148). O'Reilly Media. Kindle Edition. 
+
+
