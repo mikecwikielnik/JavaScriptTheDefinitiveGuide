@@ -384,3 +384,20 @@ let u = JSON.parse(y);  // u == {x:1, y: {z:[false, null, ""]}}
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 144). O'Reilly Media. Kindle Edition. 
 
+// 6.9.1 The toString() Method
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 144). O'Reilly Media. Kindle Edition. 
+
+let sS = {x:1, y:1}.toString();  // sS == "[object Object]"
+
+let point1 = {
+    x:1,
+    y:2,
+    toString: function(){return `(${this.x}, ${this.y})`;}
+};
+String(point)
+
+// 6.9.2 The toLocaleString() Method
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 145). O'Reilly Media. Kindle Edition. 
+
