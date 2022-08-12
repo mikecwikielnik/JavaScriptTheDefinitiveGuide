@@ -75,3 +75,19 @@ let letters = [..."hello world"];
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 157). O'Reilly Media. Kindle Edition. 
 
+let a1 = new Array();
+
+// Call it with a single numeric argument, which specifies a length:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 157). O'Reilly Media. Kindle Edition. 
+
+let a2 = new Array(10);
+
+// ex:
+
+let a3 = new Array(3,2,1,"testing testing")
+
+// 7.1.4 Array.of()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 158). O'Reilly Media. Kindle Edition. 
+
