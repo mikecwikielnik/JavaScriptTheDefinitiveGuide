@@ -416,3 +416,22 @@ point.toLocaleString()  // => "(1,000, 2,000)": note thousands separators
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 145). O'Reilly Media. Kindle Edition. 
 
+// turns an object to some object other than string- typically, a number
+
+// Ex: 
+
+let point3 = {
+    x:3,
+    y:4,
+    valueOf: function(){return Math.hypot(this.x, this.y);}
+};
+Number(point)   // => 5: valueOf() is used for conversations to numbers
+
+point3 > 4  // => true
+point3 > 5  // => false
+point3 < 6  // =>> true
+
+// 6.9.4 The toJSON() Method
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 146). O'Reilly Media. Kindle Edition. 
+
