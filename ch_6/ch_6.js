@@ -401,3 +401,18 @@ String(point)
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 145). O'Reilly Media. Kindle Edition. 
 
+let point2 = {
+    x: 1000,
+    y: 2000,
+    toString: function(){return `(${this.x}, ${this.y})`;},
+    toLocaleString: function(){
+        return `(${this.x.toLocaleString()}, ${this.y.toLocaleString()})`;
+    }
+};
+point.toString()    // => "(1000, 2000)"
+point.toLocaleString()  // => "(1,000, 2,000)": note thousands separators
+
+// 6.9.3 The valueOf() Method
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 145). O'Reilly Media. Kindle Edition. 
+
