@@ -526,3 +526,32 @@ p4.x    // => undefined
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 149). O'Reilly Media. Kindle Edition. 
 
+// Prior to ES6:
+
+let square = {
+    area:function(){return this.side * this.side;},
+    side: 10
+};
+square.area()   // => 100
+
+// ES6 ex:
+
+let square1 = {
+    area(){return this.side * this.side;},
+    side:10
+};
+square.area()   // => 100
+
+// ex: 
+
+const METHOD_NAME = "m";
+const symbol = Symbol();
+let weirdMethods = {
+    "method With Spaces"(x){return x+1;},
+    [METHOD_NAME](x){return x + 2},
+    [symbol](x){return x + 3;}
+};
+weirdMethods["method With Spaces"](1)   // => 2
+weirdMethods[METHOD_NAME](1)    // => 3
+weirdMethods[symbol](1)     // => 4
+
