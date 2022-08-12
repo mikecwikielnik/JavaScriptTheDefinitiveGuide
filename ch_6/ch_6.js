@@ -503,3 +503,26 @@ x[extension].y = 0;     // This won't conflict with other properties of x
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 148). O'Reilly Media. Kindle Edition. 
 
+let position = {x:0, y:0};
+let dimensions = {width: 100, height: 75};
+let rect = {...position, ... dimensions};
+rect.x + rect.y + rect.width + rect.height  // => 175
+
+// ex:
+
+let o4 = {x:1};
+let p3 = {x:0, ...o4};
+p3.x    // => 1: the value from object o4 overrides the initial value 
+let q1 = {...o4, x:2};
+q1.x    // => 2: the value 2 overrides the previous value from o4
+
+// ex:
+
+let e1 = Object.create({x:1});  // e1 inherits the property x
+let p4 = {...e1};
+p4.x    // => undefined 
+
+// 6.10.5 Shorthand Methods
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 149). O'Reilly Media. Kindle Edition. 
+
