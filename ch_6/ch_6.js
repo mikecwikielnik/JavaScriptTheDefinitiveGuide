@@ -493,3 +493,13 @@ w.p1 + w.p2     // => 3
 // Flanagan, David. JavaScript: The Definitive Guide (p. 148). O'Reilly Media. Kindle Edition. 
 
 
+const extension = Symbol("my extension symbol");
+let x = {
+    [extension]: {/* extension data stored in this object*/}
+};
+x[extension].y = 0;     // This won't conflict with other properties of x
+
+// 6.10.4 Spread Operator
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 148). O'Reilly Media. Kindle Edition. 
+
