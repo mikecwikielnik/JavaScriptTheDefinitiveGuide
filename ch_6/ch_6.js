@@ -435,3 +435,15 @@ point3 < 6  // =>> true
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 146). O'Reilly Media. Kindle Edition. 
 
+let point4 = {
+    x:1,
+    y:2,
+    toString: function(){return `(${this.x}, ${this.y})`;},
+    toJSON: function(){return this.toString();}
+};
+JSON.stringify([point4])    // => '["(1,2)"]'
+
+// 6.10 Extended Object Literal Syntax
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 146). O'Reilly Media. Kindle Edition. 
+
