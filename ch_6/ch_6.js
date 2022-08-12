@@ -447,3 +447,25 @@ JSON.stringify([point4])    // => '["(1,2)"]'
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 146). O'Reilly Media. Kindle Edition. 
 
+// 6.10.1 Shorthand Properties
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 146). O'Reilly Media. Kindle Edition. 
+
+// basic object literal syntax:
+
+let v = 1, p = 2;
+let h = {
+    v:v,
+    p:p
+};
+
+// In ES6 and later, you can drop the colon and one copy of the identifier & it yields simpler code:
+
+let b = 1, e = 2;
+let i = {b,e};
+i.b + i.e   // => 3
+
+// 6.10.2 Computed Property Names
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 147). O'Reilly Media. Kindle Edition. 
+
