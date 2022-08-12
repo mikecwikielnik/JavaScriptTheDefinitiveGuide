@@ -366,3 +366,21 @@ merge({x:1}, {x:2, y:2}, {y:3, z:4})    // => {x:1, y:2, z:4}
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 143). O'Reilly Media. Kindle Edition. 
 
+// Object serialization is when you convert objects to strings which can be reversed later
+
+// The functions JSON.stringify() and JSON.parse() serialize and restore JavaScript objects.
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 143). O'Reilly Media. Kindle Edition. 
+
+// JSON === JavaScript Object Notation 
+
+let f = {x:1, y: {z: [false, null, ""]}};    // Define a test object
+let y = JSON.stringify(f);  // y == '{"x": "y": {"z":[false, null, ""]}}'
+let u = JSON.parse(y);  // u == {x:1, y: {z:[false, null, ""]}}
+
+// JSON syntax is a subset of JavaScript syntax
+
+// 6.9 Object Methods
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 144). O'Reilly Media. Kindle Edition. 
+
