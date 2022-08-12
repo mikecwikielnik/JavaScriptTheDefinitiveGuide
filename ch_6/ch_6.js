@@ -322,3 +322,47 @@ Reflect.ownKeys()
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 142). O'Reilly Media. Kindle Edition. 
 
+// There is a common need in JavaScript to copy the properties of one object to another object. 
+
+let target = {x:1}, source = {y:2, z:3};
+for(let key of Object.keys(source)){
+    target[key] = source[key];
+}
+
+target  // => {x:1, y:2, z:3}
+
+// Usually extend() performs this copying operation 
+
+// ES6 gives Object.assign()
+
+Object.assign(o, defaults);     // overwrites everything in o with defaults
+
+// Instead, what you can do is create a new object, copy the defaults into it,
+// and then override those defaults with the properties in o:
+
+o = Object.assign({}, defaults, o);
+
+// ... spread operator
+
+o = {...defaults, ...o};
+
+// Like Object.assign() but doesn't override existing properties
+// (and also doesn't handle Symbol properties)
+
+function merge(target, ...sources){
+    for(let source of sources){
+        for(let key of Object.keys(source)){
+            if(!(key in target)){   // This is different than Object.assing()
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+Object.assign({x:1}, {x:2, y:2}, {y:3, z:4})    // => {x:2, y:3, z:4}
+merge({x:1}, {x:2, y:2}, {y:3, z:4})    // => {x:1, y:2, z:4}
+
+// 6.8 Serializing Objects
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 143). O'Reilly Media. Kindle Edition. 
+
