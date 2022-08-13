@@ -91,3 +91,10 @@ let a3 = new Array(3,2,1,"testing testing")
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 158). O'Reilly Media. Kindle Edition. 
 
+Array.of()  // => []; returns empty array with no arguments
+Array.of(10)    // => [10]; can create arrays with a single numeric argument
+Array.of(1,2,3)     // => [1,2,3]
+
+// 7.1.5 Array.from()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 158). O'Reilly Media. Kindle Edition. 
