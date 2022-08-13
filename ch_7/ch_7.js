@@ -196,3 +196,71 @@ a.length    // => 3: delete does not affect array length
 // Flanagan, David. JavaScript: The Definitive Guide (p. 162). O'Reilly Media. Kindle Edition. 
 
 
+// easiest way to loop through each of the elements of an array (or any iterable object) is with the for/of loop,
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 162). O'Reilly Media. Kindle Edition. 
+
+let letters1 = [..."Hello world"];   // An array of letters
+let string = "";
+for(let letter of letters1){
+    string += letter;
+}
+string  // => "Hello world"; we reassembled the original text 
+
+// If you want to use a for/of loop for an array and need to know the index of each array element, 
+
+// use the entries() method of the array, along with destructuring assignment, like this:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 163). O'Reilly Media. Kindle Edition. 
+
+let everyother = "";
+for(let [index, letter] of letters1.entries(0)){
+    if(index%2 === 0)everyother += letter;  // letters at even indexes
+}
+everyother  // => "Hlowrd"
+
+// ex: forEach()
+
+let uppercase = "";
+letters1.forEach(letter => {// Note arrow notation
+    uppercase += letter.toUpperCase();
+});
+uppercase   // => "HELLO WORLD"
+
+// You can also loop through the elements of an array with a good old-fashioned for loop
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 163). O'Reilly Media. Kindle Edition. 
+
+let vowels = ""
+for(let i = 0; i < letters1.length; i++){// For each index in the array
+    let letter = letters[i];    // Get the element at that index
+    if(/[aeiou]/.test(letter)){     // Use a regex test
+        vowels += letter;   // If it is a vowel, remember it
+    }
+}
+
+vowels  // => "eoo"
+
+// ex:
+
+// Save the array length into a local variable
+for(let i = 0, len = letters1.length; i < len; i++){
+    // loop body remains the same
+}
+
+// Iterate backwards from the end of teh array to the start
+for(let i = letters1.length-1; i >= 0; i--){
+    // loop body remains the same
+}
+
+// ex: skip undefined and nonexistent elements:
+
+for(let i=0; i<a.length; i++){
+    if(a[i] === undefined) continue;    // Skip undefined + nonexistent elements
+    // loop body here
+}
+
+// 7.7 Multidimensional Arrays
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 164). O'Reilly Media. Kindle Edition. 
+
