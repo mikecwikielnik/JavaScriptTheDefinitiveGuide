@@ -168,3 +168,31 @@ a.length = 5;   // Length is 5, but no elements, like new Array(5)
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 161). O'Reilly Media. Kindle Edition. 
 
+// We’ve already seen the simplest way to add elements to an array: just assign values to new indexes:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 161). O'Reilly Media. Kindle Edition. 
+
+let a = [];     // Start with an empty array 
+a[0] = "zero";  // And add elements to it
+a[1] = "one"; 
+
+// You can also use the push() method to add one or more values to the end of an array:
+
+// Flanagan, David. JavaScript: The Definitive Guide (pp. 161-162). O'Reilly Media. Kindle Edition. 
+
+let a = [];     // Start with an empty array
+a.push("zero");     // Add a value at the end. a = ["zero"]
+a.push("one", "two");   // Add two more values. a = ["zero", "one", "two"]
+
+// ex: delete
+
+let a = [1,2,3];
+delete a[2];    // a now has no element at index 2
+2 in a  // => false: no array index 2 is defined
+a.length    // => 3: delete does not affect array length 
+
+// 7.6 Iterating Arrays
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 162). O'Reilly Media. Kindle Edition. 
+
+
