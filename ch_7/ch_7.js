@@ -141,3 +141,16 @@ a[-1]   // => undefined; no property with this name
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 160). O'Reilly Media. Kindle Edition. 
 
+let a5 = new Array(5);  // No elements, but a.length is 5.
+a5 = [];    // Create an array with no elements and length = 0.
+a[1000] = 0;    // Assignment adds one element but sets length to 1001
+
+let a6 = [,];   // This array has no elements and length 1
+let a7 = [undefined];   // This array has one undefined element 
+0 in a6     // => false: a6 has no element with index 0
+0 in a7     // => true: a7 has the undefined value at index 0
+
+// 7.4 Array Length
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 161). O'Reilly Media. Kindle Edition. 
+
