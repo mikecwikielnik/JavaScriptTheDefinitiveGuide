@@ -98,3 +98,14 @@ Array.of(1,2,3)     // => [1,2,3]
 // 7.1.5 Array.from()
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 158). O'Reilly Media. Kindle Edition. 
+
+let copy = Array.from(original);
+
+// ex: Array-like objects
+
+let truearray = Array.from(arraylike);
+
+// 7.2 Reading and Writing Array Elements
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 159). O'Reilly Media. Kindle Edition. 
+
