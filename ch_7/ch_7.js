@@ -154,3 +154,17 @@ let a7 = [undefined];   // This array has one undefined element
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 161). O'Reilly Media. Kindle Edition. 
 
+// [].length   // => 0: the array has no elements
+["a", "b", "c"].length  // => 3: highest index is 2, length is 3
+
+// ex:
+
+a = [1,2,3,4,5];    // Start with a 5-element array
+a.length = 3;   // a is now [1,2,3]
+a.length = 0;   // Delete all elements. a is []
+a.length = 5;   // Length is 5, but no elements, like new Array(5)
+
+// 7.5 Adding and Deleting Array Elements
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 161). O'Reilly Media. Kindle Edition. 
+
