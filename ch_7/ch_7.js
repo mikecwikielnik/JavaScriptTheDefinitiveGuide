@@ -379,5 +379,25 @@ a.reduceRight((acc,val) => Math.pow(val,acc))   // => 2.41785
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 169). O'Reilly Media. Kindle Edition. 
 
+[1,[2,3]].flat()    // => [1,2,3]
+[1,[2,[3]]].flat()   // => [1,[2,3]]
 
+// ex: pass a number of levels
+
+let a = [1,[2,[3,[4]]]];
+a.flat(1)   // => [1,2,[3,[4]]]
+a.flat(2)   // => [1,2,3[4]]
+a.flat(3)   // => [1,2,3,4]
+a.flat(4)   // => [1,2,3,4]
+
+let phrases = ["hello world", "the definitive guid"];
+let words = phrases.flatMap(phrase => phrase.split(""));
+words   // => ["hello", "world", "the", "definitive", "guide"];
+
+// Map non-negative numbers to their square roots
+[-2,-1,1,2].flatMap(x => x< 0?[]:Math.sqrt(x))  // => [1, 2**0.5]
+
+// 7.8.3 Adding arrays with concat()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 170). O'Reilly Media. Kindle Edition. 
 
