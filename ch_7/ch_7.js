@@ -284,4 +284,100 @@ table[5][7]     // => 35
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 165). O'Reilly Media. Kindle Edition. 
 
+// Iterator methods: loop over the elements of an array, typically invoking a function that you specify on each element
+
+// Stack and queue methods: add/remove array elements to/from the beginning and the end of an array
+
+// Subarray methods: extracting, deleting, inserting, filling, and copying contiguous regions of a larger array
+
+// Searching/sorting methods: locating elements within an array and for sorting the elements of an array
+
+// 7.8.1 Array Iterator Methods
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 165). O'Reilly Media. Kindle Edition. 
+
+// forEach()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 166). O'Reilly Media. Kindle Edition. 
+
+let data = [1,2,3,4,5], sum = 0;
+// Compute the sum of the elements of the array
+data.forEach(value => {sum += value;});     // sum == 15
+
+// Now increment each array element
+data.forEach(function(v,i,a){a[i] = v +1;});    // data == [2,3,4,5,6]
+
+// map()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 166). O'Reilly Media. Kindle Edition. 
+
+let a = [1,2,3];
+a.map(x => x*x)     // => [1,4,9]
+
+// filter()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 167). O'Reilly Media. Kindle Edition. 
+
+let a = [5,4,3,2,1];
+a.filter(x => x < 3)    // => [2,1]; values less than 3
+a.filter((x,i) => i%2 === 0)    // => [5,3,1]; every other value
+
+// ex: to close the gaps in a sparse array
+
+let dense = sparse.filter(() => true);
+
+// ex: to close gaps and remove undefined/null elements, you use filter
+
+a = a.filter(x => x !== undefined && x !== null);
+
+// find() and findIndex()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 167). O'Reilly Media. Kindle Edition. 
+
+let a = [1,2,3,4,5];
+a.findIndex(x => x === 3)   // => 2; the value 3 appears at index 2
+a.findIndex(x => x < 0)     // => -1; no negative numbers in the array
+a.find(x => x%5 === 0)  // => 5: this is a multiple of 5
+a.find(x => x%7 === 0)  // => undefined: no multiples of 7 in the array
+
+// every() and some()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 167). O'Reilly Media. Kindle Edition. 
+
+// ex: mathematical for all
+
+let a = [1,2,3,4,5];
+a.every(x => x < 10)    // => true: all values are < 10
+a.every(x => x%2 === 0)     // => false: not all values are even
+
+// ex: mathematical there exists - intro to proofs! 
+
+let a = [1,2,3,4,5];
+a.some(x => x%2 === 0)  // => true; a has some even numbers
+a.some(isNaN)   // => false; a has no non-numbers
+
+// reduce() and reduceRight()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 168). O'Reilly Media. Kindle Edition. 
+
+// ex: aka inject and fold
+
+// reduce()
+
+let a = [1,2,3,4,5];
+a.reduce((x,y) => x+y, 0)   // => 15; the sum of the values
+a.reduce((x,y) => x*y, 1)   // => 120; the product of the values
+a.reduce((x,y) => (x > y)?x:y)  // => 5; the largest of the values
+
+// reduceRight()
+
+// Compute 2^(3^4). Exponentiation has right 2 left precedence 
+let a = [2,3,4];
+a.reduceRight((acc,val) => Math.pow(val,acc))   // => 2.41785
+
+// 7.8.2 Flattening arrays with flat() and flatMap()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 169). O'Reilly Media. Kindle Edition. 
+
+
 
