@@ -401,3 +401,13 @@ words   // => ["hello", "world", "the", "definitive", "guide"];
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 170). O'Reilly Media. Kindle Edition. 
 
+let a = [1,2,3];
+a.concat(4,5)   // => [1,2,3,4,5]
+a.concat([4,5],[6,7])   // => [1,2,3,4,5,6,7]; arrays are flattened
+a.concat(4,[5,[6,7]])   // => [1,2,3,4,5,[6,7]]; but not nest arrays
+a   // => [1,2,3]; the original array is unmodified
+
+// 7.8.4 Stacks and Queues with push(), pop(), shift(), and unshift()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 170). O'Reilly Media. Kindle Edition. 
+
