@@ -441,3 +441,50 @@ a.unshift(1,2)  // a == [1,2]
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 172). O'Reilly Media. Kindle Edition. 
 
+// slice()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 172). O'Reilly Media. Kindle Edition. 
+
+let a = [1,2,3,4,5];
+a.slice(0,3);   // Returns [1,2,3]
+a.slice(3);     // Returns [4,5]
+a.slice(1,-1);  // Returns [2,3,4]
+a.slice(-3,-2);     // Returns [3]    
+
+// splice()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 172). O'Reilly Media. Kindle Edition. 
+
+let a = [1,2,3,4,5,6,7,8];
+a.splice(4)     // => [5,6,7,8]; a is now [1,2,3,4]
+a.splice(1,2)   // => [2,3]; a is now [1,4]
+a.splice(1,1)   // => [4]; a is now [1]
+
+// ex:
+
+let a = [1,2,3,4,5]
+a.splice(2,0,"a","b")   // => []; a is now [1,2,"a","b",3,4,5]
+a.splice(2,2,[1,2],3)   // => ["a","b"]; a is now [1,2,[1,2],3,3,4,5]
+
+// fill()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 173). O'Reilly Media. Kindle Edition. 
+
+let a = new Array(5);   // Start with no elements and length 5
+a.fill(0)   // => [0,0,0,0,0]; fill the array with zeros
+a.fill(9,1)     // => [0,9,9,9,9]; fill with 9 starting at index 1
+a.fill(8,2,-1)  // => [0,9,8,8,9]; fill with 9 at indexes 2,3
+
+// copyWithin()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 173). O'Reilly Media. Kindle Edition. 
+
+let a = [1,2,3,4,5]
+a.copyWithin(1)     // => [1,1,2,3,4]: copy array elements up one 
+a.copyWithin(2,3,5)     // => [1,1,3,4,4]: copy last 2 elements to index 2
+a.copyWithin(0,-2)  // => [4,4,3,4,4]: negative offsets work, too
+
+// 7.8.6 Array Searching and Sorting Methods
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 174). O'Reilly Media. Kindle Edition. 
+
