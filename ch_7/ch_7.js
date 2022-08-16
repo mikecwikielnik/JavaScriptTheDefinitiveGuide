@@ -580,3 +580,9 @@ b2.join("-")     // => "---------": a string of 9 hyphens
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 177). O'Reilly Media. Kindle Edition. 
 
+Array.isArray([])   // => true
+Array.isArray({})   // => false
+
+// 7.9 Array-Like Objects
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 177). O'Reilly Media. Kindle Edition. 
