@@ -563,3 +563,20 @@ a.reverse();    // a == [3,2,1]
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 176). O'Reilly Media. Kindle Edition. 
 
+let a = [1,2,3]
+a.join()    // => "1,2,3"
+a.join(" ")     // => "1 2 3"
+a.join("")  // => "123"
+let b2 = new Array(10);  // An array of length 10 with no elements
+b2.join("-")     // => "---------": a string of 9 hyphens
+
+// ex: toString() method
+
+[1,2,3].toString()  // => "1,2,3"
+["a","b","c"].toString()    // => "a,b,c"
+[1,[2,"c"]].toString()  // => "1,2,c"
+
+// 7.8.8 Static Array Functions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 177). O'Reilly Media. Kindle Edition. 
+
