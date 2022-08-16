@@ -488,3 +488,78 @@ a.copyWithin(0,-2)  // => [4,4,3,4,4]: negative offsets work, too
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 174). O'Reilly Media. Kindle Edition. 
 
+// indexOf() and lastIndexOf()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 174). O'Reilly Media. Kindle Edition. 
+
+let a = [0,1,2,1,0];
+a.indexOf(1)    // => 1: a[1] is 1
+a.lastIndexOf(1)    // => 3: a[3] is 1
+a.indexOf(3)    // => -1: no element has value 3
+
+// ex:
+
+// Find all occurences of a value x in an array a and return an array
+// of matching indexes
+function findall(a,x){
+    let results = [],   // The array of indexes we'll return
+        len = a.length,     // The length of the array to be searched
+        pos = 0;    // The position to search from
+    while(pos < len){   // While more elements to search..
+        pos = a.indexOf(x, pos);    // Search
+        if(pos === -1)break;    // If nothing found, we're done
+        results.push(pos);  // Otherwise, store index in array
+        pos = pos + 1;  // And start next search at next element
+    }
+    return results;     // Return array of indexes
+}
+
+// includes()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 175). O'Reilly Media. Kindle Edition. 
+
+let a = [1,true,3,NaN];
+a.includes(true)    // => true
+a.includes(2)   // => false
+a.includes(NaN)     // => true
+a.indexOf(NaN)  // => -1; indexOf can't find NaN
+
+// sort()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 175). O'Reilly Media. Kindle Edition. 
+
+let a =["banana","cherry","apple"];
+a.sort();   // a == ["apple","banana","cherry"]
+
+// ex:
+
+let a = [33,4,1111,222];
+a.sort();   // a == [1111,222,33,4]; alphabetical order
+a.sort(function(a,b){   // Pass a comparator function
+    return a-b;     // Returns < 0, 0, or > 0, depending on order
+});     // a == [4,33,222,1111]; numerical order
+a.sort((a,b) => b-a);   // a == [1111,222,33,4]; reverse numerical order 
+
+// ex:
+
+let a = ["ant","Bug","cat","Dog"];
+a.sort();   // a == ["Bug","Dog","ant","cat"]; case-insensitive sort
+a.sort(function(s,t){
+    let a = s.toLowerCase();
+    let b = t.toLowerCase();
+    if(a < b) return -1;
+    if(a > b) return 1;
+    return 0;
+});     // a == ["ant","Bug","cat","Dog"]; case-insensitve sort
+
+// reverse()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 176). O'Reilly Media. Kindle Edition. 
+
+let a = [1,2,3];
+a.reverse();    // a == [3,2,1]
+
+// 7.8.7 Array to String Conversions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 176). O'Reilly Media. Kindle Edition. 
+
