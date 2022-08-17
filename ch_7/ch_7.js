@@ -634,4 +634,11 @@ Array.from(a)   // => ["a","b","c"]: easier array copy
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 179). O'Reilly Media. Kindle Edition. 
 
+let s = "test";
+s.charAt(0)     // => "t"
+s[1]    // => "e"
+
+// ex: apply generic array methods to indexable strings
+
+Array.prototype.join.call("JavaScript", "")     // => "J A V A S C R I P T"
 
