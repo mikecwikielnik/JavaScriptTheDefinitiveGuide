@@ -138,3 +138,89 @@ const strict = (function(){return !this;}());
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 188). O'Reilly Media. Kindle Edition. 
 
+// If you have function f and an object o,
+// you can define a method named m of o with the following line:
+
+o.m = f;
+
+// Having defined the method m() of the object o, invoke it like this:
+
+o.m();
+
+// Or, if m() expects two arguments, you might invoke it like this:
+
+o.m(x,y);
+
+// In a method-invocation expression like this, the object o becoes the invocation context,
+// and the function body can refer to that object by using the keyword this. 
+
+let calculator = { // An object literal
+    operand1: 1,
+    operand2: 1,
+    add(){ // We're using method shorthand syntax for this function
+        // Note the use of the *this* keyword to refer to the containing object
+        this.result = this.operand1 + this.operand2;
+    }
+};
+calculator.add();   // A method invocation to compute 1 + 1.
+calculator.result   // => 2
+
+// the above chunk makes sense. this has python syntax all over it
+
+// ex: square brackets also cause method invocation
+
+o["m"](x,y);    // Another way to write o.m(x,y).
+a[0](z)     // Also a method invocation (assuming a[0] is a function).
+
+// ex:
+
+customer.surname.toUppercase();     // Invoke method on customer.surname
+f().m();    // Invoke method m() on return value of f()
+
+// ex:
+
+rect.setSize(width, height);
+setRectSize(rect, width, height);
+
+// Method Chaining
+
+// Run three asynchronous operations in sequence, handling errors
+doStepOne().then(doStepTwo).then(doStepThree).catch(handleErrors);
+
+// it is when an object is named once, and then multiple methods can be invoked on it:
+
+new square().x(100).y(100).size(50).outline("red").fill("blue").draw();
+
+// ex:
+
+let o ={ // An object o.
+    m: function(){ // Method m of the object
+        let self = this;    // Save the "this" value in a variable
+        this === o  // => true: "this" is the object o.
+        f();    // Now call the helper function f()
+
+        function f(){ // A nested function f
+            this === o  // => false: "this" is global or undefined
+            self === o  // => true: self is the outer "this" value
+        }
+    }
+};
+o.m();  // Invoke the method m on the object o
+
+
+// ex: the below ES6 workaround to the chunk above
+
+const f2 = () => {
+    this === o  // true, since arrow functions inherit this
+};
+
+// ex: bind() method of the nested function
+
+const f3 = (function(){
+    this === o  // true, since we bound this function to the outer this
+}).bind(this);
+
+// 8.2.3 Constructor Invocation
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 191). O'Reilly Media. Kindle Edition. 
+
