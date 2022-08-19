@@ -97,3 +97,44 @@ function hypotneuse(a,b){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 186). O'Reilly Media. Kindle Edition. 
 
+/*
+
+JavaScript functions can be invoked in five ways: 
+
+As functions  
+
+As methods  
+
+As constructors  
+
+Indirectly through their call() and apply() methods  
+
+Implicitly, via JavaScript language features that do not appear like normal function invocations
+
+Flanagan, David. JavaScript: The Definitive Guide (pp. 186-187). O'Reilly Media. Kindle Edition. 
+
+*/
+
+// 8.2.1 Function Invocation
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 187). O'Reilly Media. Kindle Edition. 
+
+printprops({x: 1});
+let total = distance(0,0,2,1) + distance(2,1,3,5);
+let probability = factorial(5)/factorial(13);
+
+// conditionial invocation
+
+f?.(x)
+
+// is equivalent to:
+
+(f !== null && f !== undefined)?f(x): undefined
+
+// Define and invoke a function to determine if we're in strict mode
+const strict = (function(){return !this;}());
+
+// 8.2.2 Method Invocation
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 188). O'Reilly Media. Kindle Edition. 
+
