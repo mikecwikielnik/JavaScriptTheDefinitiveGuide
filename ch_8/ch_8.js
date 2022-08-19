@@ -88,3 +88,12 @@ let squares = [1,2,3,4].map(x => x*x);  // squares == [1,4,9,16]
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 186). O'Reilly Media. Kindle Edition. 
 
+function hypotneuse(a,b){
+    function square(x){return x*x;}
+    return Math.sqrt(square(a) + square(b));
+}
+
+// 8.2 Invoking Functions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 186). O'Reilly Media. Kindle Edition. 
+
