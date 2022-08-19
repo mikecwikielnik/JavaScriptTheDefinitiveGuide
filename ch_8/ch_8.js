@@ -58,3 +58,33 @@ let tensquared = (function(x){return x*x;}(10));
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 185). O'Reilly Media. Kindle Edition. 
 
+const sum = (x,y) => {return x+y;};
+
+// or
+
+const sum1 = (x,y) => x+y;
+
+// or
+
+const polynommial = x => x*x + 2*x + 3;
+
+// Note:
+
+const constantFunc = () => 42;
+
+// more examples:
+
+const f1 = x => {return {value: x};};   // Good: f() returns an object
+const g = x => ({value: x});    // Good: g() returns an object
+const h = x => {value: x};  // Bad: h() returns nothing
+// const i = x => {v: x, w: x};    // Bad: Syntax Error
+
+// Make a copy of an array with null elements removed
+let filtered = [1,null,2,3].filter(x => x !== null);    // filtered == [1,2,3]
+// Square some numbers:
+let squares = [1,2,3,4].map(x => x*x);  // squares == [1,4,9,16]
+
+// 8.1.4 Nested Functions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 186). O'Reilly Media. Kindle Edition. 
+
