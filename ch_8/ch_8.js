@@ -41,3 +41,20 @@ function factorial(x){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 184). O'Reilly Media. Kindle Edition. 
 
+// This function expression defines a function that squares its argument.
+// Note that we assign it to a variable
+const square = function(x){return x*x;};
+
+// Function expressions can include names, which is useful for recursion
+const f = function fact(x){if(x<=1)return 1;else return x*fact(x-1);};
+
+// Function expressions can also be used as arguments to other functions:
+[3,2,1].sort(function(a,b){return a-b;});
+
+// Function expressions are sometimes defined and immediately invoked:
+let tensquared = (function(x){return x*x;}(10));
+
+// 8.1.3 Arrow Functions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 185). O'Reilly Media. Kindle Edition. 
+
