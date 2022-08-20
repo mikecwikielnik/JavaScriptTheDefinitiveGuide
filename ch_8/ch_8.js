@@ -230,3 +230,42 @@ o = new Object();
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 193). O'Reilly Media. Kindle Edition. 
 
+// 8.3.1 Optional Parameters and Defaults
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 193). O'Reilly Media. Kindle Edition. 
+
+// ex: it's useful to write functions so that some arguments are optional
+
+// Append the names of the enumerable properties of object o to the
+// array a, and return a. If a is omitted, create and return a new array
+function getPropertyNames(o,a){
+    if(a === undefined) a = [];  // If undefined, use a new array
+    for(let property in o) a.push(property);
+    return a;
+}
+
+// getPropertyNames() can be invoked with one or two arguments:
+let o1 = {x: 1}, p = {y: 2,z: 3};  // Two objects for testing
+let a = getPropertyNames(o);    // a == ["x"]; get o's properties in a new array
+getPropertyNames(p,a);  // a == ["x","y","z"]; add p's properties to it
+
+// ex:
+
+a = a || [];
+
+// Append the names of the enumerable properties of object o to the 
+// array a, and return a. If a is omitted, create and return a new array
+function getPropertyNames(o,a=[]){
+    for(let property in o)a.push(property);
+    return a;
+}
+
+// This function returns an object representing a rectangle's dimensions. 
+// If only width is supplied, make it twice as high as it is wide. 
+const rectangle = (width,height=width*2) => ({width,height});
+rectangle(1)    // => {width: 1,height: 2}
+
+// 8.3.2 Rest Parameters and Variable-Length Argument Lists
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 194). O'Reilly Media. Kindle Edition. 
+
