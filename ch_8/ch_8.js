@@ -224,3 +224,9 @@ const f3 = (function(){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 191). O'Reilly Media. Kindle Edition. 
 
+o = new Object();
+
+// 8.3 Function Arguments and Parameters
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 193). O'Reilly Media. Kindle Edition. 
+
