@@ -486,3 +486,40 @@ operate2("pow",10,2)    // => 100
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 202). O'Reilly Media. Kindle Edition. 
 
+// ex: Return a unique integer whenever it is called
+
+// Initialize the counter property of the function object.
+// Function declarations are hoisted so we really can
+// do this assignment before the function declaration
+uniqueInteger.counter = 0;
+
+// This function returns a different integer each time it is called
+// It uses a property of itself to remember the next value to be returned.
+function uniqueInteger(){
+    return uniqueInteger.counter++;     // Return and increment counter property
+}
+uniqueInteger()     // => 0
+uniqueInteger()     // => 1
+
+// ex: consider the following factorial() function
+// that uses properties of itself (treating itself as an array)
+
+// Compute factorials and cache results as properties of the function itself.
+function factorial(n){
+    if(Number.isInteger(n) && n>0){ // Positive integers only
+        if(!(n in factorial)){ // If no cached result
+            factorial[n] = n*factorial(n-1);    // Compute and cache it
+        }
+        return factorial[n];    // Return the cached result
+    } else{
+        return NaN;     // If input was bad
+    }
+}
+factorial[1] = 1;   // Initialize the cache to hold this base case
+factorial(6)    // => 720
+factorial[5]    // => 120; the call above caches this value
+
+// 8.5 Functions as Namespaces
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 203). O'Reilly Media. Kindle Edition. 
+
