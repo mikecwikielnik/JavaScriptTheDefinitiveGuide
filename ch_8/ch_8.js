@@ -397,3 +397,30 @@ vectorMultiply({x: 1, y: 2, w: -1}, 2)  // => {x:2, y:4, z:0, w:-1}
 function drawCircle({x, y, radius, color:[r,g,b]}){
     // Not yet implemented
 }
+
+// 8.3.6 Argument Types
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 199). O'Reilly Media. Kindle Edition. 
+
+// ex: type checking
+
+// Return the sum of the elements an iterable object a.
+// The elements of a must all be numbers
+function sum(a){
+    let total = 0;
+    for(let element of a){ // Throws TypeError if a is not iterable
+        if(typeof element !== "number"){
+            throw new TypeError("sum(): elements must be numbers");
+        }
+        total += element;
+    }
+    return total;
+}
+sum([1,2,3])    // => 6
+sum([1,2,3]);   // !TypeError: 1 is not iterable
+sum([1,2,"3"]);     // !TypeError: element 2 is not a number
+
+// 8.4 Functions as Values
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 200). O'Reilly Media. Kindle Edition. 
+
