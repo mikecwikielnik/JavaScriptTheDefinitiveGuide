@@ -523,3 +523,14 @@ factorial[5]    // => 120; the call above caches this value
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 203). O'Reilly Media. Kindle Edition. 
 
+function chunkNamespace(){
+    // Chunk of code goes here
+    // Any variables defined in the chunk are local to this function
+    // instead of cluttering up the global namespace
+}
+chunkNamespace();   // But don't forget to invoke the function! AKA calling the function. you've seen this a million times in python- SIMPLE!
+
+// 8.6 Closures
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 204). O'Reilly Media. Kindle Edition. 
+
