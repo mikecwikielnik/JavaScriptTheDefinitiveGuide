@@ -290,3 +290,19 @@ max(1,10,100,2,3,1000,4,5,6)    // => 1000
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 195). O'Reilly Media. Kindle Edition. 
 
+function max(x){
+    let maxValue = -Infinity;
+    // Loop through the arguments, looking for, and remembering, the biggest
+    for(let i=0; i<arguments.length; i++){
+        if(arguments[i]>maxValue) maxValue = arguments[i];
+    }
+    // Return the biggest 
+    return maxValue;
+}
+
+max(1,10,100,2,3,1000,4,5,6)    // => 1000
+
+// 8.3.4 The Spread Operator for Function Calls
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 196). O'Reilly Media. Kindle Edition. 
+
