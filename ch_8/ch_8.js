@@ -269,3 +269,24 @@ rectangle(1)    // => {width: 1,height: 2}
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 194). O'Reilly Media. Kindle Edition. 
 
+// Rest parameters allow us to write functions that can 
+// be invoked with arbitrarily more arguments than parameters
+
+function max(first =- Infinity,...rest){
+    let maxValue = first;   // Start by assuming the first arg is biggest
+    // Then loop through the rest of the arguments, looking for bigger
+    for(let n of rest){
+        if(n > maxValue){
+            maxValue = n;
+        }
+    }
+    // Return the biggest
+    return maxValue;
+}
+
+max(1,10,100,2,3,1000,4,5,6)    // => 1000
+
+// 8.3.3 The Arguments Object
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 195). O'Reilly Media. Kindle Edition. 
+
