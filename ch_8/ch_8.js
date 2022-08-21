@@ -306,3 +306,37 @@ max(1,10,100,2,3,1000,4,5,6)    // => 1000
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 196). O'Reilly Media. Kindle Edition. 
 
+let numbers = [5,2,10,-1,9,100,1];
+Math.min(...numbers)    // => -1
+
+// This function takes a function and returns a wrapped version
+function timed(f){
+    return function(...args){ // Collect args into a rest parameter array
+        console.log(`Entering function ${f.name}`);
+        let startTime = Date.now();
+        try{
+            // Pass all of our arguments to the wrapped function
+            return f(...args);  // Spread the args back out again
+        }
+        finally{
+            // Before we return the wrapped return value, print elapsed time
+            console.log(`Exiting ${f.name} after ${Date.now()-startTime}ms`);
+        }
+    };
+}
+
+// Compute the sume of the numbers between 1 and n by brute force
+function benchmark(n){
+    let sum = 0;
+    for(let i=1; i<=n; i++) sum+=i;
+    return sum;
+}
+
+// Now invoke the timed version of that test function
+timed(benchmark)(1000000)   // => 500000500000; this is the sum of the numbers
+
+// 8.3.5 Destructuring Function Arguments into Parameters
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 197). O'Reilly Media. Kindle Edition. 
+
+
