@@ -534,3 +534,147 @@ chunkNamespace();   // But don't forget to invoke the function! AKA calling the 
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 204). O'Reilly Media. Kindle Edition. 
 
+// ex: lexical scoping rules for nested functions 
+
+let scope = "global scope";     // A global variable
+function checkscope(){
+    let scope = "local scope";  // A local variable
+    function f(){return scope;}  // Return the value in scope here
+    return f();
+}
+checkscope()    // => "local scope"..this should make sense. it is out of the nested fn, in it's own scope
+
+// ex: change the code slightly. What will the code return?
+
+let scope1 = "global scope";     // A global variable
+function checkscope(){
+    let scope = "local scope";  // A local variable
+    function f(){return scope;}  // Return the value in scope here
+    return f;
+}
+let s1 = checkscope()();     // What does this return?
+
+// ex:
+
+let uniqueInteger1 = (function(){ // Define and invoke
+    let counter = 0;    // Private state of function below
+    return function(){return counter++;};
+}());
+uniqueInteger1()    // => 0
+uniqueInteger1()    // => 1
+
+// ex:
+
+function counter(){
+    let n = 0;
+    return{
+        count: function(){return n++;},
+        reset: function(){n=0;}
+    };
+}
+
+let c = counter(), d = counter();   // Create two counters
+c.count()   // => 0
+d.count()   // => 0: they count independently
+c.reset();  // reset() and count() methods share state
+c.count()   // => 0: because we reset c
+d.count()   // => 1: d was not reset
+
+// the above code should make sense. c was reset, and d was not. 
+
+// ex: same example from above but using property getters/setters
+
+function counter(n){ // Function argument n is the private variable
+    return{
+        // Property getter method returns and increments private counter var.
+        get count(){return n++;},
+        // Property setter doesn't allow teh value of n to decrease
+        set count(m){
+            if(m>n)n=m;
+            else throw Error("count can only be set to a larger value")
+        }
+    };
+}
+
+let c1 = counter(1000);
+c1.count    // => 1000
+c1.count    // => 1001
+c1.count = 2000;
+c1.count    // => 2000
+c1.count = 2000;    // !Error: count can only be set to a larger value 
+
+
+// ex: 8-2 Private property accessor methods using closures
+
+// This function adds property accessor methods for a property with
+// the specified name to the object o. The methods are anmed get<name>
+// and set<name>. If a predicate function is supplied, the setter
+// method uses it to test its argument for validity before storing it.
+// If the predicate returns false, the setter method throws an exception.
+//
+// The unusual thing about this function is that the property value
+// that is manipulated by the getter and setter methods is not stored in
+// the object o. Instead, the value is stored only in a local variable
+// in this function. The getter and setter methods are also defined
+// locally to this function and therefore have access to this local variable.
+// This means that the value is private to the two accessor methods, and it
+// cannot be set or modified except through the setter method. 
+function addPrivateProperty(o, name, predicate){
+    let value;  // This is the property value
+
+    // The getter method simply returns the value. 
+    o[`get${name}`] = function(){return value;};
+
+    // The setter method stores the value or throws an exception if
+    // the predicate rejects the value
+    o[`set${name}`] = function(v){
+        if(predicate && !predicate(v)){
+            throw new TypeError(`set${name}: invalid value ${v}`);
+        }else{
+            value = v;
+        }
+    };
+}
+
+// The following code demonstrates the addPrivateProperty() method
+let o3 = {};    // Here is an empty object
+
+// Add property accessor methods getName and setName()
+// Ensure that only string values are allowed
+addPrivateProperty(o,"Name",x=>typeofx==="string");
+o3.setName("Frank");    // Set the property value
+o3.getName()    // => "Frank"
+o3.setName(0);  // !TypeError: try to set a value of the wrong type
+
+// ex: when closures share access to a variable that they should not share
+
+// This function returns a function that always retuns v
+function constfunc(v){return ()=>v;}
+
+// Create an array of constant functions:
+let funcs = [];
+for(var i1=0; i1<10; i1++)funcs[i1]=constfunc(i1);
+
+// The function at array element 5 returns the value 5
+funcs[5]()  // => 5
+
+// Return an array of functions that return the values 0-9
+function constfunc(){
+    let funcs = [];
+    for(var i=0; i<10; i++){
+        funcs[i]=()=>i;
+    }
+    return funcs;
+}
+
+let funcs1 = constfunc();
+funcs1[5]()     // => 10; Why doesn't this return 5?
+
+// ex:
+
+const self = this;  // Make the this value available to nested functions 
+
+// 8.7 Function Properties, Methods, and Constructor
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 209). O'Reilly Media. Kindle Edition. 
+
