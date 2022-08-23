@@ -746,3 +746,24 @@ g2(3)   // => 6: this.x is bound to 1, y is bound to 2 and z is 3
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 212). O'Reilly Media. Kindle Edition. 
 
+const f = new Function("x","y","return x*y;");
+
+// ex: above is similar to below
+
+const f = function(x,y){return x*y;};
+
+// ex: 
+
+let scope2 = "global";
+function constructFunction(){
+    let scope = "local";
+    return new Function("return scope");    // Doesn't capture local scope!
+}
+// This line returns "global" because the function returned by the
+// Function() constructor does not use the local scope
+constructFunction()()   // => "global"
+
+// 8.8 Functional Programming
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 213). O'Reilly Media. Kindle Edition. 
+
