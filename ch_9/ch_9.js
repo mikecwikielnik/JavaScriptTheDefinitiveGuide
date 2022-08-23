@@ -94,3 +94,19 @@ r1.toString()   // => "(1...3)"
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 226). O'Reilly Media. Kindle Edition. 
 
+r instanceof Range  // => true: r inherits from Range.prototype
+
+// ex:
+
+function Strange(){}
+Strange.prototype = Range.prototype;
+new Strange() instanceof Range  // => true
+
+// ex:
+
+range.methods.isPrototypeOf(r);     // range.methods is the prototype object. 
+
+// 9.2.2 The constructor Property
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 228). O'Reilly Media. Kindle Edition. 
+
