@@ -678,3 +678,52 @@ const self = this;  // Make the this value available to nested functions
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 209). O'Reilly Media. Kindle Edition. 
 
+// Skip to 8.7.4: 8.7.1-8.7.3 did not have code
+
+// 8.7.4 The call() and apply() Methods
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 210). O'Reilly Media. Kindle Edition. 
+
+// ex: to invoke function f() as a method of the object o (passing no arguments)
+// you could use either call() or apply():
+
+f.call(o);
+f.apply(o);
+
+o.m = f;    // Make f a temporary method of o
+o.m();  // Invoke it, passing no arguments
+delete o.m;     // Remove the temporary method
+
+// ex: to pass two numbers to the function f() and invoke it as
+// if it were a method of the object o, you can do this:
+
+f.call(o,1,2);
+
+// ex: apply() is like call() except the arguments passsed,
+// are specified as an array:
+
+f.apply(o,[1,2]);
+
+// ex: to find the largest number in an array of numbers without using the spread operator, 
+// you could use the apply() method to pass the elements of the array to the Math.max() function:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 211). O'Reilly Media. Kindle Edition. 
+
+let biggest = Math.max.apply(Math, arrayOfNumbers);
+
+// Replace the method named m of the object o with a version that logs
+// messages before and after invoking the original method
+function trace(o,m){
+    let original = o[m];    // Remeber original method in the closure
+    o[m] = function(...args){ // Now define the new method.
+        console.log(new Date(), "Entering:", m);     // Log message
+        let result = original.apply(this, args);    // Invoke original
+        console.log(new Date(), "Exiting:", m);     // Log message
+        return result;  // Return result
+    };
+}
+
+// 8.7.5 The bind() Method
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 211). O'Reilly Media. Kindle Edition. 
+
