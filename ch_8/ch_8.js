@@ -678,8 +678,6 @@ const self = this;  // Make the this value available to nested functions
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 209). O'Reilly Media. Kindle Edition. 
 
-// Skip to 8.7.4: 8.7.1-8.7.3 did not have code
-
 // 8.7.4 The call() and apply() Methods
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 210). O'Reilly Media. Kindle Edition. 
@@ -726,4 +724,25 @@ function trace(o,m){
 // 8.7.5 The bind() Method
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 211). O'Reilly Media. Kindle Edition. 
+
+function f(y){return this.x+y;}     // This function needs to be bound
+let o4 = {x: 1};    // An object we'll bind to
+let g1 = f.bind(o);     // Calling g(x) invokes f() on o
+g1(2)    // => 3
+let p1 = {x: 10, g};    // Invoke g() as a method of this object
+p.g(2)  // => 3: g is still bound to o, not p.
+
+// ex: bind() method used for partial applications:
+
+let sum = (x,y) => x+y;     // Return teh sum of 2 args
+let succ = sum.bind(null,1);    // Bind the first argument to 1
+succ(2)     // => 3: x is bound to 1, and we pass 2 for the y argument
+
+function f(y,z){return this.x+y+z;}
+let g2 = f.bind({x: 1}, 2);     // Bind this and y
+g2(3)   // => 6: this.x is bound to 1, y is bound to 2 and z is 3
+
+// 8.7.7 The Function() Constructor
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 212). O'Reilly Media. Kindle Edition. 
 
