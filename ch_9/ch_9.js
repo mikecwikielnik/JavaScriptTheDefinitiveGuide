@@ -270,6 +270,3 @@ static parse(s){
 
 */
 
-// 9.3.4 Example: A Complex Number Class
-
-// Flanagan, David. JavaScript: The Definitive Guide (p. 234). O'Reilly Media. Kindle Edition. 
