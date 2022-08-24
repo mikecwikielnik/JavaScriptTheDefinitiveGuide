@@ -141,3 +141,60 @@ Range.prototype.toString = function(){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 229). O'Reilly Media. Kindle Edition. 
 
+// ex: ES6 syntax- looks more like python than before 
+
+class Range {
+    constructor(from,to){
+        // Store the start and end points (state) of this new range object.
+        // These are noninherited properties that are unique to this object.
+        this.from = from;
+        this.to = to;
+    }
+
+    // Return true if x is in the range, false else 
+    // This method works for textual and Date ranges as well as numeric.
+    includes(x){return this.from <= x && x <= this.to;}
+
+    // A generator function that makes instances of the class iterable.
+    *[Symbol.iterator](){
+        for(let x = Math.ceil(this.from); x <= this.to; x++) yield x;
+    }
+
+    // Return a string representation of the range
+    toString(){return `(${this.from}...${this.to})`;}
+}
+
+// Here are example uses of this new Range class
+let r2 = new Range(1,3);    // Create a Range object
+r2.includes(2)  // => true: 2 is in the range
+r2.toString()   // => "(1...3)"
+// [...r2]  // => [1,2,3]; convert to an array via iterator
+
+// ex:
+
+// A Span is like a Range, but instead of initializing it with
+// a start and an end, we initialize it with a start and a length
+class Span extends Range {
+    constructor(start, length){
+        if(length >= 0){
+            super(start, start + length);
+        }else {
+            super(start + length, start);
+        }
+    }
+}
+
+// ex: class declarations have both statement and expression forms.
+
+let square = function(x){return x*x;};
+square(3)   // => 9
+
+// we can also write:
+
+let Square = class {constructor(x){this.area = x*x;}};
+new Square(3).area  // => 9
+
+// 9.3.1 Static Methods
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 231). O'Reilly Media. Kindle Edition. 
+
