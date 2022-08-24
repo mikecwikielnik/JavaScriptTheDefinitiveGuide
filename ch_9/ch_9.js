@@ -283,3 +283,7 @@ Complex.prototype.conj = function(){return new Complex(this.r,-this.i);};
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 237). O'Reilly Media. Kindle Edition. 
 
+// 9.5.2 Subclasses with extends and super
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 239). O'Reilly Media. Kindle Edition. 
+
