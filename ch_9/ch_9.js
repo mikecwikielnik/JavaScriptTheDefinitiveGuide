@@ -270,3 +270,16 @@ static parse(s){
 
 */
 
+// 9.4 Adding Methods to Existing Classes
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 236). O'Reilly Media. Kindle Edition. 
+
+// ex: this is code that adds a method for computing the complex conjugate to the Complex class
+
+// Return a complex number that is the complex conjugate of this one.
+Complex.prototype.conj = function(){return new Complex(this.r,-this.i);};
+
+// 9.5 Subclasses
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 237). O'Reilly Media. Kindle Edition. 
+
