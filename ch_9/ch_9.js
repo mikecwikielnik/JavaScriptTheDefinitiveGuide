@@ -218,3 +218,15 @@ r3.parse('(1...10)');   // TypeError: r.parse is not a function
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 232). O'Reilly Media. Kindle Edition. 
 
+/*
+
+*[Symbol.iterator](){
+    for(let x = Math.ceil(this.from); x <= this.to; x++) yield x;
+}
+
+*/
+
+// 9.3.3 Public, Private, and Static Fields
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 232). O'Reilly Media. Kindle Edition. 
+
