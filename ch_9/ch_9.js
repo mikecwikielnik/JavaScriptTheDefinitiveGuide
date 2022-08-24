@@ -198,3 +198,23 @@ new Square(3).area  // => 9
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 231). O'Reilly Media. Kindle Edition. 
 
+// ex: add below code to ex 9-3
+
+/*
+
+static parse(s){
+    let matches = s.match(/^\((d+)\.\.\.(\d+)\)$/);
+    if(!matches){
+        throw new TypeError(`Cannot parse Range from "${s}".`)
+    }
+    return new Range(parseInt(matches[1]), parseInt(matches[2]));
+}
+*/
+
+let r3 = Range.parse('(1...10)');    // Returns a new Range object
+r3.parse('(1...10)');   // TypeError: r.parse is not a function
+
+// 9.3.2 Getters, Setters, and other Method Forms
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 232). O'Reilly Media. Kindle Edition. 
+
