@@ -317,7 +317,3 @@ Array.prototype.isPrototypeOf(EZAarray.prototype)   // => true
 // extends keyword and is not possible before ES6. 
 Array.isPrototypeOf(EZAarray)   // => true
 
-// 9.5.3 Delegation Instead of Inheritance
-
-// Flanagan, David. JavaScript: The Definitive Guide (p. 242). O'Reilly Media. Kindle Edition. 
-
