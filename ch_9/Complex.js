@@ -81,7 +81,3 @@ c.magnitude     // => Math.hypot(2,3); use a getter function
 Complex.product(c,d)    // => new Complex(0,13); a static method
 Complex.ZERO.toString()     // => "{0,0}"; a static property 
 
-// 9.4 Adding Methods to Existing Classes
-
-// Flanagan, David. JavaScript: The Definitive Guide (p. 236). O'Reilly Media. Kindle Edition. 
-

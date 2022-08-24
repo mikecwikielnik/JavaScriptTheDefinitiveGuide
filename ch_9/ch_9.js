@@ -287,3 +287,37 @@ Complex.prototype.conj = function(){return new Complex(this.r,-this.i);};
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 239). O'Reilly Media. Kindle Edition. 
 
+// ex: creating a superclass by adding an extends clause to a class declaration
+
+// A trivial Array subclass that adds getters for the first and last elements
+class EZAarray extends Array {
+    get first(){return this[0];}
+    get last(){return this[this.length-1];}
+}
+
+let a = new EZAarray();
+a instanceof EZAarray   // => true: a is subclass instance
+a instanceof Array  // => true: a is also a superclass instance.
+a.push(1,2,3,4);    // a.length == 4; we can use inherited methods
+a.pop()     // => 4: another inherited method
+a.first     // => 1: first getter defined by subclass
+a.last  // => 3: last getter defined by subclass
+a[1]    // => 2: regular array access syntax still works.
+Array.isArray(a)    // => true: subclass instance really is an array
+EZAarray.isArray(a)     // => true: subclass inherits static methods, too!
+
+// ex: EZArray() is a function, but it inherits from Array():
+
+// EZArray inherits instance methods because EZArray.prototype
+// inherits from Array.prototype
+Array.prototype.isPrototypeOf(EZAarray.prototype)   // => true
+
+// And EZArray inherits static methods and properties because
+// EZArray inherits from Array. This is a special feature of the 
+// extends keyword and is not possible before ES6. 
+Array.isPrototypeOf(EZAarray)   // => true
+
+// 9.5.3 Delegation Instead of Inheritance
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 242). O'Reilly Media. Kindle Edition. 
+
