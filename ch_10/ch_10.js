@@ -63,3 +63,49 @@ stats.stddev([1,3,5,7,9])   // => Math.sqrt(10)
 // 10.1.1 Automating Closure-Based Modularity
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 251). O'Reilly Media. Kindle Edition. 
+
+const modules = {};
+function require(moduleName){return modules[moduleName];}
+
+modules["sets.js"] = (function(){
+    const exports = {};
+
+    // The contents of the sets.js file go here:
+    // exports.BitSet = class BitSet {...};
+
+    return exports
+}());
+
+modules["stats.js"] = (function(){
+    const exports = {};
+
+    // The contents of the stats.js file go here:
+    const sum = (x, y) => x + y;
+    const square = x => x * x;
+    // exports.mean = function(data){...};
+    // exports.stddev = function(data){...};
+
+    return exports;
+}());
+
+// With modules bundled up into a single file like the one shown in the preceding example, 
+
+// you can imagine writing code like the following to make use of those modules:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 252). O'Reilly Media. Kindle Edition. 
+
+// Get references to the modules (or the module content) that we need
+const stats = require("stats.js")
+const BitSet = require("sets.js").BitSet;
+
+// Now write code using those modules
+let s = new BitSet(100);
+s.insert(10);
+s.insert(20);
+s.insert(30);
+let average = stats.mean([...s]);   // average is 20
+
+// 10.2 Modules in Node
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 253). O'Reilly Media. Kindle Edition. 
+
