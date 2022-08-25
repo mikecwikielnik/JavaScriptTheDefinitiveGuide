@@ -142,3 +142,36 @@ modules.exports = {mean, stddev};
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 254). O'Reilly Media. Kindle Edition. 
 
+// These modules are built in to Node
+const fs = require("fs");   // The buit-in filesystem module
+const http = require("http");   // The built-in HTTP module
+
+// The Express HTTP server framework is a third-party module.
+// It is not part of Node but has been installed locally.
+const express = require("express");
+
+// ex: relative path (./ or ../) vs abosulte path (/)
+
+const stats1 = require('./stats.js');
+const BitSet1 = require('./utils/bitset.js');
+
+// Import the entire stats object, with all of its functions
+const stats1 = require('./stats.js')
+
+// We've got more functions than we need, but they're neatly
+// originated into a convenient "stats" namespace.
+let average1 = stats.mean(data)
+
+// Alternatively, we can use idiomatic destructuring assignment to import
+// exactly the functions we want directly into the local namespace:
+const {stddev} = require('./stats.js');
+
+// This is nice and succinct, though we lose a bit of context
+// without the 'stats' prefix as a namespace for the stddev() function.
+let sd = stddev(data);
+
+// 10.3 Modules in ES6
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 255). O'Reilly Media. Kindle Edition. 
+
+
