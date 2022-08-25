@@ -174,4 +174,32 @@ let sd = stddev(data);
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 255). O'Reilly Media. Kindle Edition. 
 
+// 10.3.1 ES6 Exports
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 256). O'Reilly Media. Kindle Edition. 
+
+export const PI = Math.PI;
+
+export function degreesToRadians(d){return d * PI / 180;}
+
+export class Circle{
+    constructor(r){this.r = r;}
+    area(){return PI * this.r * this.r;}
+}
+
+// So instead of writing three individual exports in the preceding code, 
+
+// we could have equivalently written a single line at the end:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 256). O'Reilly Media. Kindle Edition. 
+
+export{Circle, degreesToRadians, PI}
+
+export default class BitSet1 {
+    // implementation omitted
+}
+
+// 10.3.2 ES6 Imports
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 257). O'Reilly Media. Kindle Edition. 
 
