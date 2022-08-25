@@ -274,3 +274,11 @@ export {mean as default} from "./stats.js"
 // 10.3.5 JavaScript Modules on the Web
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 262). O'Reilly Media. Kindle Edition. 
+
+// ex: main entry point for a modular JavaScript program can be as simple as this:
+
+<script type="module">import "./main.js</script>
+
+// 10.3.6 Dynamic Imports with import()
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 264). O'Reilly Media. Kindle Edition. 
