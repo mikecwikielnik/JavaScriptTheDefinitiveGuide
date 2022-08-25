@@ -297,3 +297,9 @@ import("./stats.js").then(stats =>{
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 265). O'Reilly Media. Kindle Edition. 
 
+// ex: your module could load its strings using a URL created with a function:
+
+function localStringsURL(locale){
+    return new URL(`l10n/${locale}.json`, import.meta.url);
+}
+
