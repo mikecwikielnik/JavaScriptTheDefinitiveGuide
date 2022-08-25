@@ -224,3 +224,25 @@ import "./analytics.js";
 // 10.3.3 Imports and Exports with Renaming
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 259). O'Reilly Media. Kindle Edition. 
+
+// ex: You can use the as keyword to rename imports as you import them
+
+import {render as renderImage} from "./imageutils.js";
+import {render as renderUI} from "./ui.js";
+
+// ex: import both the default and named exports of that module:
+
+import {default as Histogram, mean, stddev1} from "./histogram-stats.js";
+
+export {
+    layout as calculateLayout,
+    render as renderLayout
+};
+
+// ex: SyntaxError
+
+// export {Math.sin as sin, Math.cos as cos};
+
+// 10.3.4 Re-Exports
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 260). O'Reilly Media. Kindle Edition. 
