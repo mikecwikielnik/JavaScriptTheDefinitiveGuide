@@ -203,3 +203,24 @@ export default class BitSet1 {
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 257). O'Reilly Media. Kindle Edition. 
 
+// The simplest form of import is used for modules that define a default export:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 257). O'Reilly Media. Kindle Edition. 
+
+import Bitset1 from './bitset.js';
+
+// To import values from a module that exports multiple values, 
+
+// we use a slightly different syntax:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 258). O'Reilly Media. Kindle Edition. 
+
+// import {mean, stddev} from "./stats.js";    // You have seen similar in python
+
+// import * as stats from "./stats.js"  // You have seen this in sql. select *
+
+import "./analytics.js";
+
+// 10.3.3 Imports and Exports with Renaming
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 259). O'Reilly Media. Kindle Edition. 
