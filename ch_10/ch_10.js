@@ -282,3 +282,18 @@ export {mean as default} from "./stats.js"
 // 10.3.6 Dynamic Imports with import()
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 264). O'Reilly Media. Kindle Edition. 
+
+// ex: instead of importing the "./stats.js" module statically like this:
+
+import * as stats1 from "./stats.js";
+
+// we might import it and use it dynamtically like this:
+
+import("./stats.js").then(stats =>{
+    let average = stats.mean(data);
+})
+
+// 10.3.7 import.meta.url
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 265). O'Reilly Media. Kindle Edition. 
+
