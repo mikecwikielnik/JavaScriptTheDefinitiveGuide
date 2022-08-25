@@ -109,3 +109,36 @@ let average = stats.mean([...s]);   // average is 20
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 253). O'Reilly Media. Kindle Edition. 
 
+// 10.2.1 Node Exports
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 253). O'Reilly Media. Kindle Edition. 
+
+const sum = (x, y) => x + y;
+const square = x => x * x;
+
+exports.mean = data => data.reduce(sum)/data.length;
+exports.stddev = function(d){
+    let m = exports.mean(d);
+    return Math.sqrt(d.map(x => x - m).map(square).reduce(sum)/(d.length - 1));
+};
+
+modules.exports = class BitSet extends AbstractWritableSet{
+    // implementation omitted;
+};
+
+// Define all the functions, public and private
+const sum1 = (x, y) => x + y;
+const square1 = x => x * x;
+const mean = data => data.reduce(sum)/data.length;
+const stddev = d => {
+    let m = mean(d);
+    return Math.sqrt(d.map(x => x - m).map(square).reduce(sum)/(d.length-1));
+};
+
+// Now export only the public ones
+modules.exports = {mean, stddev};
+
+// 10.2.2 Node Imports
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 254). O'Reilly Media. Kindle Edition. 
+
