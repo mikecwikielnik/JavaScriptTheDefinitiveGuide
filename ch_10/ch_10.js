@@ -246,3 +246,31 @@ export {
 // 10.3.4 Re-Exports
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 260). O'Reilly Media. Kindle Edition. 
+
+// import {mean} from "./stats/mean.js";
+// import {stddev} from "./stats/stddev.js";
+// export {mean, stdev};
+
+export {mean} from "./stats/mean.js"
+export {stddev} from "./stats/stddev.js";
+
+// ex: export all
+
+export * from "./stats/mean.js";
+export * from "./stats/stddev.js";
+
+// ex: for some reason you see some sql syntax in here 
+
+export {mean, mean as average} from "./stats/mean.js";
+export {stddev} from "./stats/stddev.js";
+
+export {default as mean} from "./stats/mean.js";
+export {default as stddev} from "./stats/stddev.js";
+
+// Import the mean() function from ./stats.js and make it the 
+// default export of this module
+export {mean as default} from "./stats.js"
+
+// 10.3.5 JavaScript Modules on the Web
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 262). O'Reilly Media. Kindle Edition. 
