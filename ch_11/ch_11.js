@@ -219,3 +219,32 @@ let inst2 = new Int32Array(buffer, 1024, 256);  // 2nd kilobyte as 256 integers
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 278). O'Reilly Media. Kindle Edition. 
 
+// Once you have created a typed array, 
+
+// you can read and write its elements with regular square-bracket notation, 
+
+// just as you would with any other array-like object:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 278). O'Reilly Media. Kindle Edition. 
+
+// Return the largest prime smaller than n, using the sieve of Erathosthenes
+function sieve(n){
+    let a = new Uint8Array(n + 1);  // a[x] will be 1 if x is composite
+    let max = Math.floor(Math.sqrt(n));     // Don't do factors higher than this
+    let p = 2;  // 2 is the first prime
+    while(p <= max){ // For primes less than max
+        for(let i = 2 * p; i <= n; i += p)  // Mark multiples of p as composite
+            a[i] = 1;
+        while(a[++p])/*empty*/;     // The next unmarked index is prime
+    }
+    while(an[n]) n--;   // Loop backward to find the last prime
+    return n;   // And return it
+}
+
+let ints1 = new Int16Array(10);     // 10 short integers
+ints1.fill(3).map(x => x * x).join("")  // => "9999999999"
+
+// 11.2.4 Typed Array Methods and Properties
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 278). O'Reilly Media. Kindle Edition. 
+
