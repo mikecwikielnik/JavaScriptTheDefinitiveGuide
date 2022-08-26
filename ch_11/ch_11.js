@@ -95,3 +95,80 @@ product     // => 210: 2 * 3 * 5 * 7
 // 11.1.2 The Map Class
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 271). O'Reilly Media. Kindle Edition. 
+
+// Create a new map with the Map() constructor:
+
+let m = new Map();  // Create a new, empty map
+let n = new Map([   // A new map initialized with string keys mapped to numbers
+    ["one", 1],
+    ["two", 2]
+]);
+
+// Use the Map() constructor to copy other maps or to copy the property names and values
+
+let copy = new Map(n);  // A new map with the same keys and values as map n
+let o = {x: 1, y: 2};   // An object with two properties
+let p = new Map(Object.entries(o));     // Same as new map([["x", 1], ["y", 2]])
+
+// ex: set() vs get()
+
+let m1 = new Map();  // Start with an empty map
+m1.size     // => 0: empty maps have no keys
+m1.set("one", 1);   // Map the key "one" to the value 1
+m1.set("two", 2);   // And the key "two" to the value 2
+m1.size     // => 2: the map now has two keys
+m1.get("two")   // => 2: return the value associated with key "two"
+m1.get("three")     // => undefined: this key is not in the set
+m1.set("one", true);    // Change the value associated with an existing key
+m1.size     // => 2: the size doesn't change
+m1.has("one")   // => true: the map has a key "one"
+m1.has(true)    // => false: the map does not have a key true
+m1.delete("one")    // => true: the key existed and deletion succeeded
+m1.size     // => 1
+m1.delete("three")  // => false: failed to delete a nonexistent key
+m1.clear();     // Remove all keys and values from the map
+
+// Like the add() method of Set, the set() method of Map can be chained,
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 272). O'Reilly Media. Kindle Edition. 
+
+let m2 = new Map().set("one", 1).set("two", 2).set("three", 3);
+m2.size     // => 3
+m2.get("two")   // => 2
+
+// ex: 
+
+let m3 = new Map();     // Start with an empty map
+m3.set({}, 1);  // Map one empty object to the number 1
+m3.set({}, 2);  // Map a different empty object to the number 2
+m3.size     // => 2: there are two keys in this map
+m3.get({})  // => undefined: this empty object is not a key
+m3.set(m, undefined);   // Map the map itself to the value undefined.
+m3.has(m)   // => true: m is a key in itself
+m3.get(m)   // => undefined: same value we'd get if m wasn't a key
+
+let m4 = new Map([["x", 1], ["y", 2]]);
+[...m4]     // => [["x", 1], ["y", 2]]
+
+for(let [key, value] of m){
+    // On the first iteration, key will be "x" and value will be 1
+    // on the second iteration, key will be "y" and value will be 2
+}
+
+// ex: use the keys() and values() methods
+
+[...m4.keys()]  // => ["x", "y"]: just the keys
+// [...m4.values()]    // [1,2]: just the values
+// [...m4.entries()]    // [["x", 1], ["y", 2]]: same as [...m]
+
+// ex: forEach() method
+
+m4.forEach((value, key) => { // note value, key NOT key, value
+    // On the first invocation, value will be 1 and key will be "x"
+    // On the second invocation, value will be 2 and key will be "y"
+});
+
+// 11.1.3 WeakMap and WeakSet
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 273). O'Reilly Media. Kindle Edition. 
+
