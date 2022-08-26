@@ -248,3 +248,53 @@ ints1.fill(3).map(x => x * x).join("")  // => "9999999999"
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 278). O'Reilly Media. Kindle Edition. 
 
+// ex: set() method
+
+let bytes1 = new Uint8Array(1024);  // A 1k buffer
+let pattern = new Uint8Array([0,1,2,3]);    // An array of 4 bytes
+bytes1.set(pattern);    // Copy them to the start of another byte array
+bytes1.set(pattern, 4);     // Copy them to the start of another byte array
+bytes1.set([0, 1, 2, 3], 8);    // Or just copy values direct from a regular array
+bytes1.slice(0, 12);    // => new Uint8Array([0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3])
+
+// Typed arrays also have a subarray method that
+
+// returns a portion of the array on which it is called:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 279). O'Reilly Media. Kindle Edition. 
+
+let ints2 = new Int16Array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);     // 10 short integers
+let last3 = ints.subarray(ints.length - 3, ints.length);    // Last 3 of them
+last3[0]    // => 7: this is the same as ints[7]
+
+// ex: subarray() vs slice()
+
+ints[9] = -1;   // Change a value in the original array and ...
+last3[2]    // => -1: it also changes in the subarray
+
+// ex: 
+
+last3.buffer    // The ArrayBuffer object for a typed array
+last3.buffer === ints.buffer    // => true: both are views of the same buffer
+last3.byteOffset    // => 14: this view starts at byte 14 of the buffer
+last3.byteLength    // => 6: this view is 6 bytes (3 16-bit ints) long
+last3.buffer.byteLength     // => 20: but the underlying buffer has 20 bytes
+
+// ex:
+
+let bytes2 = new Uint8Array(8);
+bytes2[0] = 1;  // Set the first byte to 1
+bytes2[0]   // => undefined: buffer doesn't have index 0
+bytes2.buffer[1] = 255;  // Try incorrectly to set a byte in the buffer
+bytes2.buffer[1]     // => 255: this just sets a regular JS property
+bytes2[1]   // => 0: the line above did not set the byte
+
+// ex:
+
+let bytes3 = new Uint8Array(1024);  // 1024 bytes
+let ints = new Uint32Array(bytes3.buffer);   // or 256 integers
+let floats = new Float64Array(bytes3.buffer);   // or 128 doubles
+
+// 11.2.5 DataView and Endianness
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 280). O'Reilly Media. Kindle Edition. 
