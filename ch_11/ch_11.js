@@ -168,7 +168,54 @@ m4.forEach((value, key) => { // note value, key NOT key, value
     // On the second invocation, value will be 2 and key will be "y"
 });
 
-// 11.1.3 WeakMap and WeakSet
+// 11.2 Typed Arrays and Binary Data
 
-// Flanagan, David. JavaScript: The Definitive Guide (p. 273). O'Reilly Media. Kindle Edition. 
+// Flanagan, David. JavaScript: The Definitive Guide (p. 275). O'Reilly Media. Kindle Edition. 
+
+// 11.2.2 Creating Typed Arrays
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 276). O'Reilly Media. Kindle Edition. 
+
+// The simplest way to create a typed array is to call the appropriate constructor 
+
+// with one numeric argument that specifies the number of elements you want in the array:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 276). O'Reilly Media. Kindle Edition. 
+
+let bytes = new Uint8Array(1024);   // 1024 bytes
+let matrix = new Float64Array(9);   // A 3x3 matrix
+let point = new Int16Array(3);  // A point in 3D space
+let rgba = new Uint8ClampedArray(4);    // A 4-byte RGBA pixel value
+let sudoku = new Int8Array(81);     // A 9x9 sudoku board
+
+// ex; from() and of() factory methods that work like Array.from() and Array.of():
+
+let white = Uint8ClampedArray.of(255,255,255,0);    // RGBA opaque white
+
+// ex: 
+
+let ints = Uint32Array.from(white);     // The same 4 numbers, but as ints
+
+// ex:
+
+// Floats truncated to ints, longer ints truncated to 8 bits
+
+Uint8Array.of(1.23, 2.99, 45000)    // => new UintArray([1, 2, 200])
+
+// ex: ArrayBuffer
+
+let buffer = new ArrayBuffer(1024*1024);
+buffer.byteLength   // => 1024*1024; one megabyte of memory
+
+// ex: you could create typed arrays like these:
+
+let asbytes = new Uint8Array(buffer);   // Viewed as bytes
+let asints = new Int32Array(buffer);    // Viewed as 32-bit signed ints
+
+let lastK = new Uint8Array(buffer, 1023 * 1024);    // Last kilobyte as bytes
+let inst2 = new Int32Array(buffer, 1024, 256);  // 2nd kilobyte as 256 integers
+
+// 11.2.3 Using Typed Arrays
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 278). O'Reilly Media. Kindle Edition. 
 
