@@ -298,3 +298,27 @@ let floats = new Float64Array(bytes3.buffer);   // or 128 doubles
 // 11.2.5 DataView and Endianness
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 280). O'Reilly Media. Kindle Edition. 
+
+// If the integer 0x00000001 is arranged in memory as 01 00 00 00, then
+// we're on a little-endian platform. On a big-endian platform, we'd get 
+// bytes 00 00 00 01 instead.
+let littleEndian = new Int8Array(new Int32Array([1]).buffer)[0] === 1;
+
+// ex: DataView class
+
+// Assume we have a typed array of bytes of binary data to process. First,
+// we create a DataView object so we can flexibly read and write
+// values from those bytes
+let view = new DataView(bytes.buffer,
+    bytes.byteOffset,
+    bytes.byteLength);
+
+let int = view.getInt32(0);     // Read big-endian signed int from byte 0
+int = view.getInt32(4, false);  // Next int is also big-endian
+int = view.getUint32(8, true);  // Next int is little-endian and unsigned
+view.setUint32(8, int, false);  // Write it back in big-endian format. 
+
+// 11.3 Pattern Matching with Regular Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 281). O'Reilly Media. Kindle Edition. 
+
