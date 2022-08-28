@@ -375,3 +375,68 @@ s2.replace(/\d+/gu, n => parseInt(n).toString(16))  // => "f times f is el"
 
 // ex: match()
 
+"7 plus 8 equals 15".match(/\d+/g)  // => ["7", "8", "15"]
+
+// ex: parsing a URL :
+
+// A very simple URL parsing RegEx:
+let url = /(\w+):\/\/([\w.]+)\/(\S*)/;
+let text = "Visit my blog at http://www.example.com/~david";
+let match = text.match(url);
+let fullurl, protocol, host, path;
+if(match !== null){
+    fullurl = match[0];     // fullurl == "http://www.example.com/~david"
+    protocol = match[1];    // protocol == "http"
+    host = match[2];    // host == "www.example.com"
+    path = match[3];    // path == "~david"
+}
+
+// ex: we could rewrite above like:
+
+let url1 = /(?<protocol>\w+):\/\/(?<host>[\w.]+)\/(?<path>\S*)/;
+let text1 = "Visit my blog at http://www.example.com/~david";
+let match1 = text.match(url);
+match[0]    // => "http://www.example.com/~david"
+match.input     // => text
+match.index     // => 17
+match.groups.protocol   // => "http"
+match.groups.host   // => "www.example.com"
+match.groups.path   // => "~david"
+
+// ex:
+
+let vowel = /[aeiou]/y;     // Sticky vowel match
+"test".match(vowel)     // => null: "test" does not begin with a vowel
+vowel.lastIndex = 1;    // Specify a different match position
+"test".match(vowel)[0]  // => "e": we found a vowel at position 1
+vowel.lastIndex     // => 2: lastIndex was automatically updated
+"test".match(vowel)     // => null: no vowel at position 2
+vowel.lastIndex     // => 0: lastIndex gets reset after failed match
+
+// ex: matchAll()
+
+// This makes matchAll() the easiest and most general way to loop through all matches within a string.
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 296). O'Reilly Media. Kindle Edition. 
+
+// ex: use matchAll() to loop through the words in a string of text
+
+// One or more Unicode alphabetic characters between word boundaries
+const words = /\b\p{Alphabetic}+\b/gu;  // \p is not supported in Firefox yet
+const text2 = "This is a naive test of the matchAll() method.";
+for(let word of text.matchAll(words)){
+    console.log(`Found '${word[0]}' at index ${word.index}.`);
+}
+
+// ex: split()
+
+"123,456,789".split(",")    // => ["123","456","789"]
+
+// ex:
+
+"1,2,3,\n4,5".split(/\s*,\s*/)  // => ["1","2","3","4","5"]
+
+// 11.3.3 The RegExp Class
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 296). O'Reilly Media. Kindle Edition. 
+
