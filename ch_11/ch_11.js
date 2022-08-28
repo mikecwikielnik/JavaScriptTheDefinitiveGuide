@@ -322,3 +322,56 @@ view.setUint32(8, int, false);  // Write it back in big-endian format.
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 281). O'Reilly Media. Kindle Edition. 
 
+// 11.3.1 Defining Regular Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 281). O'Reilly Media. Kindle Edition. 
+
+// ex:
+
+let pattern1 = /s$/;
+
+// or its equivalent:
+
+let pattern2 = new RegExp("s$");
+
+// ex: case-insensitive matching: match strings with both "s" or "S"
+
+let pattern3 = /s$/i;
+
+// ex: 
+
+let r = /\d{2,4}/;  // Match between two and four digits
+r = /\w{3}\d?/;     // Match exactly three word characters and an optional digit
+r = /\s+java\s+/;   // Match "java" with one or more space before and after
+r = /[^(*]/;    // Match zer or more characters that are not open parens
+
+// 11.3.2 String Methods for Pattern Matching
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 292). O'Reilly Media. Kindle Edition. 
+
+// ex: replace()
+
+// No matter how it is capitalized, replace it with the correct capitalization
+text.replace(/javascript/gi, "Javascript");
+
+// ex: replace quotation marks in a string with other characters:
+
+// A quote is a quotation mark, followed by any number of
+// nonquotation mark characters (which we capture), followed
+// by another quotation mark
+let quote = /"([^"]*)"/g;
+// Replace the straight quotation marks with guillemets
+// leaving the quoted text (stored in $1) unchanged.
+'He said "stop"'.replace(quote, '<<$1>>')   // => 'He said <<stop>>'
+
+// an example, here is code that uses a replacement function to 
+
+// convert decimal integers in a string to hexadecimal:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 294). O'Reilly Media. Kindle Edition. 
+
+let s2 = "15 tiems 15 is 225"
+s2.replace(/\d+/gu, n => parseInt(n).toString(16))  // => "f times f is el"
+
+// ex: match()
+
