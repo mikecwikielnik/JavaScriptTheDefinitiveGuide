@@ -440,3 +440,51 @@ for(let word of text.matchAll(words)){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 296). O'Reilly Media. Kindle Edition. 
 
+// ex:
+
+// Find all five digit numbers in a string. Note the double \\ in this case
+let zipcode = new RegExp("\\d{5}","g");
+
+// ex: 
+
+let exactMatch = /JavaScript/;
+let caseInsensitive = new RegExp(exactMatch, "i");
+
+
+// ex:
+
+let pattern4 = /Java/g;
+let text3 = "Javascript > Java";
+let match2;
+while((match = pattern4.exec(text3)) !== null){
+    console.log(`Matched ${match[0]} at ${match.index}`);
+    console.log(`Next search begins at ${pattern.lastIndex}`);
+}
+
+// Suppose, for example, that we wanted to find the index of 
+
+// all <p> tags within a string of HTML text. We might write code like this:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 299). O'Reilly Media. Kindle Edition. 
+
+let match3, positions = [];
+while((match = /<p>/g.exec(html)) !== null){ // POSSIBLE INFINITE LOOP
+    positions.push(match.index);
+}
+
+// ex: loop through words to find words that have double letterss:
+
+let dictionary = ["apple", "book", "coffee"];
+let doubleLetterWords = [];
+let doubleLetter = /(\w)\1/g;
+
+for(let word of dictionary){
+    if(doubleLetter.test(word)){
+        doubleLetterWords.push(word);
+    }
+}
+doubleLetterWords   // => ["apple", "coffee"]: "book" is missing!
+
+// 11.4 Dates and Times
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 300). O'Reilly Media. Kindle Edition. 
