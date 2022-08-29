@@ -514,3 +514,22 @@ let century2 = new Date("2100-01-01 T00:00:00Z");   // An ISO format date
 let d = new Date();     // Start with the current date
 d.setFullYear(d.getFullYear() + 1);     // Increment the year 
 
+// 11.4.1 Timestamps
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 302). O'Reilly Media. Kindle Edition. 
+
+// ex: adding 30 seconds to a Date
+
+d.setTime(d.getTime() + 30000);
+
+// ex: 
+
+let startTime = Date.now();
+reticulateSplines();    // Do some time-consuming operation
+let endTime = Date.now();
+console.log(`Spline reticulation took ${endTime - startTime}ms.`);
+
+// 11.4.2 Date Arithmetic
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 303). O'Reilly Media. Kindle Edition. 
+
