@@ -555,3 +555,25 @@ d2.toISOString()    // => "2020-01-02T01:10:30.000z"
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 304). O'Reilly Media. Kindle Edition. 
 
+// ex:
+
+class HTTPError extends Error {
+    constructor(status, statusText, url){
+        super(`${status} ${statusText}: ${url}`);
+        this.status = status;
+        this.statusText = statusText;
+        this.url = url;
+    }
+
+    getName(){return "HTTPError";}
+}
+
+let error = new HTTPError(404, "Not found", "http://example.com/");
+error.status    // => 404
+error.message   // => "404 Not Found: http://example.com/"
+error.name  // => "HTTPError"
+
+// 11.6 JSON Serialization and Parsing
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 306). O'Reilly Media. Kindle Edition. 
+
