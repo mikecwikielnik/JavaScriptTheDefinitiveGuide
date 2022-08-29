@@ -44,3 +44,23 @@ new Set("abc")  // => new Set(["a", "b", "c"])
 // 12.1 How Iterators Work
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 328). O'Reilly Media. Kindle Edition. 
+
+// ex: for/of loop loop written the "hard" way:
+
+let iterable = [99];
+let iterator = iterable[Symbol.iterator]();
+for(let result = iterator.next(); !result.done; result = iterator.next()){
+    console.log(result.value)   // result.value == 99
+}
+
+// ex: "partially used" iterator:
+
+let list = [1,2,3,4,5];
+let iter = list[Symbol.iterator]();
+let head = iter.next().value;   // head == 1
+let tail = [...iter];   // tail == [2,3,4,5]
+
+// 12.2 Implementing Iterable Objects
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 329). O'Reilly Media. Kindle Edition. 
+
