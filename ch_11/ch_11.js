@@ -592,3 +592,31 @@ JSON.stringify(o, null, 2)  // => '{\n "s": "test", \n "n": 0\n}'
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 307). O'Reilly Media. Kindle Edition. 
 
+// ex:
+
+let data = JSON.parse(text, function(key, value){
+    // Remove any values whose property name begins with an underscore
+    if(key[0] === "-") return undefined;
+
+    // If the value is a string in ISO 8601 date format convert it to a Date.
+    if(typeof value === "string" && 
+    /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d.\d\ddZ$/.test(value)){
+        return new Date(value);
+    }
+    
+    // Otherwise, return the value unchanged
+    return value;
+});
+
+// ex:
+
+// Specify what fields to serialize, and what order to serialize them in 
+let text4 = JSON.stringify(address, ["city", "state", "country"]);
+
+// Specify a replacer function that omits RegExp- value properties
+let json = JSON.stringify(o, (k, v) => v instanceof RegExp ? undefined: v);
+
+// 11.7 The Internationalization API
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 309). O'Reilly Media. Kindle Edition. 
+
