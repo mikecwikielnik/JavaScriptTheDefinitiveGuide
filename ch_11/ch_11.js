@@ -652,3 +652,23 @@ arabic(1234567890)  // => "١٢٣٤٥٦٧٨٩٠"
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 312). O'Reilly Media. Kindle Edition. 
 
+// ex:
+
+let d3 = new Date("2020-01-02T13:14:15Z");  // January 2nd, 2020, 13:14:15 UTC
+
+// With no options, we get a basic numeric date format
+Intl.DateTimeFormat("en-US").format(d3)     // => "1/2/2020"
+Intl.DateTimeFormat("fr-FR").format(d3)     // => "02/01/2020"
+
+// Spelled out weekday and month
+let opts2 = {weekday: "long", month: "long", year: "numeric", day: "numeric"};
+Intl.DateTimeFormat("en-US", opts2).format(d3)   // => "Thursday, January 2, 2020"
+Intl.DateTimeFormat("es-ES", opts2).format(d3)   // => "Jueves, 2 de Enero de 2020"
+
+// The time is NYC, for a french-speaking Canadian
+opts2 = {hour: "numeric", minute: "2-digit", timeZone: "America/New_York"};
+Intl.DateTimeFormat("fr-CA", opts2).format(d3)
+
+// 11.7.3 Comparing Strings
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 314). O'Reilly Media. Kindle Edition. 
