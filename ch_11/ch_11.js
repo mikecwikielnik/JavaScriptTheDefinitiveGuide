@@ -672,3 +672,26 @@ Intl.DateTimeFormat("fr-CA", opts2).format(d3)
 // 11.7.3 Comparing Strings
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 314). O'Reilly Media. Kindle Edition. 
+
+// ex:
+
+// A basic comparator for sorting in the user's locale
+// Never sort human-readable strings without passing something like this:
+const collator = new Intl.Collator().compare;
+["a", "z", "A", "Z"].sort(collator)     // => ["a", "A", "z", "Z"]
+
+// Filename often include numbers, so we should sort those specially
+const filenameOrder = new Intl.Collator(undefined, {numeric: true}).compare;
+["page10", "page9"].sort(filenameOrder)     // => ["page9", "page10"]
+
+// Find all strings that loosely match a target string
+const fuzzyMatcher = new Intl.Collator(undefined, {
+    sensitivity: "base",
+    ignorePunctuation: true
+}).compare;
+let strings = ["food", "fool", "Foo Bar"];
+strings.findIndex(s => fuzzyMatcher(s, "foobar") === 0)     // => 2
+
+// 11.8 The Console API
+
+// Flanagan, David. JavaScript: The Definitive Guide (pp. 316-317). O'Reilly Media. Kindle Edition. 
