@@ -751,7 +751,24 @@ params1.toString()  // => "q=term&opts=exact"
 url5.search = params1;
 url5.href   // => "http://example.com/?q=term&opts=exact"
 
-// 11.9.1 Legacy URL Functions
+// 11.10 Timers
 
-// Flanagan, David. JavaScript: The Definitive Guide (p. 322). O'Reilly Media. Kindle Edition. 
+// Flanagan, David. JavaScript: The Definitive Guide (p. 323). O'Reilly Media. Kindle Edition. 
+
+// ex: three setTimeout() calls that print console messages after 1s, 2s, and 3s:
+
+setTimeout(() => {console.log("Ready...");}, 1000);
+setTimeout(() => {console.log("set...");}, 2000);
+setTimeout(() => {console.log("go!");}, 3000);
+
+// ex:
+
+// Once a second: clear the console and print the current time
+let clock = setInterval(() => {
+    console.clear();
+    console.log(new Date().toLocaleTimeString());
+}, 1000);
+
+// After 10 seconds: stop the repeating code above.
+setTimeout(() => {clearInterval(clock);}, 10000);
 
