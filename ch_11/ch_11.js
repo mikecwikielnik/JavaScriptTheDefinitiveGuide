@@ -620,3 +620,35 @@ let json = JSON.stringify(o, (k, v) => v instanceof RegExp ? undefined: v);
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 309). O'Reilly Media. Kindle Edition. 
 
+// 11.7.1 Formatting Numbers
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 309). O'Reilly Media. Kindle Edition. 
+
+// ex:
+
+let euros = Intl.NumberFormat("es", {style: "currency", currency: "EUR"});
+euros.format(10)    // => "10,00 €": ten euros, Spanish formatting
+
+let pounds = Intl.NumberFormat("en", {style: "currency", currency: "GBP"});
+pounds.format(1000)     // => "£1,000.00": One thousand pounds, English formatting
+
+// ex:
+
+let data1 = [0.05, .75, 1];
+let formatData = intl.NumberFormat(undefined, {
+    style: "percent",
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1
+}).format;
+
+data.map(formatData)    // => ["5.0%", "75.0%", "100.0%"]: in en-US locale
+
+// ex: arabic numbers example
+
+let arabic = Intl.NumberFormat("ar", {useGrouping: false}).format;
+arabic(1234567890)  // => "١٢٣٤٥٦٧٨٩٠"
+
+// 11.7.2 Formatting Dates and Times
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 312). O'Reilly Media. Kindle Edition. 
+
