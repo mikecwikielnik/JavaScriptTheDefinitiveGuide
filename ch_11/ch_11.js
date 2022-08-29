@@ -542,3 +542,16 @@ d1.setMonth(d.getMonth() + d.getDate() + 14);
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 303). O'Reilly Media. Kindle Edition. 
 
+// ex: converting Date objects to strings:
+
+let d2 = new Date(2020, 0, 1, 17, 10, 30);  // 5:10:30pm on NYD 2020
+d2.toString()   // => "Wed Jan 01 2020 17:10:30 GMT-0800 (PST)"
+d2.toUTCString()    // => "Thu, 02 Jan 2020 01:10:30 GMT"
+d2.toLocaleDateString()     // => "1/1/2020": 'en-US' locale
+d2.toLocaleTimeString()     // => "5:10:30 PM": 'en-US' locale
+d2.toISOString()    // => "2020-01-02T01:10:30.000z"
+
+// 11.5 Error Classes
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 304). O'Reilly Media. Kindle Edition. 
+
