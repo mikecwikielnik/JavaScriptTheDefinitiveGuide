@@ -533,3 +533,12 @@ console.log(`Spline reticulation took ${endTime - startTime}ms.`);
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 303). O'Reilly Media. Kindle Edition. 
 
+// ex: adds three months and two weeks to the current date:
+
+let d1 = new Date();
+d1.setMonth(d.getMonth() + d.getDate() + 14);
+
+// 11.4.3 Formatting and Parsing Date Strings
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 303). O'Reilly Media. Kindle Edition. 
+
