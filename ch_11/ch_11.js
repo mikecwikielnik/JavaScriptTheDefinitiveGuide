@@ -577,3 +577,18 @@ error.name  // => "HTTPError"
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 306). O'Reilly Media. Kindle Edition. 
 
+// ex:
+
+let o1 = {s: "", n: 0, a:[true, false, null]};
+let s3 = JSON.stringify(o);     // s == '{"s":"","n":0,"a"[true,false,null]}'
+let copy1 = JSON.parse(s3);     // copy == {s:""",n:0,a:[true,false,null]}
+
+// ex:
+
+let o2 = {s: "test", n: 0};
+JSON.stringify(o, null, 2)  // => '{\n "s": "test", \n "n": 0\n}'
+
+// 11.6.1 JSON Customizations
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 307). O'Reilly Media. Kindle Edition. 
+
