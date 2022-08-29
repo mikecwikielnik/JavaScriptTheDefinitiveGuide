@@ -692,6 +692,66 @@ const fuzzyMatcher = new Intl.Collator(undefined, {
 let strings = ["food", "fool", "Foo Bar"];
 strings.findIndex(s => fuzzyMatcher(s, "foobar") === 0)     // => 2
 
-// 11.8 The Console API
+// 11.9 URL APIs
 
-// Flanagan, David. JavaScript: The Definitive Guide (pp. 316-317). O'Reilly Media. Kindle Edition. 
+// Flanagan, David. JavaScript: The Definitive Guide (p. 320). O'Reilly Media. Kindle Edition. 
+
+let url2 = new URL("https://example.com:8000/path/name?q=term#fragment");
+url2.href   // => "https://example.com:8000/path/name?q=term#fragment"
+url2.origin     // => "https://example.com:8000"
+url2.protocol   // => "https:"
+url2.host   // => "example.com:8000"
+url2.hostname   // => "example.com"
+url2.port   // => "8000"
+url2.pathname   // => "/path/name"
+url2.search     // => "?q=term"
+url2.hash   // => "#fragment"
+
+// ex:
+
+let url3 = new URL("https://example.com");  // Start wiht our server
+url3.pathname = "api/search";   // Add a path to an API endpoint
+url3.search = "q=test";     // Add a query parameter
+url3.toString()     // => "https://example.com/api/search?q=test"
+
+// ex:
+
+let url4 = new URL("https://example.com/search");
+url4.search     // => "": no query yet
+url4.searchParams.append("q", "term");  // Add a search parameter
+url4.search     // => "?q=term"
+url4.searchParams.set("q", "x");    // Change the value of this parameter
+url4.search     // => "?q=x"
+url4.searchParams.get("q")  // => "x": query the parameter value
+url4.searchParams.has("q")  // => true: there is a q parameter
+url4.searchParams.has("p")  // => false: there is no p parameter
+url4.searchParams.append("opts", "1");  // Add another searcch parameter
+url4.search     // => "?q=x&opts=1"
+url4.searchParams.append("opts", "&");  // Add another value for same name
+url4.search     // => "?q=x&opts=1&opts=%26": note escape
+url4.searchParams.get("opts")   // => "1": the first value
+url4.searchParams.getAll("opts")    // => ["1", "&"]: all values
+url4.searchParams.sort();   // Put params in alphabetical order
+url4.search     // => "?opts=1&opts=%26&q=x"
+url4.searchParams.set("opts", "y");     // Change the opts param
+url4.search     // => "?opts=y&q=x"
+// searchParams is iterable
+// [...url4.searchParams]   // => [["opts", "y"], ["q", "x"]]
+url4.searchParams.delete("opts");   // Delete the opts param
+url4.search     // => "?q=x"
+url4.href   // => "https://example.com/search?q=x"
+
+// ex:
+
+let url5 = new URL("https://example.com");
+let params1 = new URLSearchParams();
+params1.append("q", "term");
+params1.append("opts", "exact");
+params1.toString()  // => "q=term&opts=exact"
+url5.search = params1;
+url5.href   // => "http://example.com/?q=term&opts=exact"
+
+// 11.9.1 Legacy URL Functions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 322). O'Reilly Media. Kindle Edition. 
+
