@@ -488,3 +488,29 @@ doubleLetterWords   // => ["apple", "coffee"]: "book" is missing!
 // 11.4 Dates and Times
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 300). O'Reilly Media. Kindle Edition. 
+
+let now = new Date();   // The current time
+
+// If you pass one numeric argument, the Date fn interprets it as the number of milliseconds since
+
+let epoch = new Date(0);    // Midnight 1/1/1970, GMT
+
+// ex: if you specify two or more integer arguments, interpreted as: year, month, day, hour, minute, second and millisecond
+
+let century = new Date(2100,    // Year 2100
+            0,  // Jan
+            1,  // 1st
+            2,3,4,5);   // 02:03:04:005, local time
+
+// ex: UTC (Universal Coordinated Time, aka GMT)
+
+// Midnight in England, January 1, 2100
+let century1 = new Date(Date.UTC(2100, 0, 1));
+
+// ex: parsing a string
+
+let century2 = new Date("2100-01-01 T00:00:00Z");   // An ISO format date
+
+let d = new Date();     // Start with the current date
+d.setFullYear(d.getFullYear() + 1);     // Increment the year 
+
