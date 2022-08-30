@@ -178,3 +178,67 @@ function words(s){
 // 12.3 Generators
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 332). O'Reilly Media. Kindle Edition. 
+
+// ex:
+
+// A generator function that yields the set of one digit (base-10) primes
+function* oneDigitPrimes(){ // Invoking this function does not run the code
+    yield 2;    // but just returns a generator object. Calling
+    yield 3;    // the next() method of that generator runs
+    yield 5;    // the code until a yield statement provides
+    yield 7;    // the return value for the next() method.
+}
+
+// When we invoke the generator function, we get a generator
+let primes = oneDigitPrimes();
+
+// A generator is an iterator object that iterates the yielded values
+primes.next().value     // => 2
+primes.next().value     // => 3
+primes.next().value     // => 5
+primes.next().value     // => 7
+primes.next().done     // => true
+
+// Generators have a Symbol.iterator method to make them iterable
+primes[Symbol.iterator]()   // => primes
+
+// We can use generators like other iterable types
+// [...oneDigitPrimes09]    // => [2,3,5,7]
+let sum1 = 0;
+for(let pries of oneDigitPrimes()) sum += primes;
+sum     // => 17
+
+// ex:
+
+const seq = function*(from,to){
+    for(let i = from; i <= to; i++)yield i;
+};
+// [...seq(3,5)]    // => [3,4,5]
+
+// ex:
+
+let o = {
+    x: 1, y: 2, z: 3,
+    // A generator that yields each of the keys of this object
+    *g(){
+        for(let key of Object.keys(this)){
+            yield key;
+        }
+    }
+};
+// [...o.g()]   // => ["x", "y", "z", "g"]
+
+// ex: 
+
+/*
+
+*[Symbol.iterator](){
+    for(let x = Math.ceil(this.from); x <= this.to; x++) yield x;
+}
+
+*/
+
+// 12.3.1 Generator Examples
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 334). O'Reilly Media. Kindle Edition. 
+
