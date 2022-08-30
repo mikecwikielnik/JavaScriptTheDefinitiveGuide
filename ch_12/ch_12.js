@@ -305,3 +305,53 @@ function* zip(...iterables){
 // 12.3.2 yield* and Recursive Generators
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 335). O'Reilly Media. Kindle Edition. 
+
+function* sequence(...iterables){
+    for(let iterable of iterables){
+        for(let item of iterable){
+            yield item;
+        }
+    }
+}
+
+// [...sequence("abc", oneDigitPrimes())]   // => ["a","b","c",2,3,5,7]
+
+// ex: 
+
+function* sequence(...iterables){
+    for(let iterable of iterables){
+        yield* iterable;
+    }
+}
+
+// [...sequence("abc", oneDigitPrimes())]   // => ["a","b","c",2,3,5,7]
+
+// 12.4 Advanced Generator Features
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 336). O'Reilly Media. Kindle Edition. 
+
+// 12.4.1 The Return Value of a Generator Function
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 336). O'Reilly Media. Kindle Edition. 
+
+// ex: 
+
+function *oneAndDone(){
+    yield 1;
+    return "done";
+}
+
+// The return value does not appear in normal iteration
+// [...oneAndDone()]    // => [1]
+
+// But it is available if you explicitly call next()
+let generator = oneAndDone();
+generator.next()    // => {value: 1, done: false}
+generator.next()    // => {value: "done", done: true}
+// If the generator is already done, the return value is not returned again
+generator.next()    // => {value: undefined, done: true}
+
+// 12.4.2 The Value of a yield Expression
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 337). O'Reilly Media. Kindle Edition. 
+
