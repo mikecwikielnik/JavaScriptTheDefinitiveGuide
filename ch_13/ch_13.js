@@ -139,3 +139,60 @@ function getText(url, callback){
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 346). O'Reilly Media. Kindle Edition. 
 
+// 13.2.1 Using Promises
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 347). O'Reilly Media. Kindle Edition. 
+
+// ex:
+
+getJSON(url).then(jsonData => {
+    // This is a callback function that will be asynchronously
+    // invoked with the parsed JSON value when it becomes available.
+});
+
+// ex: idiomatic examples
+
+// Suppose you have a function like this to display a user profile
+function displayUserProfile(profile){/* implementation omitted */}
+
+// Here's how you might use that function with a Promise
+// Notice how this line of code reads almost like an English sentence:
+getJSON("/api/user/profile").then(displayUserProfile)
+
+// Handling errors with Promises
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 348). O'Reilly Media. Kindle Edition. 
+
+// ex: For promises, we can do this by passing a 2nd fn to the then() method:
+
+getJSON("/api/user/profile").then(displayUserProfile, handleProfileError);
+
+/*
+
+When a Promise-based asynchronous computation completes normally, 
+
+it passes its result to the function that is the first argument to then().
+
+Flanagan, David. JavaScript: The Definitive Guide (p. 349). O'Reilly Media. Kindle Edition. 
+
+*/
+
+/*
+
+So, in the code above, if getJSON() runs normally, 
+
+it passes its result to displayUserProfile(). If there is an error,
+
+then getJSON() passes an Error object to handleProfileError().
+
+Flanagan, David. JavaScript: The Definitive Guide (p. 349). O'Reilly Media. Kindle Edition. 
+
+*/
+
+// ex: A better way to handle errors is this:
+
+getJSON("/api/user/profile").then(displayUserProfile).catch(handleProfileError);
+
+// 13.2.2 Chaining Promises
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 350). O'Reilly Media. Kindle Edition. 
