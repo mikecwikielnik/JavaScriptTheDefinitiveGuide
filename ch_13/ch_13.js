@@ -261,3 +261,21 @@ fetch(theURL)   // task 1; returns promise 1
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 353). O'Reilly Media. Kindle Edition. 
 
+// ex: verbose and nonidiomatic way (aka wordy and not easy to understand- naturally!)
+
+function c1(response){  // callback1
+    let p4 = response.json();
+    return p4;  // returns promise 4
+}
+
+function c2(profile){   // callback2
+    displayUserProfile(profile);
+}
+
+let p1 = fetch("/api/user/profile");    // promise 1, task 1
+let p2 = p1.then(c1);   // promise 2, task 2
+let p3 = p2.then(c2);   // promise 3, task 3
+
+// 13.2.4 More on Promises and Errors
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 355). O'Reilly Media. Kindle Edition. 
