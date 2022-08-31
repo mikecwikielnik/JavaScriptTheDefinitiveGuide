@@ -73,6 +73,8 @@ function getCurrentVersionNumber(versionCallback){  // Note callback argument
     };
 }
 
+const { profile } = require("console");
+const { rename } = require("fs");
 // 13.1.4 Callbacks and Events in Node
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 345). O'Reilly Media. Kindle Edition. 
@@ -100,6 +102,7 @@ fs.readFile("config.json", "utf-8", (err, text) => {
 // ex:
 
 const https = require("https");
+const { cachedDataVersionTag } = require("v8");
 
 // Read teh text content of the URL and asynchronously pass it to the callback.
 function getText(url, callback){
@@ -196,3 +199,65 @@ getJSON("/api/user/profile").then(displayUserProfile).catch(handleProfileError);
 // 13.2.2 Chaining Promises
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 350). O'Reilly Media. Kindle Edition. 
+
+// ex: hypothetical Promise chain:
+
+fetch(documentURL)  // Make an HTTP request
+    .then(response => response.json())  // Ask for the JSON body of the response
+    .then(document => {     // When we get the parsed JSON
+        return render(document);    // display the document to the user
+    })
+    .then(rendered => {     // When we get teh rendered document
+        cacheInDatabase(rendered);  // cache it in the local database.
+    })
+    .catch(error => handle(error));     // Handle any erros that occur
+
+// We will continue to explore the idea of using Promise chains to make HTTP requests, however.
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 351). O'Reilly Media. Kindle Edition. 
+
+// ex:
+
+fetch("/api/user/profile").then(response => {
+    // When the promise resolves, we have status and headers
+    if(response.ok &&
+        response.headers.get("Content-Type") === "applications/json"){
+            // What can we do here? We don't actually have the response body yet. 
+    }
+});
+
+// ex: a bad promises example
+
+fetch("/api/user/profile").then(response => {
+    response.json().then(profile => { // Ask for the JSON-parsed body
+        // When the body of the response arrives, it will be automatically
+        // parsed as JSON and passed to this function.
+        displayUserProfile(profile);
+    });
+});
+
+// ex: a good promises example
+
+fetch("/api/user/profile")
+    .then(response => {
+        return response.json();
+    })
+    .then(profile => {
+        displayUserProfile(profile);
+    });
+
+// method invocations in this code: fetch().then().then()
+// ignoring arguments
+
+fetch().then().then()   // This is a method chain
+
+// ex: simplified version of the original fetch() above. 
+
+fetch(theURL)   // task 1; returns promise 1
+    .then(callback1)     // task 2; returns promise 2
+    .then(callback2);    // task 3; returns promise 3
+
+// 13.2.3 Resolving Promises
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 353). O'Reilly Media. Kindle Edition. 
+
