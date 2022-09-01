@@ -599,3 +599,66 @@ getHighScore().then(displayHighScore).catch(console.error);
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 369). O'Reilly Media. Kindle Edition. 
 
+// ex:
+
+async function f(x){/* body */}
+
+// You can think about this as a Promise-returning function wrapped around the body of your original function:
+
+// Flanagan, David. JavaScript: The Definitive Guide (pp. 369-370). O'Reilly Media. Kindle Edition. 
+
+function f(x){
+    return new Promise(function(resolve, reject){
+        try{
+            resolve((function(x){/* body */})(x));
+        }
+        catch(e){
+            reject(e);
+        }
+    });
+}
+
+// 13.4 Asynchronous Iteration
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 370). O'Reilly Media. Kindle Edition. 
+
+// 13.4.1 The for/await Loop
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 370). O'Reilly Media. Kindle Edition. 
+
+const fs = require("fs");
+
+async function parseFile(filename){
+    let stream = fs.createReadStrem(filename, {encoding: "utf-8"});
+    for await (let chunk of stream){
+        parseChunk(chunk);  // Assume parseChunk() is defined elsewhere
+    }
+}
+
+// ex:
+
+// you have an array of urls
+
+const urls1 = [url1, url2, url3]
+
+// you can fetch on each URL to get an array of Promises:
+
+const promises = urls.map(url => fetch(url));
+
+// ex: arrays are iterable, we can iterate thru the array of promises with a regular for/of loop
+
+for(const promise of promises){
+    response = await promise;
+    handle(response);
+}
+
+// ex: a simpler version below of the code above
+
+for await(const response of promises){
+    handle(response)
+}
+
+// 13.4.2 Asynchronous Iterators
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 371). O'Reilly Media. Kindle Edition. 
+
