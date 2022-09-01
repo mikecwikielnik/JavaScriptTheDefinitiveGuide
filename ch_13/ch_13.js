@@ -566,3 +566,16 @@ promiseSequence(urls, fetchBody)
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 367). O'Reilly Media. Kindle Edition. 
 
+// 13.3.1 await Expressions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 368). O'Reilly Media. Kindle Edition. 
+
+// ex:
+
+let response = await fetch("/api/user/profile");
+let profile = await response.json();
+
+// 13.3.2 async Functions
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 368). O'Reilly Media. Kindle Edition. 
+
