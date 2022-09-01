@@ -472,3 +472,97 @@ function getJSON(url){
 // 13.2.7 Promises in Sequence
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 365). O'Reilly Media. Kindle Edition. 
+
+// ex: array of arbitrary length and unknown content, can't write our a Promise chain in advance:
+
+function fetchSequentially(urls){
+    // We'll store the URL bodies here as we fetch tehm
+    const bodies = [];
+
+    // Here's a Promise-returning function that fetches one body
+    function fetchOne(url){
+        return fetch(url)
+            .then(response => response.text())
+            .then(body => {
+                // We save the body to the array, and we're purposely 
+                // omitting a return value here (returning undefined)
+                bodies.push(body);
+            });
+    }
+
+    // Start with a Promise that will fulfill right away (with value undefined)
+    let p = Promise.resolve(undefined);
+
+    // Now loop through the desired URLs, building a Promise chian
+    // of arbitrary length, fetching one URLs at each stage of the chain
+    for(url of urls){
+        p = p.then(() => fetchOne(url));
+    }
+
+    // When the last Promise in that chain is fulfilled, then the
+    // bodies array is ready. So let's return a Promise for that
+    // bodies array. Note that we don't include any error handlers:
+    // we want to allow erros to propagate to the caller.
+    return p.then(() => bodies);
+}
+
+fetchSequentially(urls)
+    .then(bodies => {/* do somethign with the array of strings */})
+    .catch(e => console.log(e));
+
+// This function takes an array of input values and a "promiseMaker" function.
+// For any input value x in the array, promiseMaker(x) should return a Promise
+// that will fulfill to an output value. This function returns a Promise
+// that fulfills to an array of the computed output values.
+//
+// Rather than creating the Promises all at once and letting them run in 
+// parallel, however, promiseSequence() only runs one Promise at a time
+// and does ont call promiseMaker() for a value until the previous Promise
+// has fulfilled.
+function promiseSequence(inputs, promiseMaker){
+    // Make a private copy of the array that we can modify
+    inputs = [...inputs];
+
+    // Here's the function that we'll use as a Promise callback
+    // This is the pseudorecursive magic that makes this all work
+    function handleNextInput(outputs){
+        if(inputs.length === 0){
+            // If there are no more inputs left, then return the array
+            // of outputs, finally fulfilling this Promise and all the
+            // previous resolved-but-not-fulfilled Promises
+            return outputs;
+        }else{
+            // If there are still input values to process, then we'll
+            // return a Promise object, resolving the current Promise
+            // with the future value from a new Promise.
+            let nextInput = inputs.shift();     // Get the next input value,
+            return promiseMaker(nextInput)   // compute the next output value,
+                // then create a new outputs array with teh new output value
+                .then(output => outputs.concat(output))
+                // Then "recurse", passing the new, longer, outputs array
+                .then(handleNextInput);
+        }
+    }
+
+    // Start with a Promise that fulfills to an empty array and use
+    // the function above as its callback.
+    return Promise.resolve([]).then(handleNextInput);
+}
+
+// This promiseSequence() function is intentionally generic. 
+
+// We can use it to fetch URLs with code like this:
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 367). O'Reilly Media. Kindle Edition. 
+
+// Given a URL, return a Promise that fulfills to the URL body text
+function fetchBody(url){return fetch(url).then(r => r.text());}
+// Use it to sequentically fetch a bunch of URL bodies
+promiseSequence(urls, fetchBody)
+    .then(bodies => {/* do something wiht the array of strings */})
+    .catch(console.error);
+
+// 13.3 async and await
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 367). O'Reilly Media. Kindle Edition. 
+
