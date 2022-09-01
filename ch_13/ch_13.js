@@ -362,3 +362,25 @@ queryDatabase()
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 360). O'Reilly Media. Kindle Edition. 
 
+// ex: fetch the text content of multiple URLs
+
+// We start with an array of URLs
+const urls = [/* zero or more URLs here */];
+// And convert it to an array of Promise objects
+promises = urls.map(url => fetch(url).then(r => r.text()));
+// Now get a Promise to run all those Promises in parallel
+Promise.all(promises)
+    .then(bodies => {/* do something with the array of strings */})
+    .catch(e => console.error(e));
+
+// ex: Promise.allSettled() method
+
+Promise.allSettled([Promise.resolve(1), Promise.reject(2), 3]).then(results => {
+    results[0]  // => {status: "fulfilled", value: 1}
+    results[1]  // => {status: "rejected", reason: 2}
+    results[2]  // => {status: "fulfilled", value: 3}
+});
+
+// 13.2.6 Making Promises
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 361). O'Reilly Media. Kindle Edition. 
