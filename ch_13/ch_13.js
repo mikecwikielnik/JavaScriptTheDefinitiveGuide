@@ -102,6 +102,7 @@ fs.readFile("config.json", "utf-8", (err, text) => {
 // ex:
 
 const https = require("https");
+const { resolve } = require("path");
 const { cachedDataVersionTag } = require("v8");
 
 // Read teh text content of the URL and asynchronously pass it to the callback.
@@ -384,3 +385,90 @@ Promise.allSettled([Promise.resolve(1), Promise.reject(2), 3]).then(results => {
 // 13.2.6 Making Promises
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 361). O'Reilly Media. Kindle Edition. 
+
+// Promises based on other Promises
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 361). O'Reilly Media. Kindle Edition. 
+
+// ex:
+
+function getJSON(url){
+    return fetch(url).then(response => response.json());
+}
+
+// ex: another Promise-returning function, using getJSON() as the source of the initial Promise:
+
+function getHighScore(){
+    return getJSON("/api/user/profile").then(profile => profile.highscore);
+}
+
+// Promises from scratch
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 363). O'Reilly Media. Kindle Edition. 
+
+// ex: a Promised-based wait() function
+
+function wait(duration){
+    // Create and return a new Promise
+    return new Promise((resolve, reject) => { // These control the Promise
+        // If the argument is invalid, reject the Promise
+        if(duration < 0){
+            reject(new Error("Time travel not yet implemented"));
+        }
+        // Otherwise, wait asynchronously adn then resolve the Promise.
+        // setTimeout will invoke resolve() with no argumetns, which means
+        // that the Promise will fulfill with the undefined value
+        setTimeout(resolve, duration);
+    });
+}
+
+// Example 13-1. An asynchronous getJSON() function
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 364). O'Reilly Media. Kindle Edition. 
+
+const http = require("http");
+
+function getJSON(url){
+    // Create and return a new Promise
+    return new Promise((resolve, reject) => {
+        // Start an HTTP GET request for the specified URL
+        request = http.get(url, response => { // called when response starts
+            // Reject the Promise if the HTTP status is wrong
+            if(response.statusCode !== 200){
+                reject(new Error(`HTTP status ${response.statusCode}`));
+                response.resume();  // so we don't leak memory
+            }
+            // And reject if the response headers are wrong
+            else if(response.headers["content-type"] !== "application/json"){
+                reject(new Error("Invalid content-type"));
+                response.resume();  // don't leak memory
+            }
+            else{
+                // Otherwise, register events to read the body of the response
+                let body = "";
+                response.setEncoding("utf-8");
+                response.on("data", chunk => {body += chunk;});
+                response.on("end", () => {
+                    // When the response body is complete, try to parse it
+                    try{
+                        let parsed = JSON.parse(body);
+                        // If it parsed successfully, fulfill the Promise
+                        resolve(parsed);
+                    } catch(e){
+                        // If parsing failed, reject the Promise
+                        reject(e);
+                    }
+                });
+            }
+        });
+        // We also reject the Promise if the request fails before we
+        // even get a response (such as when the network is down)
+        request.on("error", error => {
+            reject(error);
+        });
+    });
+}
+
+// 13.2.7 Promises in Sequence
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 365). O'Reilly Media. Kindle Edition. 
