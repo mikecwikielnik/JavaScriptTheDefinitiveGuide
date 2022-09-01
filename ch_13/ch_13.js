@@ -579,3 +579,23 @@ let profile = await response.json();
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 368). O'Reilly Media. Kindle Edition. 
 
+// ex: a rewritten example to use async and await:
+
+async function getHighScore(){
+    let response = await fetch("/api/user/profile");
+    let profile = await response.json();
+    return profile.highScore;
+}
+
+// ex:
+
+displayHighScore(await getHighScore());
+
+// ex: below you can't use await and have to deal with a returned Promise in the regular way:
+
+getHighScore().then(displayHighScore).catch(console.error);
+
+// 13.3.3 Awaiting Multiple Promises
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 369). O'Reilly Media. Kindle Edition. 
+
