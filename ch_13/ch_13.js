@@ -26,7 +26,7 @@ let updateIntervalID = setInterval(checkForUpdates, 60000);
 // setInterval() returns a value that we can use to stop the repeated
 // invocations by calling clearInterval(). (Similarly, setTimeout() 
 // returns a value that you can pass to clearTimeout())
-function stopCheckingForUpdates(){
+function stopCheckingForUpdates() {
     clearInterval(updateIntervalID);
 }
 
@@ -50,25 +50,25 @@ okay.addEventListener('click', applyUpdate);
 
 // ex: JavaScript running in the browser can fetch data from the web server:
 
-function getCurrentVersionNumber(versionCallback){  // Note callback argument
+function getCurrentVersionNumber(versionCallback) {  // Note callback argument
     // Make a scripted HTTP request to a backend version API
     let request = new XMLHttpRequest();
     request.open("GET", "http://www.example.com/api/version");
     request.send();
 
     // Register a callback that will be invoked when the response arrives
-    request.onload = function(){
-        if(request.status === 200){
+    request.onload = function () {
+        if (request.status === 200) {
             // If HTTP status is good, get version number and call callback.
             let currentVersion = parseFloat(request.responseText);
             versionCallback(null, currentVersion);
-        }else{
+        } else {
             // Otherwise report an error to the callback
             versionCallback(response.statusText, null);
         }
     };
     // Register another callback that will be invoked for network erros
-    request.onerror = request.ontimeout = function(e){
+    request.onerror = request.ontimeout = function (e) {
         versionCallback(e.type, null);
     };
 }
@@ -87,10 +87,10 @@ let options = {     // An object to hold options for our program
 
 // Read a configuration file, then call the callback function
 fs.readFile("config.json", "utf-8", (err, text) => {
-    if(err){
+    if (err) {
         // If there was an error, display a warning, but continue
         console.warn("Could not read config file:", err);
-    }else{
+    } else {
         // Otherwise, parse the file contents and assign to the options object
         Object.assign(options, JSON.parse(text));
     }
@@ -105,7 +105,7 @@ const https = require("https");
 const { cachedDataVersionTag } = require("v8");
 
 // Read teh text content of the URL and asynchronously pass it to the callback.
-function getText(url, callback){
+function getText(url, callback) {
     // Start an HTTP GET request for the URL
     request = https.get(url);
 
@@ -120,13 +120,13 @@ function getText(url, callback){
         let body = "";  // which we will accumulate here
 
         // This event handler is called when a chunk of the body is ready
-        response.on("data", chunk => {body += chunk;});
+        response.on("data", chunk => { body += chunk; });
 
         // This event handler is called when the resposne is complete
         response.on("end", () => {
-            if(httpStatus === 200){ // IF the HTTP response was good
+            if (httpStatus === 200) { // IF the HTTP response was good
                 callback(null, body);   // Pass response body to the callback
-            }else{  // Otherwise pass an error
+            } else {  // Otherwise pass an error
                 callback(httpStatus, null);
             }
         });
@@ -156,7 +156,7 @@ getJSON(url).then(jsonData => {
 // ex: idiomatic examples
 
 // Suppose you have a function like this to display a user profile
-function displayUserProfile(profile){/* implementation omitted */}
+function displayUserProfile(profile) {/* implementation omitted */ }
 
 // Here's how you might use that function with a Promise
 // Notice how this line of code reads almost like an English sentence:
@@ -220,9 +220,9 @@ fetch(documentURL)  // Make an HTTP request
 
 fetch("/api/user/profile").then(response => {
     // When the promise resolves, we have status and headers
-    if(response.ok &&
-        response.headers.get("Content-Type") === "applications/json"){
-            // What can we do here? We don't actually have the response body yet. 
+    if (response.ok &&
+        response.headers.get("Content-Type") === "applications/json") {
+        // What can we do here? We don't actually have the response body yet. 
     }
 });
 
@@ -263,12 +263,12 @@ fetch(theURL)   // task 1; returns promise 1
 
 // ex: verbose and nonidiomatic way (aka wordy and not easy to understand- naturally!)
 
-function c1(response){  // callback1
+function c1(response) {  // callback1
     let p4 = response.json();
     return p4;  // returns promise 4
 }
 
-function c2(profile){   // callback2
+function c2(profile) {   // callback2
     displayUserProfile(profile);
 }
 
@@ -279,3 +279,86 @@ let p3 = p2.then(c2);   // promise 3, task 3
 // 13.2.4 More on Promises and Errors
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 355). O'Reilly Media. Kindle Edition. 
+
+// The catch and finally methods
+
+// Flanagan, David.JavaScript: The Definitive Guide(p. 356).O'Reilly Media. Kindle Edition. 
+
+// ex: a shortcut
+
+p.then(null, c);
+p.catch(c);
+
+// ex: A more realistic example of the URL-fetching code
+
+fetch("/api/user/profile")  // Start the HTTP request
+    .then(response => {     // Call this when status and headers are ready
+    if(!response.ok){   // IF we got a 404 Not Found or similar error
+        return null;    // Maybe user is logged out; return null profile
+    }
+
+    // Now check the headers to ensure that the server sent us JSON
+    // If not, our server is brok, and this is a serious error!
+    let type = response.headers.get("content=type");
+    if(type !== "application/json"){
+        throw new TypeError(`Expected JSON, get ${type}`);
+    }
+
+    // If we get here, then we got a 2xx status and a JSON content-type
+    // so we can confidently return a Promise for the response
+    // body as a JSON object.
+    return response.json();
+    })
+    .then(profile => {  // Called with the parsed response body or null
+        if(profile){
+            displayUserProfile(profile);
+        }
+        else{ // IF we got a 404 error above and returned null we end up here
+            displayLoggedOutProfilePage();
+        }
+    })
+    .catch(e => {
+        if(e instanceof NetworkError){
+            // fetch() can faill this way if the iternet connection is down
+            displayErrorMessage("Check the internet");
+        }
+        else if(e instanceof TypeError){
+            // This happens if we throw TypeError above
+            displayErrorMessage("Something is wrong with our server!");
+        }
+        else{
+            // This must be some kind of unanticipated error
+            console.error(e);
+        }
+    });
+
+// ex: 
+
+startAsyncOperation()
+    .then(doStageTwo)
+    .catch(recoverFromStageTwoError)
+    .then(doStageThree)
+    .then(doStageFour)
+    .catch(logStageThreeAndFourErros);
+
+// ex: a Promise-based operation to query a database:
+
+queryDatabase()
+    .then(displayTable)
+    .catch(displayDatabaseError);
+
+// ex: a solution to the previous code
+
+queryDatabase()
+    .catch(e => wait(500).then(queryDatabase))  // On failure, wait and retry
+    .then(displayTable)
+    .catch(displayDatabaseError);
+
+// If the hypothetical failures are truly random, then adding this one line of code should reduce your error rate from 1% to .01%.
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 359). O'Reilly Media. Kindle Edition. 
+
+// 13.2.5 Promises in Parallel
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 360). O'Reilly Media. Kindle Edition. 
+
