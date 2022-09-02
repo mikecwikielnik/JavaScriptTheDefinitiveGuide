@@ -658,7 +658,33 @@ for await(const response of promises){
     handle(response)
 }
 
-// 13.4.2 Asynchronous Iterators
+// 13.4.3 Asynchronous Generators
 
-// Flanagan, David. JavaScript: The Definitive Guide (p. 371). O'Reilly Media. Kindle Edition. 
+// Flanagan, David. JavaScript: The Definitive Guide (p. 372). O'Reilly Media. Kindle Edition. 
+
+// A Promise-based wrapper around setTimeout() that we can use await with.
+// Retruns a Promise that fulfills in the specified number of ms
+function elapsedTime(ms){
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// An async generator function that increments a counter and yields it
+// a specified (or infinite) number of times at a specified interval.
+async function* clock(interval, max = Infinity){
+    for(let count = 1; count <= max; count++){ // regular for loop
+        await elapsedTime(interval);    // wait for time to pass
+        yield count;    // yield the counter
+    }
+}
+
+// A test function that uses the async generator with for/await
+async function test(){  // Async so we can use for/await
+    for await (let tick of clock(300, 100)){ // Loop 100 every 300ms
+        console.log(tick);
+    }
+}
+
+// 13.4.4 Implementing Asynchronous Iterators
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 373). O'Reilly Media. Kindle Edition. 
 
