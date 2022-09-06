@@ -144,3 +144,39 @@ let o = Object.seal(Object.create(Object.freeze({x: 1}),{y: {value: 2, writable:
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 386). O'Reilly Media. Kindle Edition. 
 
+// ex: querying the prototype of any object
+
+Object.getPrototypeOf({})   // => Object.prototype
+Object.getPrototypeOf({})   // => Array.prototype
+Object.getPrototypeOf(() => {})     // => Function.prototype
+
+// ex:
+
+let p2 = {x: 1};    // Define a prototype object
+let o1 = Object.create(p2);  // Create an object with that prototype
+p2.isPrototypeOf(o1)     // => true: o1 inherits from p2
+Object.prototype.isPrototypeOf(p2)  // => true: p2 inherits from Object.prototype
+Object.prototype.isPrototypeOf(o1)  // => true: o1 does too
+
+let o2 = {x: 1};
+let p3 = {y: 2};
+Object.setPrototypeOf(o, p3);    // Set the property of o2 to p3
+o2.y    // => 2: o2 now inherits the property y
+let a = [1,2,3];
+Object.setPrototypeOf(a, p3);    // Set the prototype of array a to p3
+a.join  // => undefined: a no longer has a join() method
+
+// ex: __proto__ example
+
+let p4 = {z: 3};
+let o3 = {
+    x: 1,
+    y: 2,
+    __proto__: p4
+};
+o3.z    // => 3: o3 inherits from p4
+
+// 14.4 Well-Known Symbols
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 387). O'Reilly Media. Kindle Edition. 
+
