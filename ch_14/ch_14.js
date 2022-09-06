@@ -244,3 +244,40 @@ classof(r)  // => Range
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 389). O'Reilly Media. Kindle Edition. 
 
+// ex: simple subclass of Array:
+
+// A trivial Array subclass that adds getters for the first and lasat elements.
+class EZArray extends Array {
+    get first() { return this[0];}
+    get last() { return this[this.length-1];}
+}
+
+let e = new EZArray(1,2,3);
+let f = e.map(x => x * x);
+e.last  // => 3: the last element of EZArray e
+f.last  // => 9: f is also an EZArray with a last property
+
+// ex: 
+
+EZArray[Symbol.species] = Array;    // Attempt to set a read-only property fails
+
+// Instead we can use defineProperty():
+Object.defineProperty(EZArray, Symbol.species, {value: Array});
+
+// ex: explicitly define your own Symbol.species getter when creating the subclass in the first place:
+
+class EZArray extends Array {
+    static get [Symbol.species](){ return Array; }
+    get first(){ return this[0]; }
+    get last(){ return this[this.length-1];}
+}
+
+let e1 = new EZArray(1,2,3);
+let f1 = e1.map(x => x - 1);
+e1.last     // => 3
+f1.last     // => undefined: f1 is a regular array with no last getter
+
+// 14.4.5 Symbol.isConcatSpreadable
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 391). O'Reilly Media. Kindle Edition. 
+
