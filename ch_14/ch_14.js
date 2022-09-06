@@ -180,3 +180,23 @@ o3.z    // => 3: o3 inherits from p4
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 387). O'Reilly Media. Kindle Edition. 
 
+// 14.4.2 Symbol.hasInstance
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 388). O'Reilly Media. Kindle Edition. 
+
+// ex: generic type checking with pseudotype objects with Symbol.hasInstance
+
+// Define an object as a "type" we can use with instanceof
+let uint8 = {
+    [Symbol.hasInstance](x){
+        return Number.isInteger(x) && x >= 0 && x <= 255;
+    }
+};
+128 instanceof uint8    // => true
+256 instanceof uint8    // => false: too big
+Math.PI instanceof uint8    // => false: not an integer
+
+// 14.4.3 Symbol.toStringTag
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 388). O'Reilly Media. Kindle Edition. 
+
