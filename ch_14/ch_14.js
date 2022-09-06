@@ -281,3 +281,23 @@ f1.last     // => undefined: f1 is a regular array with no last getter
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 391). O'Reilly Media. Kindle Edition. 
 
+// ex:
+
+let arraylike = {
+    length: 1,
+    0: 1,
+    [Symbol.isConcatSpreadable]: true
+};
+[].concat(arraylike)    // => [1]: (would be [[1]] if not spread)
+
+// ex:
+
+class NonSpreadableArray extends Array {
+    get [Symbol.isConcatSpreadable](){ return false; }
+}
+let a1 = new NonSpreadableArray(1,2,3);
+[].concat(a).length     // => 1; (would be 3 elements long if a1 was spread)
+
+// 14.4.6 Pattern-Matching Symbols
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 392). O'Reilly Media. Kindle Edition. 
