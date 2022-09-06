@@ -200,3 +200,47 @@ Math.PI instanceof uint8    // => false: not an integer
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 388). O'Reilly Media. Kindle Edition. 
 
+// {}.toString()   // => "[object Object]"
+
+Object.prototype.toString.call([])  // => "[object Array]"
+Object.prototype.toString.call(/./)     // => "[object RegExp]"
+Object.prototype.toString.call(() => {})    // => "[object Function]"
+Object.prototype.toString.call("")  // => "[object String]"
+Object.prototype.toString.call(0)   // => "[object Number]"
+Object.prototype.toString.call(false)   // => "[object Boolean]"
+
+// ex:
+
+function classof(o){
+    return Object.prototype.toString.call(o).slice(8, -1);
+}
+
+classof(null)   // => null
+classof(undefined)  // => undefined
+classof(1)  // => number
+classof(10n**100n)  // => BigInt
+classof("")     // => String
+classof(false)  // => Boolean
+classof(Symbol())   // => Symbol
+classof({})     // => Object
+classof([])     // => Array
+classof(/./)    // => RegExp
+classof(() => {})   // => Function
+classof(new Map())  // => Map
+classof(new Set())  // => Set
+classof(new Date())     // => Date
+
+// ex:
+
+class Range{
+    get [Symbol.toStringTag](){ return "Range";}
+    // the rest of this class is omitted here
+}
+let r = new Range(1, 10);
+Object.prototype.toString.call(r)   // => [object Range]
+classof(r)  // => Range
+
+// 14.4.4 Symbol.species
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 389). O'Reilly Media. Kindle Edition. 
+
