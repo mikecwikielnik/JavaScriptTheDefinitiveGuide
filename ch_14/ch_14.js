@@ -136,3 +136,11 @@ q.count     // => 3: ...but we copied the getter method so it increments
 // 14.2 Object Extensibility
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 384). O'Reilly Media. Kindle Edition. 
+
+// Create a sealed object with a frozen prototype and a non-enumerable property
+let o = Object.seal(Object.create(Object.freeze({x: 1}),{y: {value: 2, writable: true}}));
+
+// 14.3 The prototype Attribute
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 386). O'Reilly Media. Kindle Edition. 
+
