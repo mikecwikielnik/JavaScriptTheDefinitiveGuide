@@ -380,7 +380,201 @@ let root = "/tmp";
 let filePattern = glob`${root}/*.html`;     // A RegExp alternative
 "/tmp/test.html".match(filePattern)[1]  // => "test"
 
-// 14.6 The Reflect API
+// 14.7 Proxy Objects
 
-// Flanagan, David. JavaScript: The Definitive Guide (p. 397). O'Reilly Media. Kindle Edition. 
+// Flanagan, David. JavaScript: The Definitive Guide (p. 399). O'Reilly Media. Kindle Edition. 
+
+// When we create a Proxy object, we specify two other objects, the target object and the handlers object:
+
+// Flanagan, David. JavaScript: The Definitive Guide (pp. 399-400). O'Reilly Media. Kindle Edition. 
+
+let proxy = new Proxy(target, handlers);
+
+// ex:
+
+let t = {x: 1, y: 2};
+let p5 = new Proxy(t, {});
+p5.x    // => 1
+delete p5.y     // => true: delete property y of the proxy
+t.y     // => undefined: this deletes it in the target, too
+p5.z = 3    // Defining a new property on the proxy
+t.z     // => 3: defines the property on the target
+
+// ex:
+
+function accessTheDatabase(){/*implementation omitted*/ return 42;}
+let {proxy1, revoke} = Proxy.revocable(accessTheDatabase, {});
+
+proxy()     // => 42: The proxy gives access to the underlying target function
+revoke()    // But that access can be turned off whenever we want
+proxy();    // !TypeError: we can no longer call this function
+
+// ex:
+
+// We use a Proxy to create an object that appears to have every
+// possible property, with the value of each property equal to its name
+let identity = new Proxy({}, {
+    // Every property has its own name as its value
+    get(o, name, target){return name;},
+    // Every property name is defined
+    has(o, name){return true;},
+    // There are too many properties to enumerate, so we just throw
+    ownKeys(o){throw new RangeError("Infinite number of properties");},
+    // All properties exist and are not writable, configurable or enumerable
+    getOwnPropertyDescriptor(o, name){
+        return{
+            value: name,
+            enumerable: false,
+            writable: false,
+            configurable: false
+        };
+    },
+    // All properties are read-only so they can't be set
+    set(o, name, value, target){return false;},
+    //All properties are non-configurable, so they can't be deleted
+    deleteProperty(o, name){return false;},
+    // All properties exist and are non-configurable so we can't define more
+    defineProperty(o, name, desc){return false;},
+    // In effect, this means that the object is not extensible
+    isExtensible(o){return false;},
+    // All properties are already defined on this object, so it couldn't
+    // inherit anything even if it did have a prototype object
+    getPrototypeOf(o){return null;},
+    // The object is not extensible, so we can't change the prototype
+    setPrototypeOf(o, proto){return false;},
+});
+
+identity.x  // => x
+identity.toString   // => toString
+identity[0]     // => 0
+identity.x = 1  // Setting properties has no effect
+identity.x  // => x
+delete identity.x   // => false: can't delete properties either 
+identity.x  // => x
+Object.keys(identity);  // !RangeError: can't list all the keys
+for(let p of identity);     // !RangeError
+
+// ex: uses Proxy to create a read-only wrapper for a target object
+
+function readOnlyProxy(o){
+    function readonly(){throw new TypeError("Readonly");}
+    return new Proxy(o, {
+        set: readonly,
+        defineProperty: readonly,
+        deleteProperty: readonly,
+        setPrototypeOf: readonly,
+    });
+}
+
+let o = {x: 1, y: 2};   // Normal writable object***
+let p6 = readOnlyProxy(o);  // Readonly version of it
+p6.x    // => 1: reading properties works
+p6.x = 2;   // !TypeError: can't change properties
+delete p6.y;    // !TypeError: can't delete properties
+p6.z = 3;   // !TypeError: can't add properties
+p6.__proto__ = {};  // !TypeError: can't change the prototype
+
+// ex: Proxy that delegates all operations to the target object
+// but uses handler methods to log the operations:
+
+/**
+ * Return a Proxy object that wraps o, delegating all operations to
+ * that object after logging each operation. objname is a string that 
+ * will appear in the log messages to identify the object. If o has own
+ * properties whose values are objects or functions, then if you query
+ * the value of those properties, you'll get a loggingProxy back, so that
+ * logging behavior of this proxy is "contagious".
+ */
+function loggingProxy(o, objname){
+    // Define handlers for our logging Proxy object.
+    // Each handler logs a message and then delegates to the target object
+    const handlers = {
+        // This handler is a special case because for own properties
+        // whose value is an object or function, it returns a proxy rather
+        // than returning the value itself.
+        get(target, property, receiver){
+            // Log the get operation
+            console.log(`Handler get(${objname},${property.toString()})`);
+
+            // Use the Reflect API to get the property value
+            let value = Reflect.get(target, property, receiver);
+
+            // If the property is an own property of the target and
+            // the value is an object or function then return a Proxy for it.
+            if(Reflect.ownKeys(target).includes(property) &&
+                (typeof value == "object" || typeof value === "function")){
+                    return loggingProxy(value, `${objname}.${property.toString()}`);
+            }
+
+            // Otherwise return the value unmodified.
+            return value;
+        },
+
+        // There is nothing special about the following three methods:
+        // they log the operation and delegate to the target object.
+        // They are a special case simply so we can avoid logging the 
+        // receiver object which can cause infinite recursion.
+        set(target, prop, value, receiver){
+            console.log(`Handler set(${objname},${prop.toString()},${value})`);
+            return Reflect.set(target, prop, value, receiver);
+        },
+        apply(target, receiver, args){
+            console.log(`Handler ${objname}(${args})`);
+            return Reflect.apply(target, receiver, args);
+        },
+        construct(target, args, receiver){
+            console.log(`Handler ${objname}(${args})`);
+            return Reflect.construct(target, args, receiver);
+        }
+    };
+
+    // We can automatically generate the rest of the handlers
+    // Metaprogramming FTW!
+    Reflect.ownKeys(Reflect).forEach(handlerName => {
+        if(!(handlerName in handlers)){
+            handlers[handlerName] = function(target, ...args){
+                // Log the operation
+                console.log(`Handler ${handlerName}(${objname},${args})`);
+                // Delegate the operation
+                return Reflect[handlerName](target, ...args);
+            };
+        }
+    });
+    // Return a proxy for the object using these logging handlers
+    return new Proxy(o, handlers);
+}
+
+// ex: results in some genuine insights about array iteration:
+
+// Define an array of data and an object with a function property
+let data = [10, 20];
+let methods = {square: x => x * x};
+
+// Create logging proxies for the array and the object
+let proxyData = loggingProxy(data, "data");
+let proxyMethods = loggingProxy(methods, "methods");
+
+// Suppose we want to understand how the Array.map() method works
+data.map(methods.square)    // => [100, 400]
+
+// First, let's try it with a logging Proxy array
+proxyData.map(methods.square)   // => [100, 400]
+// Log output:
+// Handler methods.square(10, 0, 10, 20)
+// Handler methods.square(20, 1, 10, 20)
+
+// Finally, let's use a logging proxy to learn about the iteration protocol
+for(let x of proxyData) console.log("Datum", x);
+// Log output;
+// Handler get(data, Symbol(Symbol.iterator))
+// Handler get(data, length)
+// Datum 10
+// Handler get(data, length)
+// Handler get(data, 1)
+// Datum 20
+// Hanlder get(data, length)
+
+// 14.7.1 Proxy Invariants
+
+// Flanagan, David. JavaScript: The Definitive Guide (p. 405). O'Reilly Media. Kindle Edition. 
 
