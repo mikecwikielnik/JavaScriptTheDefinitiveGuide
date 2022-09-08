@@ -578,3 +578,15 @@ for(let x of proxyData) console.log("Datum", x);
 
 // Flanagan, David. JavaScript: The Definitive Guide (p. 405). O'Reilly Media. Kindle Edition. 
 
+// ex:
+
+let target = Object.preventExtensions({});
+let proxy2 = new Proxy(target, {isExtensible(){return true;}});
+Reflect.isExtensible(proxy);    // !TypeError: invariant violation
+
+// ex:
+
+let target1 = Object.freeze({x: 1});
+let proxy3 = new Proxy(target, {get(){return 99;}});
+proxy3.x;   // !TypeError: value returned by get() doesn't match target
+
